@@ -2,7 +2,9 @@ import ExerciseCard from '../components/ExerciseCard';
 import '../css/App.css';
 import '../components/FoodCardLeft';
 import '../css/FoodCardLeft.css';
-import FoodCard from '../components/FoodCardLeft';
+import FoodCardLeft from '../components/FoodCardLeft';
+import FoodCardRight from '../components/FoodCardRight';
+
 
 
 function App() {
@@ -10,7 +12,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <ExerciseCard></ExerciseCard>
-        <FoodCard />
+        <FoodCardLeft />
+        <FoodCardRight />
       </header>
     </div>
   );
