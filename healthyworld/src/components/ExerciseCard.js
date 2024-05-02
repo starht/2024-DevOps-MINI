@@ -14,7 +14,7 @@ function ExerciseCard() {
         <div className="name-box">
           <div className="exercise-name">윗몸 일으키기</div>
           <div className="go-to">
-            <img src={addLogo}></img>
+            <img className="add-logo" src={addLogo}></img>
             운동하러 가기
           </div>
         </div>
