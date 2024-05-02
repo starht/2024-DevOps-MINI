@@ -10,7 +10,7 @@ function FoodCard() {
           <button> <img class='menu' src={menu} alt=''/>레시피 저장</button>
         </div>
       <div class = "FoodImgWrapperRight">
-        <img src={salmon} alt=''class='FoodImg' />
+        <img src={salmon} alt=''class='FoodImgRight' />
       </div>
     </div>
   );

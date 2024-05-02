@@ -5,7 +5,7 @@ function FoodCard() {
   return (
     <div className="FoodCard">
       <div class = "FoodImgWrapperLeft">
-        <img src={salmon} alt=''class='FoodImg' />
+        <img src={salmon} alt=''class='FoodImgLeft' />
       </div>
         <div class="FoodExplanationWrapper">
           <h3>연어 스테이크</h3>
