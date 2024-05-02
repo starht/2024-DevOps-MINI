@@ -9,7 +9,7 @@ function FoodCard() {
           <p>280 Kcal</p>
           <button> <img class='menu' src={menu} alt=''/>레시피 저장</button>
         </div>
-      <div class = "FoodImgWrapper">
+      <div class = "FoodImgWrapperRight">
         <img src={salmon} alt=''class='FoodImg' />
       </div>
     </div>

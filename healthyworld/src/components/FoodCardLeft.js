@@ -4,7 +4,7 @@ import menu from '../assets/images/menu.png';
 function FoodCard() {
   return (
     <div className="FoodCard">
-      <div class = "FoodImgWrapper">
+      <div class = "FoodImgWrapperLeft">
         <img src={salmon} alt=''class='FoodImg' />
       </div>
         <div class="FoodExplanationWrapper">

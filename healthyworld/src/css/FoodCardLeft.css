@@ -8,13 +8,18 @@
   display: flex;
 }
 
-.FoodImgWrapper {
+.FoodImgWrapperLeft {
   /* background-image: url('../assets/images/SalmonSteak.jpg');
   background-size: cover; */
   border-radius: 30px 15px 15px 30px;
   width: 275px;
   height: 175px;
   padding: 0;
+}
+.FoodImgWrapperLeft > img{
+    width: 275px;
+    height: 175px;
+    border-radius: 30px 15px 15px 30px;
 }
 
 .FoodExplanationWrapper > p {
@@ -43,12 +48,6 @@ button {
   border: 0;
   box-shadow: 0 0 10px gray;
   margin: 10px;
-}
-
-img {
-  width: 275px;
-  height: 175px;
-  border-radius: 30px 15px 15px 30px;
 }
 
 h3 {
