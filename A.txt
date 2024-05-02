@@ -1,6 +1,0 @@
-AA
-developer A
-AAA
-
-ignore 적용222
-commit test
