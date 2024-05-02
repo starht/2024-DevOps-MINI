@@ -1,7 +1,8 @@
 import salmon from '../assets/images/SalmonSteak.jpg';
 import menu from '../assets/images/menu.png';
+import '../css/components/FoodCardLeft.css';
 
-function FoodCard() {
+function FoodCardLeft() {
   return (
     <div className="FoodCard">
       <div class = "FoodImgWrapperLeft">
@@ -16,4 +17,4 @@ function FoodCard() {
   );
 }
 
-export default FoodCard;
+export default FoodCardLeft;

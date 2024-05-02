@@ -1,18 +1,16 @@
 import ExerciseCard from '../components/ExerciseCard';
-import '../css/App.css';
-import '../components/FoodCardLeft';
-import '../css/FoodCardLeft.css';
-import '../css/FoodCardRight.css';
+import React from "react";
+import { useState, useEffect } from "react";
+import '../css/pages/Main.css';
 import FoodCardLeft from '../components/FoodCardLeft';
 import FoodCardRight from '../components/FoodCardRight';
 
 
-
-function App() {
+function Main() {
   return (
     <div className="App">
       <header className="App-header">
-        <ExerciseCard></ExerciseCard>
+        <ExerciseCard />
         <FoodCardLeft />
         <FoodCardRight />
       </header>
@@ -20,4 +18,4 @@ function App() {
   );
 }
 
-export default App;
+export default Main;

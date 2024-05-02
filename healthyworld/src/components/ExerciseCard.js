@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/ExerciseCard.css";
+import "../css/components/ExerciseCard.css";
 import addLogo from "../assets/images/List_Add.png";
 
 function ExerciseCard() {

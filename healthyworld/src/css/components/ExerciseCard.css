@@ -3,7 +3,7 @@
   height: 370px;
   border-radius: 50px;
   box-shadow: 3px 3px 7px rgba(93, 93, 93, 0.381);
-  background-image: url('../assets/images/test-img.jpg');
+  background-image: url('../../assets/images/test-img.jpg');
   background-size: cover;
 }
 .card-wrapper{
@@ -22,7 +22,7 @@
 .btn-box{
   width: 35px;
   height: 35px;
-  background-image: url('../assets/images/youtube.png');
+  background-image: url('../../assets/images/youtube.png');
   background-size: cover;
   margin: 10px;
   cursor: pointer;
