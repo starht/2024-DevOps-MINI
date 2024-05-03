@@ -13,7 +13,7 @@ function ExerciseCard() {
   const getExercises = async () => {
     try {
       const response = await fetch(
-        "https://api.odcloud.kr/api/15068730/v1/uddi:734ff9bb-3696-4993-a365-c0201eb0a6cd?perPage=360&serviceKey=" + process.env.REACT_APP_EXERCISE_KEY
+        "https://api.odcloud.kr/api/15068730/v1/uddi:734ff9bb-3696-4993-a365-c0201eb0a6cd?perPage=360&serviceKey="+process.env.REACT_APP_EXERCISE_KEY
       );
       if (!response.ok) {
         throw new Error("Failed to fetch exercises");
