@@ -11,9 +11,6 @@ function Main() {
   const API_KEY = process.env.REACT_APP_EXERCISE_KEY;
 
   let target = "된장국";
-  if (target !== "") {
-    target = "/RCP_NM=" + target;
-  }
   let exercisetarget = "복싱";
 
   useEffect(() => {
@@ -23,17 +20,18 @@ function Main() {
   const getFoods = async () => {
     try {
       const response = await fetch(
-        "https://openapi.foodsafetykorea.go.kr/api/" +
-          process.env.REACT_APP_FOOD_KEY +
-          "/COOKRCP01/json/1/10" +
-          target
+        `https://openapi.foodsafetykorea.go.kr/api/${
+          process.env.REACT_APP_FOOD_KEY
+        }/COOKRCP01/json/1/10/RCP_NM=${target}`
       );
       if (!response.ok) {
         throw new Error("failed to fetch");
       }
       const json = await response.json();
-      setFoods(json.COOKRCP01.row);
-      // setIsLoading(false);
+      const filteredFoods = json.COOKRCP01.row.filter(
+        (food) => food.RCP_NM === target
+      );
+      setFoods(filteredFoods);
     } catch (error) {
       console.log(error);
     }
