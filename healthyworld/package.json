@@ -7,12 +7,25 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "buffer": "^6.0.3",
+<<<<<<< HEAD
     "express": "^4.19.2",
     "mysql": "^2.18.1",
+=======
+    "crypto": "^1.0.1",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "mysql": "^2.18.1",
+    "net": "^1.0.2",
+>>>>>>> b12de159d223fb94342fb44c26e6419a12043645
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.0",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "^3.0.1",
+    "stream": "^0.0.2",
+    "timers": "^0.1.1",
+    "tls": "^0.0.1",
+    "url": "^0.11.3",
+    "util": "^0.12.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
