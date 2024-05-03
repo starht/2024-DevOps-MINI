@@ -5,6 +5,7 @@ import FoodCardLeft from '../components/FoodCardLeft';
 import FoodCardRight from '../components/FoodCardRight';
 
 function Main() {
+  const [youtubes, setYoutubes] = useState([]);
   const [foods, setFoods] = useState([]);
   const [exercises, setExercises] = useState([]);
   const API_KEY = process.env.REACT_APP_EXERCISE_KEY;
@@ -13,11 +14,12 @@ function Main() {
   if (target !== "") {
     target = "/RCP_NM=" + target;
   }
+  let exercisetarget = "복싱";
 
   useEffect(() => {
     getFoods();
   }, []);
-  
+
   const getFoods = async () => {
     try {
       const response = await fetch(
@@ -61,16 +63,38 @@ function Main() {
     }
   };
 
+  useEffect(() => {
+    getYoutubes();
+  }, []);
+
+  const getYoutubes = async () => {
+    try {
+      const response = await fetch(
+        "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q="+ exercisetarget + "배우기0&type=video&regionCode=kr&key=" + process.env.REACT_APP_YOUTUBE_API_KEY
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch thumbnails");
+      }
+      const json = await response.json();
+      setYoutubes(json.items);
+    } catch (error) {
+      console.error("Error fetching thumbnails:", error);
+    }
+  };
+
   return (
     <div className="App">
       <header className="App-header">
       {exercises.map((exercise) => (
-        <ExerciseCard
-        key={exercise.운동명}
-        kcal={exercise.단위체중당에너지소비량}
-        name={exercise.운동명}
-        />
-      ))}
+          <ExerciseCard
+            key={exercise.운동명}
+            kcal={exercise.단위체중당에너지소비량}
+            name={exercise.운동명}
+            backgroundImage={youtubes[0]?.snippet?.thumbnails?.high?.url}
+            youtubeId={youtubes[0]?.id?.videoId}
+          />
+        ))}
+      
         <div className="FoodLeft">
           {foods.map((food) => (
             <FoodCardLeft

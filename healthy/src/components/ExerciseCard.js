@@ -3,12 +3,18 @@ import "../css/components/ExerciseCard.css";
 import PropTypes from "prop-types";
 import addLogo from "../assets/images/List_Add.png";
 
-function ExerciseCard({ name, kcal, backgroundImage }) {
+function ExerciseCard({ name, kcal, backgroundImage, youtubeId }) {
+  const handleClick = () => {
+    const youtubeUrl = `https://www.youtube.com/watch?v=${youtubeId}`;
+    window.open(youtubeUrl, "_blank");
+    console.log("click");
+  };
+
   return (
     <div className="card-container" style={{backgroundImage: `url(${backgroundImage})`}}>
       <div className="card-wrapper">
         <div className="card-header">
-          <div className="btn-box"></div>
+          <div className="btn-box" onClick={() => handleClick()}></div>
           <div className="cal-box">{kcal} kcal</div>
         </div>
         <div className="name-box">
