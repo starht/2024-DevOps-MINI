@@ -16,11 +16,13 @@
   height: 175px;
   padding: 0;
 }
+
 .FoodImgLeft{
-    width: 275px;
-    height: 175px;
-    border-radius: 30px 15px 15px 30px;
+  width: 275px;
+  height: 175px;
+  border-radius: 30px 15px 15px 30px;
 }
+
 
 .FoodExplanationWrapper > p {
   color: gray;
