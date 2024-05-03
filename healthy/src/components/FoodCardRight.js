@@ -10,7 +10,7 @@ function FoodCardRight({ATT_FILE_NO_MK,RCP_NM, INFO_ENG}) {
           <div className="FoodExplanationWrapper">
             <h3>{RCP_NM}</h3>
             <p>{INFO_ENG} Kcal</p>
-            <button>
+            <button className='button'>
               <img className="menu" src={menu} alt="" />
               레시피 저장
             </button>
