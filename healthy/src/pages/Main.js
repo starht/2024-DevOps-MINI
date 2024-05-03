@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import '../css/pages/Main.css';
-import ExerciseCard from '../components/ExerciseCard';
-import FoodCardLeft from '../components/FoodCardLeft';
-import FoodCardRight from '../components/FoodCardRight';
+import "../css/pages/Main.css";
+import ExerciseCard from "../components/ExerciseCard";
+import FoodCardLeft from "../components/FoodCardLeft";
+import FoodCardRight from "../components/FoodCardRight";
 
 function Main() {
   const [youtubes, setYoutubes] = useState([]);
   const [foods, setFoods] = useState([]);
   const [exercises, setExercises] = useState([]);
   const API_KEY = process.env.REACT_APP_EXERCISE_KEY;
-
-  let cnt = 0;
 
   let target = "된장국";
   if (target !== "") {
@@ -72,7 +70,10 @@ function Main() {
   const getYoutubes = async () => {
     try {
       const response = await fetch(
-        "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q="+ exercisetarget + "배우기0&type=video&regionCode=kr&key=" + process.env.REACT_APP_YOUTUBE_API_KEY
+        "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" +
+          exercisetarget +
+          "배우기0&type=video&regionCode=kr&key=" +
+          process.env.REACT_APP_YOUTUBE_API_KEY
       );
       if (!response.ok) {
         throw new Error("Failed to fetch thumbnails");
@@ -87,7 +88,7 @@ function Main() {
   return (
     <div className="App">
       <header className="App-header">
-      {exercises.map((exercise) => (
+        {exercises.map((exercise) => (
           <ExerciseCard
             key={exercise.운동명}
             kcal={exercise.단위체중당에너지소비량}
@@ -96,23 +97,23 @@ function Main() {
             youtubeId={youtubes[0]?.id?.videoId}
           />
         ))}
-      
-        <div className="Food">
-          {foods.map((food) => (
+        {foods.map((food, index) => (
+          <div className="Food">
+            {index % 2 == 0 ? (
               <FoodCardLeft
                 ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
                 RCP_NM={food.RCP_NM}
                 INFO_ENG={food.INFO_ENG}
               />
-          ))}
-          {foods.map((food) => (
+            ) : (
               <FoodCardRight
-              ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
-              RCP_NM={food.RCP_NM}
-              INFO_ENG={food.INFO_ENG}
+                ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
+                RCP_NM={food.RCP_NM}
+                INFO_ENG={food.INFO_ENG}
               />
-          ))}
-        </div>
+            )}
+          </div>
+        ))}
       </header>
     </div>
   );

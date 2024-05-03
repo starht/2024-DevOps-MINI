@@ -7,9 +7,6 @@ function FoodCardRight({ATT_FILE_NO_MK,RCP_NM, INFO_ENG}) {
 
   return (
         <div className="FoodCard">
-          <div className="FoodImgWrapperRight">
-            <img src={ATT_FILE_NO_MK} alt="" className="FoodImgRight" />
-          </div>
           <div className="FoodExplanationWrapper">
             <h3>{RCP_NM}</h3>
             <p>{INFO_ENG} Kcal</p>
@@ -17,6 +14,9 @@ function FoodCardRight({ATT_FILE_NO_MK,RCP_NM, INFO_ENG}) {
               <img className="menu" src={menu} alt="" />
               레시피 저장
             </button>
+          </div>
+          <div className="FoodImgWrapperRight">
+            <img src={ATT_FILE_NO_MK} alt="" className="FoodImgRight" />
           </div>
         </div>
   );
