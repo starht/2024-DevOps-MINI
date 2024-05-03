@@ -1,6 +1,5 @@
 import ExerciseCard from '../components/ExerciseCard';
 import React from "react";
-import { useState, useEffect } from "react";
 import '../css/pages/Main.css';
 import FoodCardLeft from '../components/FoodCardLeft';
 import FoodCardRight from '../components/FoodCardRight';
