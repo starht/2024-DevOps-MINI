@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import FoodCardLeft from "../components/FoodCardLeft";
+import '../css/pages/Detail.css'
 
 function Detail() {
   const [foods, setFoods] = useState([]);
@@ -32,13 +32,73 @@ function Detail() {
 
   return (
     <div>
-      <h1>{recipename}</h1>
       {foods.map((food) => (
-        <FoodCardLeft
-          ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
-          RCP_NM={food.RCP_NM}
-          INFO_ENG={food.INFO_ENG}
-        />
+        <div>
+        <div className="FoodRecipeWrapper">
+          <img src={food.ATT_FILE_NO_MK} className="RecipeImg" alt="" />
+          <div className="FoodExplain">
+            <p className="RecipeName">{food.RCP_NM}</p>
+            <div className="Recipe">
+              <p>{food.MANUAL01}</p>
+              <p>{food.MANUAL02}</p>
+              <p>{food.MANUAL03}</p>
+              <p>{food.MANUAL04}</p>
+              <p>{food.MANUAL05}</p>
+              <p>{food.MANUAL06}</p>
+              <p>{food.MANUAL07}</p>
+              <p>{food.MANUAL08}</p>
+              <p>{food.MANUAL09}</p>
+              <p>{food.MANUAL10}</p>
+              <p>{food.MANUAL11}</p>
+              <p>{food.MANUAL12}</p>
+              <p>{food.MANUAL13}</p>
+              <p>{food.MANUAL14}</p>
+              <p>{food.MANUAL15}</p>
+              <p>{food.MANUAL16}</p>
+              <p>{food.MANUAL17}</p>
+              <p>{food.MANUAL18}</p>
+              <p>{food.MANUAL19}</p>
+              <p>{food.MANUAL20}</p>
+            </div>
+          </div>
+        </div>
+        <div className="Lower">
+        <div className="FoodCalorieWrapper" id = "box">
+          <div className="UpperCalorie">
+            <p>영양 상세 정보</p>
+            <p>총 열량 : {food.INFO_ENG} Kcal</p>
+          </div>
+          <div className="LowerCalorie">
+            <p>
+              탄수화물<br />{food.INFO_CAR}
+            </p>
+            <p>
+              지방<br />{food.INFO_FAT}
+            </p>
+            <p>
+              나트륨<br />{food.INFO_NA}
+            </p>
+            <p>
+              단백질<br />{food.INFO_PRO}
+            </p>
+          </div>
+        </div>
+        <div className="FoodIngredientsWrapper" id = "box">
+          <div className="UpperIngredients">
+            <p>재료</p>
+            <p>
+              {food.RCP_PARTS_DTLS}
+            </p>
+          </div>
+          <div className="LowerTip">
+            <p>저감 조리법 TIP</p>
+            <p>
+              {food.RCP_NA_TIP}
+            </p>
+          </div>
+        </div>
+        </div>
+        </div>
       ))}
     </div>
   );
