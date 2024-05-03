@@ -12,7 +12,7 @@ function Main() {
       <header className="App-header">
         <ExerciseCard />
         <FoodCardLeft />
-        <FoodCardRight />
+        {/* <FoodCardRight /> */}
       </header>
     </div>
   );
