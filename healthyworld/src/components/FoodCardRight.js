@@ -5,13 +5,13 @@ import '../css/components/FoodCardRight.css';
 function FoodCardRight() {
   return (
     <div className="FoodCard">
-      <div class="FoodExplanationWrapper">
+      <div className="FoodExplanationWrapper">
           <h3>연어 스테이크</h3>
           <p>280 Kcal</p>
-          <button> <img class='menu' src={menu} alt=''/>레시피 저장</button>
+          <button> <img className='menu' src={menu} alt=''/>레시피 저장</button>
         </div>
-      <div class = "FoodImgWrapperRight">
-        <img src={salmon} alt=''class='FoodImgRight' />
+      <div className = "FoodImgWrapperRight">
+        <img src={salmon} alt=''className='FoodImgRight' />
       </div>
     </div>
   );
