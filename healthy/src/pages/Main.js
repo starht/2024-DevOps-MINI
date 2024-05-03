@@ -10,6 +10,8 @@ function Main() {
   const [exercises, setExercises] = useState([]);
   const API_KEY = process.env.REACT_APP_EXERCISE_KEY;
 
+  let cnt = 0;
+
   let target = "된장국";
   if (target !== "") {
     target = "/RCP_NM=" + target;
@@ -95,16 +97,22 @@ function Main() {
           />
         ))}
       
-        <div className="FoodLeft">
+        <div className="Food">
           {foods.map((food) => (
-            <FoodCardLeft
+              <FoodCardLeft
+                ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
+                RCP_NM={food.RCP_NM}
+                INFO_ENG={food.INFO_ENG}
+              />
+          ))}
+          {foods.map((food) => (
+              <FoodCardRight
               ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
               RCP_NM={food.RCP_NM}
               INFO_ENG={food.INFO_ENG}
-            />
+              />
           ))}
         </div>
-        <FoodCardRight />
       </header>
     </div>
   );
