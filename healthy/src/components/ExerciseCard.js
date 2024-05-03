@@ -11,7 +11,10 @@ function ExerciseCard({ name, kcal, backgroundImage, youtubeId }) {
   };
 
   return (
-    <div className="card-container" style={{backgroundImage: `url(${backgroundImage})`}}>
+    <div
+      className="card-container"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="card-wrapper">
         <div className="card-header">
           <div className="btn-box" onClick={() => handleClick()}></div>
@@ -30,8 +33,10 @@ function ExerciseCard({ name, kcal, backgroundImage, youtubeId }) {
 }
 
 ExerciseCard.propTypes = {
-  name:PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   kcal: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
+  youtubeId: PropTypes.string.isRequired,
 };
 
 export default ExerciseCard;
