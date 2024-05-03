@@ -6,8 +6,6 @@ function Detail() {
   const [foods, setFoods] = useState([]);
   const { recipename } = useParams();
 
-  let target = recipename ? "/RCP_NM=" + recipename : "";
-
   useEffect(() => {
     getFoods();
   }, [recipename]);
@@ -15,17 +13,18 @@ function Detail() {
   const getFoods = async () => {
     try {
       const response = await fetch(
-        "https://openapi.foodsafetykorea.go.kr/api/" +
-          process.env.REACT_APP_FOOD_KEY +
-          "/COOKRCP01/json/1/10" +
-          target
+        `https://openapi.foodsafetykorea.go.kr/api/${
+          process.env.REACT_APP_FOOD_KEY
+        }/COOKRCP01/json/1/10/RCP_NM=${recipename}`
       );
       if (!response.ok) {
         throw new Error("failed to fetch");
       }
       const json = await response.json();
-      setFoods(json.COOKRCP01.row);
-      // setIsLoading(false);
+      const filteredFoods = json.COOKRCP01.row.filter(
+        (food) => food.RCP_NM === recipename
+      );
+      setFoods(filteredFoods);
     } catch (error) {
       console.log(error);
     }
