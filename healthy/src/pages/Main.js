@@ -28,6 +28,7 @@ function Main() {
         throw new Error("failed to fetch");
       }
       const json = await response.json();
+      // setFoods(json.COOKRCP01.row);
       const filteredFoods = json.COOKRCP01.row.filter(
         (food) => food.RCP_NM === target
       );
@@ -44,9 +45,8 @@ function Main() {
   const getExercises = async () => {
     try {
       const response = await fetch(
-        "https://api.odcloud.kr/api/15068730/v1/uddi:734ff9bb-3696-4993-a365-c0201eb0a6cd?perPage=360&serviceKey=Fbnk2N4bW%2B4o%2BsaaEFrzSXB9dL%2FMDEKDY1hzbRxbz3fJYZT4HMjw0P%2FJ3xBqwtZBKkHe0%2FgccmushZniXUBdSA%3D%3D"
-        // "https://api.odcloud.kr/api/15068730/v1/uddi:734ff9bb-3696-4993-a365-c0201eb0a6cd?perPage=360&serviceKey=" +
-        //   API_KEY
+        "https://api.odcloud.kr/api/15068730/v1/uddi:734ff9bb-3696-4993-a365-c0201eb0a6cd?perPage=360&serviceKey=" +
+          API_KEY
       );
       if (!response.ok) {
         throw new Error("Failed to fetch exercises");
