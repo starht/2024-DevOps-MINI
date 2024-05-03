@@ -41,7 +41,6 @@ function FoodCardLeft() {
             <h3>{food.RCP_NM}</h3>
             <p>{food.INFO_ENG} Kcal</p>
             <button>
-              {" "}
               <img className="menu" src={menu} alt="" />
               레시피 저장
             </button>
