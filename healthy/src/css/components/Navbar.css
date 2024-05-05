@@ -1,0 +1,142 @@
+.nav{
+  display: flex;
+  align-items: center;
+  min-width: 100%;
+  height: 80px;
+  font-family: "Nanum Gothic", sans-serif;
+}
+.nav-logo{
+  padding-left: 10px;
+}
+.title{
+  font-family: "Sedan SC", serif;
+  font-size: 30px;
+  font-weight: bold;
+  min-width: 15%;
+}
+.nav-wrap{
+  width: 40%;
+  margin-left: 50px;
+}
+.nav-item{
+  font-size: 18px;
+  font-weight: light;
+  padding: 17px;
+  padding-right: 40px;
+  text-decoration-line: none;
+  color:rgb(63, 63, 63);
+}
+.nav-item:visited{
+  color:rgb(63, 63, 63);
+}
+.nav-item:hover{
+  color:black;
+  font-weight: bold;
+}
+.nav-search{
+  display: flex;
+  justify-content: end;
+  width: 25%;
+}
+.search-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-input{
+  height: 40px;
+  width: 200px;
+  border: none;
+  background-color: rgba(207, 207, 207, 0.138);
+  margin-right: 5px;
+  padding-left: 15px;
+  border-radius: 50px;
+}
+.search-btn{
+  cursor: pointer;
+  background-image: url("../../assets/images/search.png");
+  background-size: cover;
+  height: 23px;
+  width: 23px;
+  border: none;
+  background-color: white;
+}
+.nav-login{
+  display: flex;
+  justify-content: end;
+  width: 20%;
+  padding-right:30px;
+}
+.login{
+  background-color: #e1e3e19b;
+  border-radius: 20px;
+  width: 130px;
+  height: 40px;
+  border: 0;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.605);
+  margin-top: 10px;
+  cursor: pointer;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.food,
+.exercise {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.toggle-btn {
+  position: relative;
+  width: 59px;
+  height: 25px;
+  margin: -34px 40px 0 auto;
+  overflow: hidden;
+}
+.checkbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+.food {
+  z-index: 2;
+}
+.exercise {
+  width: 100%;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+#button-1 .food:before {
+  content: "음식";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 17px;
+  height: 7px;
+  color: #fff;
+  font-size: 8px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 7px 5px;
+  background-color: #5179EF;
+  border-radius: 50%;
+  transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
+#button-1 .checkbox:checked + .food:before {
+  content: "운동";
+  left: 30px;
+  background-color: #5179EF;
+}
+#button-1 .food,
+#button-1 .food:before,
+#button-1 .exercise {
+  transition: 0.3s ease all;
+}
