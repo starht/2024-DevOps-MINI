@@ -3,6 +3,8 @@ import "../css/pages/Main.css";
 import ExerciseCard from "../components/ExerciseCard";
 import FoodCardLeft from "../components/FoodCardLeft";
 import FoodCardRight from "../components/FoodCardRight";
+import Navbar from "../components/Navbar";
+import banner from "../assets/images/banner.jpg";
 
 function Main() {
   const [youtubes, setYoutubes] = useState([]);
@@ -82,37 +84,82 @@ function Main() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {exercises.map((exercise, index) => (
-          <ExerciseCard
-            key={exercise.운동명}
-            kcal={exercise.단위체중당에너지소비량}
-            name={exercise.운동명}
-            backgroundImage={
-              youtubes[index]?.snippet?.thumbnails?.high?.url || ""
-            }
-            youtubeId={youtubes[index]?.id?.videoId || ""}
-          />
-        ))}
-        {foods.map((food, index) => (
-          <div className="Food" key={index}>
-            {index % 2 == 0 ? (
-              <FoodCardLeft
-                ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
-                RCP_NM={food.RCP_NM}
-                INFO_ENG={food.INFO_ENG}
+    <div>
+      <Navbar />
+      <div className="banner-container">
+        <img className="banner" src={banner} />
+      </div>
+      <div className="cal-container">
+        <div className="cal-wrapper">
+          <button className="cal-btn">칼로리 처방</button>
+          <div className="v-line"></div>
+          <button className="cal-btn">BMI 계산</button>
+        </div>
+      </div>
+      <div className="cards-container">
+        <div className="mini-calendar">캘린더 위치</div>
+        <div className="food-card-container">
+          {foods.map((food, index) => (
+            <div>
+              <div className="Food" key={index}>
+                {index % 2 == 0 ? (
+                  <FoodCardLeft
+                    ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
+                    RCP_NM={food.RCP_NM}
+                    INFO_ENG={food.INFO_ENG}
+                  />
+                ) : (
+                  <FoodCardRight
+                    ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
+                    RCP_NM={food.RCP_NM}
+                    INFO_ENG={food.INFO_ENG}
+                  />
+                )}
+              </div>
+              <div className="Food" key={index}>
+                {index % 2 == 0 ? (
+                  <FoodCardLeft
+                    ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
+                    RCP_NM={food.RCP_NM}
+                    INFO_ENG={food.INFO_ENG}
+                  />
+                ) : (
+                  <FoodCardRight
+                    ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
+                    RCP_NM={food.RCP_NM}
+                    INFO_ENG={food.INFO_ENG}
+                  />
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div >
+          {exercises.map((exercise, index) => (
+          <div className="exercise-card-container">
+              <ExerciseCard
+                key={exercise.운동명}
+                kcal={exercise.단위체중당에너지소비량}
+                name={exercise.운동명}
+                backgroundImage={
+                  youtubes[index]?.snippet?.thumbnails?.high?.url || ""
+                }
+                youtubeId={youtubes[index]?.id?.videoId || ""}
               />
-            ) : (
-              <FoodCardRight
-                ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
-                RCP_NM={food.RCP_NM}
-                INFO_ENG={food.INFO_ENG}
+              <ExerciseCard
+                key={exercise.운동명}
+                kcal={exercise.단위체중당에너지소비량}
+                name={exercise.운동명}
+                backgroundImage={
+                  youtubes[index]?.snippet?.thumbnails?.high?.url || ""
+                }
+                youtubeId={youtubes[index]?.id?.videoId || ""}
               />
-            )}
-          </div>
-        ))}
-      </header>
+            </div>
+          ))}
+        </div>
+        
+      </div>
     </div>
   );
 }
