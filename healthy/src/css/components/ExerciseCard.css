@@ -33,6 +33,7 @@
   padding: 10px;
   min-width: 90px;
   font-size: 21px;
+  text-align: center;
 }
 .name-box{
   display: flex;
