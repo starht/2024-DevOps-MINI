@@ -20,9 +20,7 @@ function Main() {
   const getFoods = async () => {
     try {
       const response = await fetch(
-        `https://openapi.foodsafetykorea.go.kr/api/${
-          process.env.REACT_APP_FOOD_KEY
-        }/COOKRCP01/json/1/10/RCP_NM=${target}`
+        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/10/RCP_NM=${target}`
       );
       if (!response.ok) {
         throw new Error("failed to fetch");
@@ -86,17 +84,19 @@ function Main() {
   return (
     <div className="App">
       <header className="App-header">
-        {exercises.map((exercise) => (
+        {exercises.map((exercise, index) => (
           <ExerciseCard
             key={exercise.운동명}
             kcal={exercise.단위체중당에너지소비량}
             name={exercise.운동명}
-            backgroundImage={youtubes[0]?.snippet?.thumbnails?.high?.url}
-            youtubeId={youtubes[0]?.id?.videoId}
+            backgroundImage={
+              youtubes[index]?.snippet?.thumbnails?.high?.url || ""
+            }
+            youtubeId={youtubes[index]?.id?.videoId || ""}
           />
         ))}
         {foods.map((food, index) => (
-          <div className="Food">
+          <div className="Food" key={index}>
             {index % 2 == 0 ? (
               <FoodCardLeft
                 ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
