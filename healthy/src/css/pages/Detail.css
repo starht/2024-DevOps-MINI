@@ -1,0 +1,55 @@
+#box {
+  margin: 30px;
+  border-radius: 45px;
+  box-shadow: 0 0 20px gray;
+}
+
+.FoodRecipeWrapper {
+  margin: 30px;
+  display: flex;
+  width: 1300px;
+  height: 500px;
+  border-radius: 60px;
+  box-shadow: 0 0 20px gray;
+}
+
+.RecipeImg {
+  width: 650px;
+  height: 500px;
+  border-radius: 60px 30px 30px 60px;
+}
+
+.FoodExplain {
+  padding: 10px;
+}
+
+.RecipeName {
+  font-size: 2rem;
+}
+
+.Recipe {
+  width: 650px;
+  height: 500px;
+}
+
+.Lower {
+  display: flex;
+}
+
+.UpperCalorie {
+  display: flex;
+}
+
+.LowerCalorie {
+  display: flex;
+}
+
+.FoodCalorieWrapper {
+  width: 600px;
+  height: 200px;
+}
+
+.FoodIngredientsWrapper {
+  width: 600px;
+  height: 200px;
+}
