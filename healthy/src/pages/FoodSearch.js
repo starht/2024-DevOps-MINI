@@ -4,6 +4,9 @@ import FoodCardFull from "../components/FoodCardFull";
 import "../css/pages/FoodSearch.css";
 import foodicon from "../assets/images/foodicon.png";
 
+// table 줄깨짐 오류 수정 필요
+// pagination 수정 필요
+
 function FoodSearch() {
   const [foods, setFoods] = useState([]);
   const [tablefoods, settableFoods] = useState([]);
@@ -21,7 +24,7 @@ function FoodSearch() {
   const getFoods = async () => {
     try {
       const response = await fetch(
-        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/10/RCP_NM=${target}`
+        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000/RCP_NM=${target}`
       );
       if (!response.ok) {
         throw new Error("failed to fetch");
@@ -43,7 +46,7 @@ function FoodSearch() {
   const getTableFoods = async () => {
     try {
       const response = await fetch(
-        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/${currentPage}/${itemsPerPage}/RCP_NM=${tabletarget}`
+        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000/RCP_NM=${tabletarget}`
       );
       if (!response.ok) {
         throw new Error("failed to fetch");
@@ -77,8 +80,7 @@ function FoodSearch() {
 
   useEffect(() => {
     getTotalPages();
-  }, [tablefoods]); // tablefoods가 변경될 때마다 getTotalPages 함수를 호출합니다.
-
+  }, [tablefoods]);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -102,8 +104,9 @@ function FoodSearch() {
             <p className="text">오늘의 추천음식</p>
           </div>
           <div className="FoodCardWrapper">
-            {foods.map((food) => (
+            {foods.map((food,index) => (
               <FoodCardFull
+                key={index}
                 className="foodcardfull"
                 backgroundImage={food.ATT_FILE_NO_MK}
                 foodname={food.RCP_NM}
@@ -114,13 +117,16 @@ function FoodSearch() {
         </div>
         <div className="TableWrapper">
           <table className="foodtable">
+            <thead>
             <tr className="tableheader">
               <th style={{ width: "30%" }}>음식명</th>
               <th style={{ width: "30%" }}>1인분당 칼로리</th>
               <th style={{ width: "40%", textAlign: "left" }}>상세영양정보</th>
             </tr>
-            {tablefoods.map((tablefood) => (
-              <tr className="tablecontent">
+            </thead>
+            <tbody>
+            {tablefoods.map((tablefood, index) => (
+              <tr className="tablecontent" key={index}>
                 <td>{tablefood.RCP_NM}</td>
                 <td>{tablefood.INFO_ENG} Kcal</td>
                 <td className="colorbarwrapper">
@@ -147,9 +153,11 @@ function FoodSearch() {
                 </td>
               </tr>
             ))}
+            </tbody>
           </table>
         </div>
         <div className="pagination">
+          <button className="pagebtn" onClick={() => setCurrentPage(currentPage-1)}>Previous</button>
           {Array.from({ length: totalPages }, (_, index) => (
             <button
               key={index + 1}
@@ -159,6 +167,7 @@ function FoodSearch() {
               {index + 1}
             </button>
           ))}
+          <button className="pagebtn" onClick={() => setCurrentPage(currentPage+1)}>Next</button>
         </div>
       </div>
     </div>

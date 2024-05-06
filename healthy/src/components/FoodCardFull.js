@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import "../css/components/FoodCardFull.css";
 import PropTypes from "prop-types";
 import addLogo from "../assets/images/List_Add.png";
@@ -28,7 +27,7 @@ function FoodCardFull({ foodname, kcal, backgroundImage }) {
 }
 
 FoodCardFull.propTypes = {
-  name: PropTypes.string.isRequired,
+  foodname: PropTypes.string.isRequired,
   kcal: PropTypes.string.isRequired,
   backgroundImage: PropTypes.string.isRequired,
 };

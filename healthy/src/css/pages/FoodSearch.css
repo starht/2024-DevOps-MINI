@@ -92,3 +92,9 @@
   align-items: center;
   justify-content: center;
 }
+
+#페이지네이션
+.pagebtn {
+  background-color: transparent;
+  border: none;
+}
