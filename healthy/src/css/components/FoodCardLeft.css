@@ -1,4 +1,4 @@
-.FoodCard {
+.FoodCardLeft {
   margin: 5px;
   pad: 5px;
   width: 550px;
@@ -9,8 +9,6 @@
 }
 
 .FoodImgWrapperLeft {
-  /* background-image: url('../assets/images/SalmonSteak.jpg');
-  background-size: cover; */
   border-radius: 30px 15px 15px 30px;
   width: 275px;
   height: 175px;
@@ -24,25 +22,26 @@
 }
 
 
-.FoodExplanationWrapper > p {
+.FoodExplanationWrapperLeft > p {
   color: gray;
   margin: 10px;
   font-size: 18px;
 }
 
-.FoodExplanationWrapper {
+.FoodExplanationWrapperLeft {
+  text-align: center;
   width: 275px;
   height: 175px;
   padding: 0;
 }
 
-.menu {
+.menuLeft {
   width: 10px;
   height: 10px;
   margin: 0 3px 0 0;
 }
 
-.button {
+.buttonLeft {
   background-color: #fff;
   border-radius: 20px;
   width: 150px;

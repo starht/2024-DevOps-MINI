@@ -1,0 +1,55 @@
+.foodcard-container{
+  width: 250px;
+  height: 370px;
+  border-radius: 50px;
+  box-shadow: 3px 3px 7px rgba(93, 93, 93, 0.381);
+  background-size: 250px 500px;
+  background-position: 0px -63px;
+}
+.foodcard-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 350px;
+  padding: 10px;
+}
+.foodcard-header{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px 10px;
+}
+
+.foodcal-box{
+  background-color: rgba(224, 223, 221, 0.649);
+  border-radius: 30px;
+  padding: 10px;
+  min-width: 90px;
+  font-size: 21px;
+  text-align: center;
+}
+.foodname-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(211, 211, 211, 0.704);
+  border-radius: 30px;
+  width: 230px;
+  height: 90px;
+}
+.food-name{
+  font-size: 21px;
+  font-weight: bold;
+  padding: 3px;
+}
+.foodgo-to{
+  display: flex;
+  align-items: center;
+  font-size: 19px;
+  cursor: pointer;
+}
+.foodadd-logo{
+  width: 35px;
+  height: 35px;
+}

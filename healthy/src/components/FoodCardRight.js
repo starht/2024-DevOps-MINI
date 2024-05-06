@@ -6,12 +6,12 @@ import React from "react";
 function FoodCardRight({ATT_FILE_NO_MK,RCP_NM, INFO_ENG}) {
 
   return (
-        <div className="FoodCard">
-          <div className="FoodExplanationWrapper">
+        <div className="FoodCardRight">
+          <div className="FoodExplanationWrapperRight">
             <h3>{RCP_NM}</h3>
             <p>{INFO_ENG} Kcal</p>
-            <button className='button'>
-              <img className="menu" src={menu} alt="" />
+            <button className='buttonRight'>
+              <img className="menuRight" src={menu} alt="" />
               레시피 저장
             </button>
           </div>

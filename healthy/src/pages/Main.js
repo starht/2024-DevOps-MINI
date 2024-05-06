@@ -117,7 +117,7 @@ function Main() {
                 )}
               </div>
               <div className="Food" key={index}>
-                {index % 2 == 0 ? (
+                {index % 2 === 1 ? (
                   <FoodCardLeft
                     ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
                     RCP_NM={food.RCP_NM}

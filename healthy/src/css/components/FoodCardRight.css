@@ -1,4 +1,4 @@
-.FoodCard {
+.FoodCardRight {
   margin: 5px;
   pad: 5px;
   width: 550px;
@@ -23,24 +23,25 @@
   border-radius: 15px 30px 30px 15px;
 }
 
-.FoodExplanationWrapper > p {
+.FoodExplanationWrapperRight > p {
   color: gray;
   margin: 10px;
 }
 
-.FoodExplanationWrapper {
+.FoodExplanationWrapperRight {
+  text-align: center;
   width: 275px;
   height: 175px;
   padding: 0;
 }
 
-.menu {
+.menuRight {
   width: 10px;
   height: 10px;
   margin: 0 3px 0 0;
 }
 
-.button {
+.buttonRight {
   background-color: #fff;
   border-radius: 20px;
   width: 150px;

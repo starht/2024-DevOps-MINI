@@ -6,15 +6,15 @@ import React from "react";
 function FoodCardLeft({ATT_FILE_NO_MK,RCP_NM, INFO_ENG}) {
 
   return (
-        <div className="FoodCard">
+        <div className="FoodCardLeft">
           <div className="FoodImgWrapperLeft">
             <img src={ATT_FILE_NO_MK} alt="" className="FoodImgLeft" />
           </div>
-          <div className="FoodExplanationWrapper">
+          <div className="FoodExplanationWrapperLeft">
             <h3>{RCP_NM}</h3>
             <p>{INFO_ENG} Kcal</p>
-            <button className='button'>
-              <img className="menu" src={menu} alt="" />
+            <button className='buttonLeft'>
+              <img className="menuLeft" src={menu} alt="" />
               레시피 저장
             </button>
           </div>
