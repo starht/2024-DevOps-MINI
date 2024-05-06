@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import '../css/pages/Detail.css'
+import Navbar from "../components/Navbar";
 
 function Detail() {
   const [foods, setFoods] = useState([]);
@@ -31,36 +32,39 @@ function Detail() {
   };
 
   return (
-    <div>
+    <div className="body">
+      <Navbar />
       {foods.map((food) => (
         <div>
+          <div className="Upper">
         <div className="FoodRecipeWrapper">
           <img src={food.ATT_FILE_NO_MK} className="RecipeImg" alt="" />
           <div className="FoodExplain">
             <p className="RecipeName">{food.RCP_NM}</p>
             <div className="Recipe">
-              <p>{food.MANUAL01}</p>
-              <p>{food.MANUAL02}</p>
-              <p>{food.MANUAL03}</p>
-              <p>{food.MANUAL04}</p>
-              <p>{food.MANUAL05}</p>
-              <p>{food.MANUAL06}</p>
-              <p>{food.MANUAL07}</p>
-              <p>{food.MANUAL08}</p>
-              <p>{food.MANUAL09}</p>
-              <p>{food.MANUAL10}</p>
-              <p>{food.MANUAL11}</p>
-              <p>{food.MANUAL12}</p>
-              <p>{food.MANUAL13}</p>
-              <p>{food.MANUAL14}</p>
-              <p>{food.MANUAL15}</p>
-              <p>{food.MANUAL16}</p>
-              <p>{food.MANUAL17}</p>
-              <p>{food.MANUAL18}</p>
-              <p>{food.MANUAL19}</p>
-              <p>{food.MANUAL20}</p>
+            {food.MANUAL01 && <p>{food.MANUAL01}</p>}
+            {food.MANUAL02 && <p>{food.MANUAL02}</p>}
+            {food.MANUAL03 && <p>{food.MANUAL03}</p>}
+            {food.MANUAL04 && <p>{food.MANUAL04}</p>}
+            {food.MANUAL05 && <p>{food.MANUAL05}</p>}
+            {food.MANUAL06 && <p>{food.MANUAL06}</p>}
+            {food.MANUAL07 && <p>{food.MANUAL07}</p>}
+            {food.MANUAL08 && <p>{food.MANUAL08}</p>}
+            {food.MANUAL09 && <p>{food.MANUAL09}</p>}
+            {food.MANUAL10 && <p>{food.MANUAL10}</p>}
+            {food.MANUAL11 && <p>{food.MANUAL11}</p>}
+            {food.MANUAL12 && <p>{food.MANUAL12}</p>}
+            {food.MANUAL13 && <p>{food.MANUAL13}</p>}
+            {food.MANUAL14 && <p>{food.MANUAL14}</p>}
+            {food.MANUAL15 && <p>{food.MANUAL15}</p>}
+            {food.MANUAL16 && <p>{food.MANUAL16}</p>}
+            {food.MANUAL17 && <p>{food.MANUAL17}</p>}
+            {food.MANUAL18 && <p>{food.MANUAL18}</p>}
+            {food.MANUAL19 && <p>{food.MANUAL19}</p>}
+            {food.MANUAL20 && <p>{food.MANUAL20}</p>}
             </div>
           </div>
+        </div>
         </div>
         <div className="Lower">
         <div className="FoodCalorieWrapper" id = "box">
