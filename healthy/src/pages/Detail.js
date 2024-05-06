@@ -65,34 +65,35 @@ function Detail() {
         <div className="Lower">
         <div className="FoodCalorieWrapper" id = "box">
           <div className="UpperCalorie">
-            <p>영양 상세 정보</p>
-            <p>총 열량 : {food.INFO_ENG} Kcal</p>
+            <p id="upperinfobox">영양 상세 정보</p>
+            <p id="upperinfobox">총 열량 : {food.INFO_ENG} Kcal</p>
           </div>
           <div className="LowerCalorie">
-            <p>
+            <p id="lowerinfobox">
               탄수화물<br />{food.INFO_CAR}
             </p>
-            <p>
+            <p id="lowerinfobox">
               지방<br />{food.INFO_FAT}
             </p>
-            <p>
+            <p id="lowerinfobox">
               나트륨<br />{food.INFO_NA}
             </p>
-            <p>
+            <p id="lowerinfobox">
               단백질<br />{food.INFO_PRO}
             </p>
           </div>
         </div>
         <div className="FoodIngredientsWrapper" id = "box">
           <div className="UpperIngredients">
-            <p>재료</p>
-            <p>
+            <p id="ingredientinfotitle">재료</p>
+            <p id="ingredientinfobox">
               {food.RCP_PARTS_DTLS}
             </p>
           </div>
+          <hr />
           <div className="LowerTip">
-            <p>저감 조리법 TIP</p>
-            <p>
+            <p id="ingredientinfotitle">저감 조리법 TIP</p>
+            <p id="ingredientinfobox">
               {food.RCP_NA_TIP}
             </p>
           </div>

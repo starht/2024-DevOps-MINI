@@ -1,8 +1,10 @@
 #box {
   margin: 30px;
   border-radius: 45px;
-  box-shadow: 0 0 20px gray;
+  box-shadow: 0 0 20px lightgray;
 }
+
+/* 레시피박스 */
 
 .FoodRecipeWrapper {
   margin: 30px;
@@ -10,7 +12,7 @@
   width: 1300px;
   height: 500px;
   border-radius: 60px;
-  box-shadow: 0 0 20px gray;
+  box-shadow: 0 0 20px lightgray;
 }
 
 .RecipeImg {
@@ -36,20 +38,59 @@
   display: flex;
 }
 
-.UpperCalorie {
-  display: flex;
-}
-
-.LowerCalorie {
-  display: flex;
-}
+/* 왼쪽 박스 */
 
 .FoodCalorieWrapper {
   width: 600px;
-  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+.UpperCalorie {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 0 0;
+}
+
+#upperinfobox {
+  padding: 0 30px;
+}
+
+.LowerCalorie {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 30px 0;
+}
+
+#lowerinfobox {
+  padding: 0 30px;
+  text-align: center;
+}
+
+/* 오른쪽박스 */
 
 .FoodIngredientsWrapper {
   width: 600px;
-  height: 200px;
+}
+
+.UpperIngredients {
+  margin: 0;
+  padding: 0;
+}
+
+#ingredientinfobox {
+  padding: 0 30px;
+  font-size: 0.8rem;
+  text-align: justify;
+  margin: 5px 0 20px 0;
+}
+
+#ingredientinfotitle {
+  padding: 0 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 20px 0 5px 0;
 }
