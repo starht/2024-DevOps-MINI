@@ -7,7 +7,11 @@ import foodicon from "../assets/images/foodicon.png";
 function FoodSearch() {
   const [foods, setFoods] = useState([]);
   const [tablefoods, settableFoods] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const itemsPerPage = 5;
 
+  // 추천음식
   let target = "된장국";
 
   useEffect(() => {
@@ -33,15 +37,13 @@ function FoodSearch() {
     }
   };
 
+  //테이블
   let tabletarget = "된장국";
-  useEffect(() => {
-    gettableFoods();
-  }, []);
 
-  const gettableFoods = async () => {
+  const getTableFoods = async () => {
     try {
       const response = await fetch(
-        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000/RCP_NM=${tabletarget}`
+        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/${currentPage}/${itemsPerPage}/RCP_NM=${tabletarget}`
       );
       if (!response.ok) {
         throw new Error("failed to fetch");
@@ -52,13 +54,37 @@ function FoodSearch() {
       console.log(error);
     }
   };
-  // function calculateColor(value) {
-  //   value = Math.min(value, 100);
-  //   var red = Math.round(255 * (value / 100)); // 빨간색 성분
-  //   var green = Math.round(255 * ((100 - value) / 100)); // 초록색 성분
-  //   var blue = 0; // 파란색 성분은 0으로 고정
-  //   return `rgb(${red}, ${green}, ${blue})`; // RGB 형식의 색상 문자열 반환
-  // }
+
+  const getTotalPages = async () => {
+    try {
+      const response = await fetch(
+        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000/RCP_NM=${tabletarget}`
+      );
+      if (!response.ok) {
+        throw new Error("failed to fetch");
+      }
+      const json = await response.json();
+      const total = Math.ceil(json.COOKRCP01.row.length / itemsPerPage);
+      setTotalPages(total);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getTableFoods();
+  }, [currentPage]);
+
+  useEffect(() => {
+    getTotalPages();
+  }, [tablefoods]); // tablefoods가 변경될 때마다 getTotalPages 함수를 호출합니다.
+
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  //상세영양정보 함수
   const segmentStyle = (value, color) => {
     return {
       flex: value,
@@ -91,7 +117,7 @@ function FoodSearch() {
             <tr className="tableheader">
               <th style={{ width: "30%" }}>음식명</th>
               <th style={{ width: "30%" }}>1인분당 칼로리</th>
-              <th style={{ width: "40%", textAlign:"left" }}>상세영양정보</th>
+              <th style={{ width: "40%", textAlign: "left" }}>상세영양정보</th>
             </tr>
             {tablefoods.map((tablefood) => (
               <tr className="tablecontent">
@@ -122,6 +148,17 @@ function FoodSearch() {
               </tr>
             ))}
           </table>
+        </div>
+        <div className="pagination">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => handlePageChange(index + 1)}
+              className={currentPage === index + 1 ? "active" : ""}
+            >
+              {index + 1}
+            </button>
+          ))}
         </div>
       </div>
     </div>
