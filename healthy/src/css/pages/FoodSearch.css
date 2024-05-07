@@ -13,10 +13,12 @@
   justify-content: flex-start;
 }
 
-.title {
+.recommendtitle {
   display: flex;
   align-items: center;
-  margin: 20px 0;
+  margin: 40px 0 10px 0;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .iconimg {
@@ -32,7 +34,7 @@
 .FoodCardWrapper {
   display: flex;
   justify-content: center;
-  margin: 100px 0;
+  margin: 20px 0 50px 0;
 }
 
 .InnerFoodCardWrapper {
@@ -67,11 +69,6 @@
 .tablecontent > td {
   padding: 15px 0;
   border-bottom: 1px solid gray;
-}
-
-.colorbarwrapper {
-  display: flex;
-  justify-content: flex-start;
 }
 
 .color-bar {

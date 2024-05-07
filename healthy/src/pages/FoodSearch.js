@@ -44,10 +44,16 @@ function FoodSearch() {
   //테이블
   let tabletarget = "된장국";
 
+  if (tabletarget === "") {
+    
+  } else {
+    tabletarget = "/RCP_NM="+tabletarget;
+  }
+
   const getTableFoods = async () => {
     try {
       const response = await fetch(
-        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000/RCP_NM=${tabletarget}`
+        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000${tabletarget}`
       );
       if (!response.ok) {
         throw new Error("failed to fetch");
@@ -69,7 +75,7 @@ function FoodSearch() {
   const getTotalPages = async () => {
     try {
       const response = await fetch(
-        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000/RCP_NM=${tabletarget}`
+        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000${tabletarget}`
       );
       if (!response.ok) {
         throw new Error("failed to fetch");
@@ -111,12 +117,12 @@ function FoodSearch() {
           <Navbar />
           <div className="contentWrapper">
             <div className="FoodrecommendWrapper">
-              <div className="title">
+              <div className="recommendtitle">
                 <img alt="" src={foodicon} className="iconimg" />
                 <p className="text">오늘의 추천음식</p>
               </div>
               <div className="FoodCardWrapper">
-                {tablefoods.map((food, index) => (
+                {foods.map((food, index) => (
                   <div className="InnerFoodCardWrapper">
                     <FoodCardFull
                       className="foodcardfull"
