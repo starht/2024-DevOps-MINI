@@ -8,12 +8,9 @@ import banner from "../assets/images/배너.png";
 import db from "../assets/json/db.json";
 
 function Main() {
-  const [youtubes, setYoutubes] = useState([]);
   const [foods, setFoods] = useState([]);
   const [exercises, setExercises] = useState([]);
   const API_KEY = process.env.REACT_APP_EXERCISE_KEY;
-
-  let exercisetarget = "복싱";
 
   // 추천음식
   useEffect(() => {
@@ -57,6 +54,7 @@ function Main() {
     }
   };
 
+  // 운동
   useEffect(() => {
     getExercises();
   }, []);
@@ -103,6 +101,11 @@ function Main() {
       <Navbar />
       <div className="banner-container">
         <img className="banner" src={banner} />
+        <div className="banner-text-wrap">
+          <div className="banner-text">Protect</div>
+          <div className="banner-text">Your</div>
+          <div className="banner-text">Health</div>
+        </div>
       </div>
       <div className="cal-container">
         <div className="cal-wrapper">
@@ -139,15 +142,13 @@ function Main() {
         <div className="exercise-card-wrap">
           {exercises.map((exercise, index) => (
             <div className="exercise-card-container" key={index}>
-              
-                <ExerciseCard
-                  key={exercise.운동명}
-                  kcal={exercise.단위체중당에너지소비량}
-                  name={exercise.운동명}
-                  backgroundImage={exercise.picture}
-                  youtubeId={exercise.youtubeId}
-                />
-              
+              <ExerciseCard
+                key={exercise.운동명}
+                kcal={exercise.단위체중당에너지소비량}
+                name={exercise.운동명}
+                backgroundImage={exercise.picture}
+                youtubeId={exercise.youtubeId}
+              />
             </div>
           ))}
         </div>
