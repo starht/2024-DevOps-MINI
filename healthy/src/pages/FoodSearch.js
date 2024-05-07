@@ -6,7 +6,8 @@ import foodicon from "../assets/images/foodicon.png";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import db from "../assets/json/db.json";
-import Loading from "../components/Loading"
+import Loading from "../components/Loading";
+import {Link} from "react-router-dom";
 
 function FoodSearch() {
   const [foods, setFoods] = useState([]);
@@ -22,7 +23,7 @@ function FoodSearch() {
   const getFoods = async () => {
     try {
       let testData = JSON.parse(JSON.stringify(db));
-      
+
       const selectedTable = "foodlist";
 
       const selectedData = {
@@ -142,9 +143,18 @@ function FoodSearch() {
                 <tbody>
                   {currentTableFoods.map((tablefood, index) => (
                     <tr className="tablecontent" key={index}>
-                      <td>{tablefood.RCP_NM}</td>
-                      <td>{tablefood.INFO_ENG} Kcal</td>
+                      <td>
+                      <Link className="link" to={`/detail/${tablefood.RCP_NM}`}>
+                          {tablefood.RCP_NM}
+                      </Link>
+                      </td>
+                      <td>
+                        <Link className="link" to={`/detail/${tablefood.RCP_NM}`}>
+                        {tablefood.INFO_ENG} Kcal
+                        </Link>
+                      </td>
                       <td className="colorbarwrapper">
+                      <Link className="link" to={`/detail/${tablefood.RCP_NM}`}>
                         <div className="color-bar">
                           <div
                             className="car-color-segment"
@@ -165,6 +175,7 @@ function FoodSearch() {
                             {tablefood.INFO_FAT}
                           </div>
                         </div>
+                        </Link>
                       </td>
                     </tr>
                   ))}
