@@ -25,7 +25,7 @@ function ExerciseCard({ index, name, kcal, backgroundImage, youtubeId }) {
           <div className="exercise-name">{name}</div>
           <div className="go-to">
             <img className="add-logo" src={addLogo} alt="Add Logo" />
-            운동하러 가기
+            운동 저장
           </div>
         </div>
       </div>
