@@ -7,11 +7,17 @@ import Navbar from "../components/Navbar";
 import banner from "../assets/images/배너.png";
 import db from "../assets/json/db.json";
 import MiniCalendar from "../components/MiniCalendar";
+import LoginModal from "../components/LoginModal";
 
 function Main() {
   const [foods, setFoods] = useState([]);
   const [exercises, setExercises] = useState([]);
-  const API_KEY = process.env.REACT_APP_EXERCISE_KEY;
+  const [loginshow, setLoginshow] = useState([false]);
+
+  // login modal 함수
+  const loginClose = () => setLoginshow(false);
+  const loginShow = () => setLoginshow(true);
+
 
   // 추천음식
   useEffect(() => {
@@ -99,7 +105,8 @@ function Main() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar loginShow={loginShow}/>
+      <LoginModal loginShow={loginShow} loginClose={loginClose} loginshow={loginshow}/>
       <div className="banner-container">
         <img className="banner" src={banner} />
         <div className="banner-text-wrap">
@@ -123,7 +130,7 @@ function Main() {
           {foods.map((food, index) => (
             <div>
               <div className="main-food-card" key={index}>
-                {index % 2 == 0 ? (
+                {index % 2 === 0 ? (
                   <FoodCardLeft
                     key={food.foodname}
                     ATT_FILE_NO_MK={food.picture}

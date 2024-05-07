@@ -3,7 +3,7 @@ import "../css/components/Navbar.css"
 import logo from "../assets/images/logo.png";
 import search from "../assets/images/search.png"
 
-function Navbar() {
+function Navbar({loginShow}) {
   return (
       <div className="nav">
         <img className="nav-logo" src={logo} />
@@ -27,7 +27,7 @@ function Navbar() {
           </form>
         </div>
         <div className="nav-login">
-          <button className="login" href="/mypage">로그인</button>
+          <button className="login" href="/mypage" onClick={loginShow}>로그인</button>
         </div>
       </div>
   );

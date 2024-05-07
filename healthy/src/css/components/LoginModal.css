@@ -1,0 +1,89 @@
+.ModalWrapper {
+  width: 500px;
+  display: none;
+  position: fixed; 
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 30px gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#hide {
+  display: none;
+}
+
+#show {
+  display: block;
+}
+
+.loginmodalheader{
+  padding: 15px 10px 0 10px;
+}
+
+.loginmodaltitle {
+  margin: 0 2px;
+  padding: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.loginmodalbody {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 10px 0 10px;
+}
+
+.idWrapper, .pwWrapper {
+  margin: 5px;
+  width: 45%;
+}
+
+.idWrapper {
+  margin-right: 15px;
+}
+
+.pwWrapper {
+  margin-right: 15px;
+}
+
+.idtitle, .pwtitle {
+  margin: 5px 2px;
+}
+
+.idtext, .pwtext {
+  width: 100%;
+  height: 25px;
+  border-radius: 7px;
+  border: 1px solid lightgray;
+}
+
+
+.loginfooter {
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.cancelbtn, .loginbtn {
+  width: 47%;
+  height: 35px;
+}
+
+.cancelbtn {
+  border: 1px solid lightgray;
+  background-color: #fff;
+  border-radius: 7px;
+}
+
+.loginbtn {
+  border: none;
+  background-color: #1F95AF;
+  color: white;
+  border-radius: 7px;
+}
