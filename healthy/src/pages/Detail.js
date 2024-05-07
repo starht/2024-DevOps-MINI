@@ -32,7 +32,7 @@ function Detail() {
   };
 
   useEffect(() => {
-    getFoods().then(() => setLoading(false)); // 데이터를 불러온 후 로딩 상태 변경
+    getFoods().then(() => setLoading(false));
   }, []);
 
   return (

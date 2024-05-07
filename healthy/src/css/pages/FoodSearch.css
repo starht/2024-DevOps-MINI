@@ -53,6 +53,11 @@
   border-collapse: collapse;
 }
 
+.link {
+  text-decoration: none;
+  color: black;
+}
+
 .tableheader {
   font-weight: bold;
 }

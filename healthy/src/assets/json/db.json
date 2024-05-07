@@ -147,61 +147,61 @@
     {
       "listid" : 1,
       "foodname" : "함초 냉이 국수",
-      "kcal" : 35.8,
+      "kcal" : "35.8",
       "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00131_2.png"
     },
     {
       "listid" : 2,
       "foodname" : "닭가슴살 브로콜리 만두",
-      "kcal" : 123.2,
+      "kcal" : "123.2",
       "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00114_2.png"
     },
     {
       "listid" : 3,
       "foodname" : "산채쌀파스타",
-      "kcal" : 176.7,
+      "kcal" : "176.7",
       "picture" :  "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00303_2.png"
     },
     {
       "listid" : 4,
       "foodname" : "토마토 가지 카프레제",
-      "kcal" : 90.5,
+      "kcal" : "90.5",
       "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00202_2.png"
     },
     {
       "listid" : 5,
       "foodname" : "초계탕과 사색곤약",
-      "kcal" : 100.1,
+      "kcal" : "100.1",
       "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00638_2.png"
     },
     {
       "listid" : 6,
       "foodname" : "다이어트국수",
-      "kcal" : 36.9,
+      "kcal" : "36.9",
       "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00386_2.png"
     },
     {
       "listid" : 7,
       "foodname" : "냉토마토파스타",
-      "kcal" : 202.3,
+      "kcal" : "202.3",
       "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00510_2.png"
     },
     {
       "listid" : 8,
       "foodname" : "뿌리채소두부선",
-      "kcal" : 184.5,
+      "kcal" : "184.5",
       "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00421_2.png"
     },
     {
       "listid" : 9,
       "foodname" : "닭고기월남쌈",
-      "kcal" : 353.7,
+      "kcal" : "353.7",
       "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00535_2.png"
     },
     {
       "listid" : 10,
       "foodname" : "닭가슴살현미스테이크",
-      "kcal" : 400,
+      "kcal" : "400",
       "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00541_2.png"
     }
   ]
