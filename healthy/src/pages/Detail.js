@@ -84,22 +84,22 @@ function Detail() {
                 <p id="lowerinfobox">
                   탄수화물
                   <br />
-                  {food.INFO_CAR}
+                  {food.INFO_CAR}g
                 </p>
                 <p id="lowerinfobox">
                   지방
                   <br />
-                  {food.INFO_FAT}
+                  {food.INFO_FAT}g
                 </p>
                 <p id="lowerinfobox">
                   나트륨
                   <br />
-                  {food.INFO_NA}
+                  {food.INFO_NA} mg
                 </p>
                 <p id="lowerinfobox">
                   단백질
                   <br />
-                  {food.INFO_PRO}
+                  {food.INFO_PRO}g
                 </p>
               </div>
                 </div>
