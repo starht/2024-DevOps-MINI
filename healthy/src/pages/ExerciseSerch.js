@@ -5,6 +5,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import FoodBanner from "../assets/images/운동배너.png";
 import youtube from "../assets/images/youtube-logo-icon.png";
+import Loading from "../components/Loading"
 
 function ExerciseSearch() {
   const [exercises, setExercises] = useState([]);
@@ -13,8 +14,7 @@ function ExerciseSearch() {
   const API_KEY = process.env.REACT_APP_EXERCISE_KEY;
 
   useEffect(() => {
-    getExercises();
-    setLoading(false);
+    getExercises().then(() => setLoading(false)); // 데이터를 불러온 후 로딩 상태 변경
   }, []);
 
   const getExercises = async () => {
@@ -53,7 +53,7 @@ function ExerciseSearch() {
   return (
     <div>
       {loading ? (
-        <div className="Loading">Loading...</div>
+        <Loading />
       ) : (
         <div>
           <Navbar />
