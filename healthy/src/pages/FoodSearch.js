@@ -12,6 +12,7 @@ function FoodSearch() {
   const [tablefoods, settableFoods] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [loading, setLoading] = useState(true);
   const itemsPerPage = 5;
 
   // 추천음식
@@ -58,6 +59,13 @@ function FoodSearch() {
     }
   };
 
+  useEffect(() => {
+    Promise.all([getFoods(), getTableFoods(), getTotalPages()]).then(() =>
+      setLoading(false)
+    );
+  }, []);
+
+  // 페이지네이션
   const getTotalPages = async () => {
     try {
       const response = await fetch(
@@ -96,80 +104,101 @@ function FoodSearch() {
 
   return (
     <div>
-      <Navbar />
-      <div className="contentWrapper">
-        <div className="FoodrecommendWrapper">
-          <div className="title">
-            <img alt="" src={foodicon} className="iconimg" />
-            <p className="text">오늘의 추천음식</p>
-          </div>
-          <div className="FoodCardWrapper">
-            {foods.map((food,index) => (
-              <FoodCardFull
-                key={index}
-                className="foodcardfull"
-                backgroundImage={food.ATT_FILE_NO_MK}
-                foodname={food.RCP_NM}
-                kcal={food.INFO_ENG}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="TableWrapper">
-          <table className="foodtable">
-            <thead>
-            <tr className="tableheader">
-              <th style={{ width: "30%" }}>음식명</th>
-              <th style={{ width: "30%" }}>1인분당 칼로리</th>
-              <th style={{ width: "40%", textAlign: "left" }}>상세영양정보</th>
-            </tr>
-            </thead>
-            <tbody>
-            {tablefoods.map((tablefood, index) => (
-              <tr className="tablecontent" key={index}>
-                <td>{tablefood.RCP_NM}</td>
-                <td>{tablefood.INFO_ENG} Kcal</td>
-                <td className="colorbarwrapper">
-                  <div className="color-bar">
-                    <div
-                      className="car-color-segment"
-                      style={segmentStyle(tablefood.INFO_CAR, "#3498db")}
-                    >
-                      {tablefood.INFO_CAR}
-                    </div>
-                    <div
-                      className="pro-color-segment"
-                      style={segmentStyle(tablefood.INFO_PRO, "#2ecc71")}
-                    >
-                      {tablefood.INFO_PRO}
-                    </div>
-                    <div
-                      className="fat-color-segment"
-                      style={segmentStyle(tablefood.INFO_FAT, "#ff9ff3")}
-                    >
-                      {tablefood.INFO_FAT}
-                    </div>
+      {loading ? (
+        <div className="Loading">Loading...</div>
+      ) : (
+        <div>
+          <Navbar />
+          <div className="contentWrapper">
+            <div className="FoodrecommendWrapper">
+              <div className="title">
+                <img alt="" src={foodicon} className="iconimg" />
+                <p className="text">오늘의 추천음식</p>
+              </div>
+              <div className="FoodCardWrapper">
+                {tablefoods.map((food, index) => (
+                  <div className="InnerFoodCardWrapper">
+                    <FoodCardFull
+                      className="foodcardfull"
+                      backgroundImage={food.ATT_FILE_NO_MK}
+                      foodname={food.RCP_NM}
+                      kcal={food.INFO_ENG}
+                    />
                   </div>
-                </td>
-              </tr>
-            ))}
-            </tbody>
-          </table>
+                ))}
+              </div>
+            </div>
+            <div className="TableWrapper">
+              <table className="foodtable">
+                <thead>
+                  <tr className="tableheader">
+                    <th style={{ width: "30%" }}>음식명</th>
+                    <th style={{ width: "30%" }}>1인분당 칼로리</th>
+                    <th style={{ width: "40%", textAlign: "left" }}>
+                      상세영양정보
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tablefoods.map((tablefood, index) => (
+                    <tr className="tablecontent" key={index}>
+                      <td>{tablefood.RCP_NM}</td>
+                      <td>{tablefood.INFO_ENG} Kcal</td>
+                      <td className="colorbarwrapper">
+                        <div className="color-bar">
+                          <div
+                            className="car-color-segment"
+                            style={segmentStyle(tablefood.INFO_CAR, "#3498db")}
+                          >
+                            {tablefood.INFO_CAR}
+                          </div>
+                          <div
+                            className="pro-color-segment"
+                            style={segmentStyle(tablefood.INFO_PRO, "#2ecc71")}
+                          >
+                            {tablefood.INFO_PRO}
+                          </div>
+                          <div
+                            className="fat-color-segment"
+                            style={segmentStyle(tablefood.INFO_FAT, "#ff9ff3")}
+                          >
+                            {tablefood.INFO_FAT}
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="pagination">
+              <button
+                className="pagebtn"
+                onClick={() => setCurrentPage(currentPage - 1)}
+              >
+                Previous
+              </button>
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  className="innerbtn"
+                  key={index + 1}
+                  onClick={() => handlePageChange(index + 1)}
+                  id={currentPage === index + 1 ? "active" : ""}
+                >
+                  {index + 1}
+                </button>
+              ))}
+              <button
+                className="pagebtn"
+                onClick={() => setCurrentPage(currentPage + 1)}
+              >
+                Next
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="pagination">
-          <button className="pagebtn" onClick={() => setCurrentPage(currentPage-1)}>Previous</button>
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index + 1}
-              onClick={() => handlePageChange(index + 1)}
-              className={currentPage === index + 1 ? "active" : ""}
-            >
-              {index + 1}
-            </button>
-          ))}
-          <button className="pagebtn" onClick={() => setCurrentPage(currentPage+1)}>Next</button>
-        </div>
-      </div>
+      )}
+      ;
     </div>
   );
 }

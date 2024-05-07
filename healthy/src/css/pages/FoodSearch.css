@@ -1,9 +1,13 @@
 .contentWrapper {
   margin: 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* 추천음식 */
 .FoodrecommendWrapper {
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -12,6 +16,7 @@
 .title {
   display: flex;
   align-items: center;
+  margin: 20px 0;
 }
 
 .iconimg {
@@ -27,13 +32,19 @@
 .FoodCardWrapper {
   display: flex;
   justify-content: center;
+  margin: 100px 0;
 }
 
-.foodcardfull {
-  margin: 20px;
+.InnerFoodCardWrapper {
+  margin: 0 20px;
 }
 
 /* 테이블 */
+
+.TableWrapper {
+  width: 80%;
+}
+
 .foodtable {
   text-align: center;
   width: 100%;
@@ -93,8 +104,26 @@
   justify-content: center;
 }
 
-#페이지네이션
+/* 페이지네이션 */
+
+.pagination {
+  margin: 100px;
+}
+
 .pagebtn {
   background-color: transparent;
   border: none;
+  text-align: center;
+}
+
+.innerbtn {
+  text-align: center;
+  background-color: transparent;
+  border: none;
+}
+
+#active {
+  text-align: center;
+  background-color: skyblue;
+  border-radius: 10px;
 }
