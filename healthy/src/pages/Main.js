@@ -18,7 +18,6 @@ function Main() {
   const loginClose = () => setLoginshow(false);
   const loginShow = () => setLoginshow(true);
 
-
   // 추천음식
   useEffect(() => {
     getFoods();
