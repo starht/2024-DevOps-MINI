@@ -8,15 +8,21 @@ import banner from "../assets/images/배너.png";
 import db from "../assets/json/db.json";
 import MiniCalendar from "../components/MiniCalendar";
 import LoginModal from "../components/LoginModal";
+import BMIModal from "../components/BMIModal";
 
 function Main() {
   const [foods, setFoods] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [loginshow, setLoginshow] = useState([false]);
+  const [bmishow, setBmishow] = useState([false]);
 
   // login modal 함수
   const loginClose = () => setLoginshow(false);
   const loginShow = () => setLoginshow(true);
+
+  //bmi modal 함수
+  const bmiClose = () => setBmishow(false);
+  const bmiShow = () => setBmishow(true);
 
   // 추천음식
   useEffect(() => {
@@ -106,6 +112,7 @@ function Main() {
     <div>
       <Navbar loginShow={loginShow}/>
       <LoginModal loginShow={loginShow} loginClose={loginClose} loginshow={loginshow}/>
+      <BMIModal loginShow={bmiShow} loginClose={bmiClose} loginshow={bmishow}/>
       <div className="banner-container">
         <img className="banner" src={banner} />
         <div className="banner-text-wrap">
@@ -118,7 +125,7 @@ function Main() {
         <div className="cal-wrapper">
           <button className="cal-btn">칼로리 처방</button>
           <div className="v-line"></div>
-          <button className="cal-btn">BMI 계산</button>
+          <button className="cal-btn" onClick={bmiShow}>BMI 계산</button>
         </div>
       </div>
       <div className="cards-container">

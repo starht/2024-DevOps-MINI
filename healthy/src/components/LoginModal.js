@@ -4,7 +4,7 @@ import "../css/components/LoginModal.css";
 function LoginModal({ loginShow, loginClose, loginshow }) {
   return (
     <div id={loginshow ? "backgroundon" : "backgroundoff"} onClick={loginClose}>
-      <div className={`ModalWrapper ${loginshow ? "show" : "hide"}`}>
+      <div className={`ModalWrapper ${loginshow ? "idshow" : "idhide"}`}>
         <div className="loginmodalheader">
           <div className="loginmodaltitle">로그인</div>
         </div>
