@@ -6,6 +6,7 @@ import foodicon from "../assets/images/foodicon.png";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import db from "../assets/json/db.json";
+import Loading from "../components/Loading"
 
 function FoodSearch() {
   const [foods, setFoods] = useState([]);
@@ -20,15 +21,10 @@ function FoodSearch() {
 
   const getFoods = async () => {
     try {
-      //json file불러오기
       let testData = JSON.parse(JSON.stringify(db));
-      // console.log(testData);
-      // const db = require("./data.json");
+      
+      const selectedTable = "foodlist";
 
-      // 선택할 테이블 이름
-      const selectedTable = "foodlist"; // 선택하고자 하는 테이블 이름으로 변경
-
-      // 선택한 테이블만 유지하는 방법
       const selectedData = {
         [selectedTable]: testData[selectedTable],
       };
@@ -109,10 +105,7 @@ function FoodSearch() {
   return (
     <div>
       {loading ? (
-        <div class="loading-container">
-          <div class="loading"></div>
-          <div id="loading-text">loading</div>
-        </div>
+        <Loading />
       ) : (
         <div>
           <Navbar />

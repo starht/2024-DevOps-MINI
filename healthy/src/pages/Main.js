@@ -5,6 +5,7 @@ import FoodCardLeft from "../components/FoodCardLeft";
 import FoodCardRight from "../components/FoodCardRight";
 import Navbar from "../components/Navbar";
 import banner from "../assets/images/배너.png";
+import db from "../assets/json/db.json"
 
 function Main() {
   const [youtubes, setYoutubes] = useState([]);
@@ -12,27 +13,45 @@ function Main() {
   const [exercises, setExercises] = useState([]);
   const API_KEY = process.env.REACT_APP_EXERCISE_KEY;
 
-  let target = "된장국";
   let exercisetarget = "복싱";
 
+  // 추천음식
   useEffect(() => {
     getFoods();
   }, []);
 
   const getFoods = async () => {
     try {
-      const response = await fetch(
-        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/10/RCP_NM=${target}`
+      let testData = JSON.parse(JSON.stringify(db));
+      
+      const selectedTable = "foodlist";
+
+      const selectedData = {
+        [selectedTable]: testData[selectedTable],
+      };
+
+      const getRandomItems = (array, count) => {
+        const shuffled = array.slice(0);
+        let i = array.length;
+        const min = i - count;
+        let temp;
+        let index;
+
+        while (i-- > min) {
+          index = Math.floor((i + 1) * Math.random());
+          temp = shuffled[index];
+          shuffled[index] = shuffled[i];
+          shuffled[i] = temp;
+        }
+
+        return shuffled.slice(min);
+      };
+
+      const selectedItems = getRandomItems(
+        Object.values(selectedData[selectedTable]),
+        2
       );
-      if (!response.ok) {
-        throw new Error("failed to fetch");
-      }
-      const json = await response.json();
-      // setFoods(json.COOKRCP01.row);
-      const filteredFoods = json.COOKRCP01.row.filter(
-        (food) => food.RCP_NM === target
-      );
-      setFoods(filteredFoods);
+      setFoods(selectedItems);
     } catch (error) {
       console.log(error);
     }
@@ -104,30 +123,15 @@ function Main() {
               <div className="main-food-card" key={index}>
                 {index % 2 == 0 ? (
                   <FoodCardLeft
-                    ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
-                    RCP_NM={food.RCP_NM}
-                    INFO_ENG={food.INFO_ENG}
+                    ATT_FILE_NO_MK={food.picture}
+                    RCP_NM={food.foodname}
+                    INFO_ENG={food.kcal}
                   />
                 ) : (
                   <FoodCardRight
-                    ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
-                    RCP_NM={food.RCP_NM}
-                    INFO_ENG={food.INFO_ENG}
-                  />
-                )}
-              </div>
-              <div className="main-food-card" key={index}>
-                {index % 2 === 1 ? (
-                  <FoodCardLeft
-                    ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
-                    RCP_NM={food.RCP_NM}
-                    INFO_ENG={food.INFO_ENG}
-                  />
-                ) : (
-                  <FoodCardRight
-                    ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
-                    RCP_NM={food.RCP_NM}
-                    INFO_ENG={food.INFO_ENG}
+                    ATT_FILE_NO_MK={food.picture}
+                    RCP_NM={food.foodname}
+                    INFO_ENG={food.kcal}
                   />
                 )}
               </div>
