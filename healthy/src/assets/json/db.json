@@ -1,0 +1,208 @@
+{
+  "userInfo" : [
+    {
+      "userid" : 1,
+      "id" : "test1",
+      "password" : "test1",
+      "name" : "test1",
+      "bmi" : null
+    },
+    {
+      "userid" : 2,
+      "id" : "test2",
+      "password" : "test2",
+      "name" : "test2",
+      "bmi" : null
+    }
+  ],
+  "calories" : [
+
+  ],
+  "burncalorie" : [
+    {
+      "burnid" : 1,
+      "userid" : 1,
+      "date" : "2024-05-01",
+      "calorie" : 100
+    },
+    {
+      "burnid" : 2,
+      "userid" : 1,
+      "date" : "2024-05-02",
+      "calorie" : 150
+    },
+    {
+      "burnid" : 3,
+      "userid" : 1,
+      "date" : "2024-05-04",
+      "calorie" : 300
+    },
+    {
+      "burnid" : 4,
+      "userid" : 2,
+      "date" : "2024-05-03",
+      "calorie" : 100
+    }
+  ],
+  "intakecalorie" : [
+    {
+      "intakeid" : 1,
+      "userid" : 1,
+      "date" : "2024-05-01",
+      "breakfast" : 200,
+      "lunch" : 300,
+      "dinner" : null,
+      "snack" : 150
+    },
+    {
+      "intakeid" : 2,
+      "userid" : 1,
+      "date" : "2024-05-02",
+      "breakfast" : null,
+      "lunch" : 500,
+      "dinner" : 600,
+      "snack" : null
+    },
+    {
+      "intakeid" : 3,
+      "userid" : 1,
+      "date" : "2024-05-03",
+      "breakfast" : 200,
+      "lunch" : 300,
+      "dinner" : 300,
+      "snack" : 200
+    },
+    {
+      "intakeid" : 4,
+      "userid" : 1,
+      "date" : "2024-05-05",
+      "breakfast" : 150,
+      "lunch" : 600,
+      "dinner" : 400,
+      "snack" : 500
+    },
+    {
+      "intakeid" : 5,
+      "userid" : 2,
+      "date" : "2024-05-04",
+      "breakfast" : 400,
+      "lunch" : 400,
+      "dinner" : 400,
+      "snack" : 300
+    },
+    {
+      "intakeid" : 6,
+      "userid" : 2,
+      "date" : "2024-05-06",
+      "breakfast" : 300,
+      "lunch" : 600,
+      "dinner" : 800,
+      "snack" : null
+    }
+  ],
+  "foodfavorite" : [
+    {
+      "favoriteid" : 1,
+      "userid" : 1,
+      "foodname" : "블랙빈 곤약국수",
+      "kcal" : 54.3,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00113_2.png"
+    },
+    {
+      "favoriteid" : 2,
+      "userid" : 1,
+      "foodname" : "닭가슴살 브로콜리 만두",
+      "kcal" : 123.2,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00114_2.png"
+    },
+    {
+      "favoriteid" : 3,
+      "userid" : 1,
+      "foodname" : "함초 냉이 국수",
+      "kcal" : 35.8,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00131_2.png"
+    },
+    {
+      "favoriteid" : 4,
+      "userid" : 1,
+      "foodname" : "토마토 미소 된장국",
+      "kcal" : 46.85,
+      "picture" :  "http://www.foodsafetykorea.go.kr/uploadimg/20190409/20190409055823_1554800303065.jpg"
+    },
+    {
+      "favoriteid" : 5,
+      "userid" : 2,
+      "foodname" : "된장국",
+      "kcal" : 20,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00037_2.png"
+    }
+  ],
+  "exercisefavorite" : [
+    
+  ],
+  "exerciselist" : [
+
+  ],
+  "foodlist" : [
+    {
+      "listid" : 1,
+      "foodname" : "함초 냉이 국수",
+      "kcal" : 35.8,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00131_2.png"
+    },
+    {
+      "listid" : 2,
+      "foodname" : "닭가슴살 브로콜리 만두",
+      "kcal" : 123.2,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00114_2.png"
+    },
+    {
+      "listid" : 3,
+      "foodname" : "닭가슴살 브로콜리 만두",
+      "kcal" : 123.2,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00114_2.png"
+    },
+    {
+      "listid" : 4,
+      "foodname" : "토마토 가지 카프레제",
+      "kcal" : 90.5,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00202_2.png"
+    },
+    {
+      "listid" : 5,
+      "foodname" : "초계탕과 사색곤약",
+      "kcal" : 100.1,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00638_2.png"
+    },
+    {
+      "listid" : 6,
+      "foodname" : "다이어트국수",
+      "kcal" : 36.9,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00386_2.png"
+    },
+    {
+      "listid" : 7,
+      "foodname" : "냉토마토파스타",
+      "kcal" : 202.3,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00510_2.png"
+    },
+    {
+      "listid" : 8,
+      "foodname" : "뿌리채소두부선",
+      "kcal" : 184.5,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00421_2.png"
+    },
+    {
+      "listid" : 9,
+      "foodname" : "닭고기월남쌈",
+      "kcal" : 353.7,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00535_2.png"
+    },
+    {
+      "listid" : 10,
+      "foodname" : "닭가슴살현미스테이크",
+      "kcal" : 400,
+      "picture" : "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00541_2.png"
+    }
+  ]
+}
