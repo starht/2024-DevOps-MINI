@@ -4,7 +4,7 @@ import ExerciseCard from "../components/ExerciseCard";
 import FoodCardLeft from "../components/FoodCardLeft";
 import FoodCardRight from "../components/FoodCardRight";
 import Navbar from "../components/Navbar";
-import banner from "../assets/images/banner.jpg";
+import banner from "../assets/images/배너.png";
 
 function Main() {
   const [youtubes, setYoutubes] = useState([]);
