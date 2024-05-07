@@ -3,17 +3,14 @@ import Navbar from "../components/Navbar";
 import FoodCardFull from "../components/FoodCardFull";
 import "../css/pages/FoodSearch.css";
 import foodicon from "../assets/images/foodicon.png";
-
-// table 줄깨짐 오류 수정 필요
-// pagination 수정 필요
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 function FoodSearch() {
   const [foods, setFoods] = useState([]);
   const [tablefoods, settableFoods] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(true);
-  const itemsPerPage = 5;
+  const [currentPage, setCurrentPage] = useState(1);
 
   // 추천음식
   let target = "된장국";
@@ -31,7 +28,6 @@ function FoodSearch() {
         throw new Error("failed to fetch");
       }
       const json = await response.json();
-      // setFoods(json.COOKRCP01.row);
       const filteredFoods = json.COOKRCP01.row.filter(
         (food) => food.RCP_NM === target
       );
@@ -66,38 +62,20 @@ function FoodSearch() {
   };
 
   useEffect(() => {
-    Promise.all([getFoods(), getTableFoods(), getTotalPages()]).then(() =>
+    Promise.all([getFoods(), getTableFoods()]).then(() =>
       setLoading(false)
     );
   }, []);
 
   // 페이지네이션
-  const getTotalPages = async () => {
-    try {
-      const response = await fetch(
-        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000${tabletarget}`
-      );
-      if (!response.ok) {
-        throw new Error("failed to fetch");
-      }
-      const json = await response.json();
-      const total = Math.ceil(json.COOKRCP01.row.length / itemsPerPage);
-      setTotalPages(total);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const ramenPerPage = 10; // 페이지당 리스트 개수
+  const currentPageLast = currentPage * ramenPerPage; // 현재 페이지의 처음
+  const currentPageFirst = currentPageLast - ramenPerPage; /// 현재 페이지의 끝
+  const currentTableFoods = tablefoods.slice(currentPageFirst, currentPageLast); // 현재 페이지의 음식 목록
+  const pageNumber = Math.ceil(tablefoods.length / ramenPerPage); // 총 페이지 수
 
-  useEffect(() => {
-    getTableFoods();
-  }, [currentPage]);
-
-  useEffect(() => {
-    getTotalPages();
-  }, [tablefoods]);
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const handleChange = (event, value) => {
+    setCurrentPage(value);
   };
 
   //상세영양정보 함수
@@ -123,7 +101,7 @@ function FoodSearch() {
               </div>
               <div className="FoodCardWrapper">
                 {foods.map((food, index) => (
-                  <div className="InnerFoodCardWrapper">
+                  <div className="InnerFoodCardWrapper" key={index}>
                     <FoodCardFull
                       className="foodcardfull"
                       backgroundImage={food.ATT_FILE_NO_MK}
@@ -146,7 +124,7 @@ function FoodSearch() {
                   </tr>
                 </thead>
                 <tbody>
-                  {tablefoods.map((tablefood, index) => (
+                  {currentTableFoods.map((tablefood, index) => (
                     <tr className="tablecontent" key={index}>
                       <td>{tablefood.RCP_NM}</td>
                       <td>{tablefood.INFO_ENG} Kcal</td>
@@ -178,33 +156,13 @@ function FoodSearch() {
               </table>
             </div>
             <div className="pagination">
-              <button
-                className="pagebtn"
-                onClick={() => setCurrentPage(currentPage - 1)}
-              >
-                Previous
-              </button>
-              {Array.from({ length: totalPages }, (_, index) => (
-                <button
-                  className="innerbtn"
-                  key={index + 1}
-                  onClick={() => handlePageChange(index + 1)}
-                  id={currentPage === index + 1 ? "active" : ""}
-                >
-                  {index + 1}
-                </button>
-              ))}
-              <button
-                className="pagebtn"
-                onClick={() => setCurrentPage(currentPage + 1)}
-              >
-                Next
-              </button>
+              <Stack spacing={2} >
+                <Pagination count={pageNumber} shape="rounded" onChange={handleChange}/>
+              </Stack>
             </div>
           </div>
         </div>
       )}
-      ;
     </div>
   );
 }
