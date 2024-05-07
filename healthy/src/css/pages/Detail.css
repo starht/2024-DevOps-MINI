@@ -117,3 +117,15 @@
   font-weight: bold;
   margin: 20px 0 5px 0;
 }
+
+.detail-youtube-btn{
+  width: 35px;
+  height: 35px;
+  background-image: url('../../assets/images/youtube.png');
+  background-size: cover;
+  margin: 10px;
+  cursor: pointer;
+  position: absolute;
+  right: 350px;
+  top: 530px;
+}

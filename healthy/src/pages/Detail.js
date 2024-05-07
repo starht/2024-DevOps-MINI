@@ -35,6 +35,12 @@ function Detail() {
     getFoods().then(() => setLoading(false));
   }, []);
 
+  const handleClick = (foodname) => {
+    const youtubeUrl = `https://www.youtube.com/results?search_query=${foodname}+레시피`;
+    window.open(youtubeUrl, "_blank");
+    console.log("click");
+  };
+
   return (
     <div>
       {loading ? (
@@ -71,6 +77,7 @@ function Detail() {
                       {food.MANUAL19 && <p>{food.MANUAL19}</p>}
                       {food.MANUAL20 && <p>{food.MANUAL20}</p>}
                     </div>
+                    <div className="detail-youtube-btn" onClick={() => handleClick(food.RCP_NM)}></div>
                   </div>
                 </div>
               </div>
