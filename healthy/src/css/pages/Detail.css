@@ -68,6 +68,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* font-size: 1.2rem; */
+  font-weight: bold;
 }
 
 .UpperCalorie {
@@ -78,7 +80,7 @@
 }
 
 #upperinfobox {
-  padding: 0 30px;
+  padding: 0 50px;
 }
 
 .LowerCalorie {
@@ -89,7 +91,7 @@
 }
 
 #lowerinfobox {
-  padding: 0 30px;
+  padding: 0 50px;
   text-align: center;
 }
 
