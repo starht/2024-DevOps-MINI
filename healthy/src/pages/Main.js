@@ -5,7 +5,7 @@ import FoodCardLeft from "../components/FoodCardLeft";
 import FoodCardRight from "../components/FoodCardRight";
 import Navbar from "../components/Navbar";
 import banner from "../assets/images/배너.png";
-import db from "../assets/json/db.json"
+import db from "../assets/json/db.json";
 
 function Main() {
   const [youtubes, setYoutubes] = useState([]);
@@ -23,7 +23,7 @@ function Main() {
   const getFoods = async () => {
     try {
       let testData = JSON.parse(JSON.stringify(db));
-      
+
       const selectedTable = "foodlist";
 
       const selectedData = {
@@ -63,42 +63,38 @@ function Main() {
 
   const getExercises = async () => {
     try {
-      const response = await fetch(
-        "https://api.odcloud.kr/api/15068730/v1/uddi:734ff9bb-3696-4993-a365-c0201eb0a6cd?perPage=360&serviceKey=" +
-          API_KEY
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch exercises");
-      }
-      const json = await response.json();
-      const filteredExercises = json.data.filter(
-        (exercise) => exercise.운동명 === exercisetarget
-      );
-      setExercises(filteredExercises);
-    } catch (error) {
-      console.error("Error fetching exercises:", error);
-    }
-  };
+      let testData = JSON.parse(JSON.stringify(db));
 
-  useEffect(() => {
-    getYoutubes();
-  }, []);
+      const selectedTable = "exerciselist";
 
-  const getYoutubes = async () => {
-    try {
-      const response = await fetch(
-        "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" +
-          exercisetarget +
-          "배우기0&type=video&regionCode=kr&key=" +
-          process.env.REACT_APP_YOUTUBE_API_KEY
+      const selectedData = {
+        [selectedTable]: testData[selectedTable],
+      };
+
+      const getRandomItems = (array, count) => {
+        const shuffled = array.slice(0);
+        let i = array.length;
+        const min = i - count;
+        let temp;
+        let index;
+
+        while (i-- > min) {
+          index = Math.floor((i + 1) * Math.random());
+          temp = shuffled[index];
+          shuffled[index] = shuffled[i];
+          shuffled[i] = temp;
+        }
+
+        return shuffled.slice(min);
+      };
+
+      const selectedItems = getRandomItems(
+        Object.values(selectedData[selectedTable]),
+        2
       );
-      if (!response.ok) {
-        throw new Error("Failed to fetch thumbnails");
-      }
-      const json = await response.json();
-      setYoutubes(json.items);
+      setExercises(selectedItems);
     } catch (error) {
-      console.error("Error fetching thumbnails:", error);
+      console.log(error);
     }
   };
 
@@ -123,12 +119,14 @@ function Main() {
               <div className="main-food-card" key={index}>
                 {index % 2 == 0 ? (
                   <FoodCardLeft
+                    key={food.foodname}
                     ATT_FILE_NO_MK={food.picture}
                     RCP_NM={food.foodname}
                     INFO_ENG={food.kcal}
                   />
                 ) : (
                   <FoodCardRight
+                    key={food.foodname}
                     ATT_FILE_NO_MK={food.picture}
                     RCP_NM={food.foodname}
                     INFO_ENG={food.kcal}
@@ -138,35 +136,21 @@ function Main() {
             </div>
           ))}
         </div>
-        <div >
+        <div className="exercise-card-wrap">
           {exercises.map((exercise, index) => (
-          <div className="exercise-card-container">
-            <div className="main-ex-card" key={index}> 
-              <ExerciseCard
-                key={exercise.운동명}
-                kcal={exercise.단위체중당에너지소비량}
-                name={exercise.운동명}
-                backgroundImage={
-                  youtubes[index]?.snippet?.thumbnails?.high?.url || ""
-                }
-                youtubeId={youtubes[index]?.id?.videoId || ""}
+            <div className="exercise-card-container" key={index}>
+              
+                <ExerciseCard
+                  key={exercise.운동명}
+                  kcal={exercise.단위체중당에너지소비량}
+                  name={exercise.운동명}
+                  backgroundImage={exercise.picture}
+                  youtubeId={exercise.youtubeId}
                 />
-            </div>
-            <div className="main-card" key={index}> 
-              <ExerciseCard
-                key={exercise.운동명}
-                kcal={exercise.단위체중당에너지소비량}
-                name={exercise.운동명}
-                backgroundImage={
-                  youtubes[index]?.snippet?.thumbnails?.high?.url || ""
-                }
-                youtubeId={youtubes[index]?.id?.videoId || ""}
-                />
-            </div>
+              
             </div>
           ))}
         </div>
-        
       </div>
     </div>
   );

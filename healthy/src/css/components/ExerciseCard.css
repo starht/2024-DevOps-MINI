@@ -3,8 +3,9 @@
   height: 370px;
   border-radius: 50px;
   box-shadow: 3px 3px 7px rgba(93, 93, 93, 0.381);
-  background-size: 250px 500px;
-  background-position: 0px -63px;
+  background-size: 250px 420px;
+  background-repeat: no-repeat;
+  background-position: 0px -20px;
 }
 .card-wrapper{
   display: flex;
