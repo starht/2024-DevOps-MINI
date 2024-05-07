@@ -4,9 +4,9 @@ import "../css/pages/ExerciseSearch.css";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import FoodBanner from "../assets/images/운동배너.png";
+import youtube from "../assets/images/youtube-logo-icon.png";
 
 function ExerciseSearch() {
-  const [youtubes, setYoutubes] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,45 +33,21 @@ function ExerciseSearch() {
     }
   };
 
-  useEffect(() => {
-    getYoutubes();
-  }, []);
-
-  let exercisetarget = "복싱";
-
-  const getYoutubes = async () => {
-    try {
-      const response = await fetch(
-        "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=" +
-          exercisetarget +
-          "배우기0&type=video&regionCode=kr&key=" +
-          process.env.REACT_APP_YOUTUBE_API_KEY
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch thumbnails");
-      }
-      const json = await response.json();
-      setYoutubes(json.items);
-    } catch (error) {
-      console.error("Error fetching thumbnails:", error);
-    }
-  };
-
   // 페이지네이션
   const ramenPerPage = 10; // 페이지당 리스트 개수
   const currentPageLast = currentPage * ramenPerPage; // 현재 페이지의 처음
   const currentPageFirst = currentPageLast - ramenPerPage; /// 현재 페이지의 끝
-  const currentExercise = exercises.slice(currentPageFirst, currentPageLast); // 현재 페이지의 음식 목록
+  const currentExercise = exercises.slice(currentPageFirst, currentPageLast); // 현재 페이지의 운동 목록
   const pageNumber = Math.ceil(exercises.length / ramenPerPage); // 총 페이지 수
 
   const handleChange = (event, value) => {
     setCurrentPage(value);
   };
 
-  const handleClick = (youtubeId) => {
-    const youtubeUrl = `https://www.youtube.com/watch?v=${youtubeId}`;
-    window.open(youtubeUrl, "_blank");
-    console.log("click");
+  const handleSearchYouTube = (exerciseName) => {
+    const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${exerciseName}+배우기`;
+    window.open(youtubeSearchUrl, "_blank");
+    console.log("Search on YouTube:", youtubeSearchUrl);
   };
 
   return (
@@ -92,23 +68,17 @@ function ExerciseSearch() {
                     <th style={{ width: "25%" }}>운동명</th>
                     <th style={{ width: "25%" }}>단위시간</th>
                     <th style={{ width: "25%" }}>칼로리</th>
-                    <th style={{ width: "25%" }}>운동하러 가기</th>
+                    <th style={{ width: "25%" }}>유튜브에서 검색</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {currentExercise.map((exercises, index) => (
+                  {currentExercise.map((exercise, index) => (
                     <tr className="table-content" key={index}>
-                      <td>{exercises.운동명}</td>
+                      <td>{exercise.운동명}</td>
                       <td>1분</td>
-                      <td>{exercises.단위체중당에너지소비량} Kcal</td>
-                      <td>
-                        <button
-                          onClick={() =>
-                            handleClick(youtubes[index]?.id?.videoId || "")
-                          }
-                        >
-                          바로가기
-                        </button>
+                      <td>{exercise.단위체중당에너지소비량} Kcal</td>
+                      <td className="youtube-logo-wrap">
+                          <img className="youtube-logo" src={youtube} onClick={() => handleSearchYouTube(exercise.운동명)} />
                       </td>
                     </tr>
                   ))}

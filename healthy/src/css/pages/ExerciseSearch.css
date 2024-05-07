@@ -36,3 +36,10 @@
 .pagination {
   margin: 100px;
 }
+.youtube-logo-wrap{
+  padding: 0;
+  margin: 0;
+}
+.youtube-logo{
+  height: 20px;
+}
