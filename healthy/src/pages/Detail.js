@@ -52,7 +52,22 @@ function Detail() {
                     <div className="Recipe">
                       {food.MANUAL01 && <p>{food.MANUAL01}</p>}
                       {food.MANUAL02 && <p>{food.MANUAL02}</p>}
-                      {/* 중략 */}
+                      {food.MANUAL03 && <p>{food.MANUAL03}</p>}
+                      {food.MANUAL04 && <p>{food.MANUAL04}</p>}
+                      {food.MANUAL05 && <p>{food.MANUAL05}</p>}
+                      {food.MANUAL06 && <p>{food.MANUAL06}</p>}
+                      {food.MANUAL07 && <p>{food.MANUAL07}</p>}
+                      {food.MANUAL08 && <p>{food.MANUAL08}</p>}
+                      {food.MANUAL09 && <p>{food.MANUAL09}</p>}
+                      {food.MANUAL10 && <p>{food.MANUAL10}</p>}
+                      {food.MANUAL11 && <p>{food.MANUAL11}</p>}
+                      {food.MANUAL12 && <p>{food.MANUAL12}</p>}
+                      {food.MANUAL13 && <p>{food.MANUAL13}</p>}
+                      {food.MANUAL14 && <p>{food.MANUAL14}</p>}
+                      {food.MANUAL15 && <p>{food.MANUAL15}</p>}
+                      {food.MANUAL16 && <p>{food.MANUAL16}</p>}
+                      {food.MANUAL17 && <p>{food.MANUAL17}</p>}
+                      {food.MANUAL18 && <p>{food.MANUAL18}</p>}
                       {food.MANUAL19 && <p>{food.MANUAL19}</p>}
                       {food.MANUAL20 && <p>{food.MANUAL20}</p>}
                     </div>
