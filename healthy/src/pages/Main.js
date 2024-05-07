@@ -101,7 +101,7 @@ function Main() {
         <div className="food-card-container">
           {foods.map((food, index) => (
             <div>
-              <div className="Food" key={index}>
+              <div className="main-food-card" key={index}>
                 {index % 2 == 0 ? (
                   <FoodCardLeft
                     ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
@@ -116,7 +116,7 @@ function Main() {
                   />
                 )}
               </div>
-              <div className="Food" key={index}>
+              <div className="main-food-card" key={index}>
                 {index % 2 === 1 ? (
                   <FoodCardLeft
                     ATT_FILE_NO_MK={food.ATT_FILE_NO_MK}
@@ -137,6 +137,7 @@ function Main() {
         <div >
           {exercises.map((exercise, index) => (
           <div className="exercise-card-container">
+            <div className="main-ex-card" key={index}> 
               <ExerciseCard
                 key={exercise.운동명}
                 kcal={exercise.단위체중당에너지소비량}
@@ -145,7 +146,9 @@ function Main() {
                   youtubes[index]?.snippet?.thumbnails?.high?.url || ""
                 }
                 youtubeId={youtubes[index]?.id?.videoId || ""}
-              />
+                />
+            </div>
+            <div className="main-card" key={index}> 
               <ExerciseCard
                 key={exercise.운동명}
                 kcal={exercise.단위체중당에너지소비량}
@@ -154,7 +157,8 @@ function Main() {
                   youtubes[index]?.snippet?.thumbnails?.high?.url || ""
                 }
                 youtubeId={youtubes[index]?.id?.videoId || ""}
-              />
+                />
+            </div>
             </div>
           ))}
         </div>

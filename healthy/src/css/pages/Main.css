@@ -50,12 +50,14 @@
 }
 .mini-calendar{
   background-color: antiquewhite;
-  height: 350px;
-  width: 350px;
-  margin: 13px;
+  height: 400px;
+  width: 400px;
+  margin: 15px 30px;
+  padding: 10px;
 }
 .food-card-container{
   margin-bottom: 10px;
+  padding: 15px 30px;
 }
 .exercise-card-container{
   display: flex;
@@ -63,4 +65,11 @@
   justify-content: center;
   align-items: center;
   width: 530px;
+  padding: 15px 30px;
+}
+.main-ex-card{
+  margin-right: 30px;
+}
+.main-food-card{
+  margin-bottom: 30px;
 }
