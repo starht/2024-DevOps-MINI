@@ -6,6 +6,7 @@ import FoodCardRight from "../components/FoodCardRight";
 import Navbar from "../components/Navbar";
 import banner from "../assets/images/배너.png";
 import db from "../assets/json/db.json";
+import MiniCalendar from "../components/MiniCalendar";
 
 function Main() {
   const [foods, setFoods] = useState([]);
@@ -115,7 +116,9 @@ function Main() {
         </div>
       </div>
       <div className="cards-container">
-        <div className="mini-calendar">캘린더 위치</div>
+        <div className="mini-calendar">
+          <MiniCalendar />
+        </div>
         <div className="food-card-container">
           {foods.map((food, index) => (
             <div>
