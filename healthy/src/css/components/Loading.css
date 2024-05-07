@@ -67,74 +67,6 @@
   }
 }
 
-@keyframes rotate-loading {
-  0% {
-    transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@-moz-keyframes rotate-loading {
-  0% {
-    transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes rotate-loading {
-  0% {
-    transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-  }
-}
-
-@-o-keyframes rotate-loading {
-  0% {
-    transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-  }
-}
-
 @keyframes loading-text-opacity {
   0% {
     opacity: 0;
@@ -194,19 +126,24 @@
     opacity: 0;
   }
 }
-.loading-container,
-.loading {
-  height: 100px;
-  position: relative;
-  width: 100px;
-  border-radius: 100%;
-}
 
 .loading-container {
-  margin: 300px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 화면 전체 높이를 기준으로 중앙 정렬 */
+}
+
+.loading, .loading-text {
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  position: relative;
 }
 
 .loading {
+  margin-right: -25px;
+  margin-bottom: -40px;
   border: 2px solid transparent;
   border-color: transparent #333333 transparent #333333;
   -moz-animation: rotate-loading 1.5s linear 0s infinite normal;
@@ -229,6 +166,7 @@
 }
 
 #loading-text {
+  margin-left: -50px;
   -moz-animation: loading-text-opacity 2s linear 0s infinite normal;
   -o-animation: loading-text-opacity 2s linear 0s infinite normal;
   -webkit-animation: loading-text-opacity 2s linear 0s infinite normal;
@@ -239,8 +177,6 @@
   font-weight: bold;
   margin-top: 45px;
   opacity: 0;
-  position: absolute;
-  text-align: center;
   text-transform: uppercase;
   top: 0;
   width: 100px;
