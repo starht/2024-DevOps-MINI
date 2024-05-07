@@ -3,8 +3,10 @@ import Navbar from "../components/Navbar";
 import FoodCardFull from "../components/FoodCardFull";
 import "../css/pages/FoodSearch.css";
 import foodicon from "../assets/images/foodicon.png";
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import db from "../assets/json/db.json";
+import Loading from "../components/Loading"
 
 function FoodSearch() {
   const [foods, setFoods] = useState([]);
@@ -13,37 +15,53 @@ function FoodSearch() {
   const [currentPage, setCurrentPage] = useState(1);
 
   // 추천음식
-  let target = "된장국";
-
   useEffect(() => {
     getFoods();
   }, []);
 
   const getFoods = async () => {
     try {
-      const response = await fetch(
-        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000/RCP_NM=${target}`
+      let testData = JSON.parse(JSON.stringify(db));
+      
+      const selectedTable = "foodlist";
+
+      const selectedData = {
+        [selectedTable]: testData[selectedTable],
+      };
+
+      const getRandomItems = (array, count) => {
+        const shuffled = array.slice(0);
+        let i = array.length;
+        const min = i - count;
+        let temp;
+        let index;
+
+        while (i-- > min) {
+          index = Math.floor((i + 1) * Math.random());
+          temp = shuffled[index];
+          shuffled[index] = shuffled[i];
+          shuffled[i] = temp;
+        }
+
+        return shuffled.slice(min);
+      };
+
+      const selectedItems = getRandomItems(
+        Object.values(selectedData[selectedTable]),
+        5
       );
-      if (!response.ok) {
-        throw new Error("failed to fetch");
-      }
-      const json = await response.json();
-      const filteredFoods = json.COOKRCP01.row.filter(
-        (food) => food.RCP_NM === target
-      );
-      setFoods(filteredFoods);
+      setFoods(selectedItems);
     } catch (error) {
       console.log(error);
     }
   };
 
   //테이블
-  let tabletarget = "된장국";
+  let tabletarget = "";
 
   if (tabletarget === "") {
-    
   } else {
-    tabletarget = "/RCP_NM="+tabletarget;
+    tabletarget = "/RCP_NM=" + tabletarget;
   }
 
   const getTableFoods = async () => {
@@ -62,9 +80,7 @@ function FoodSearch() {
   };
 
   useEffect(() => {
-    Promise.all([getFoods(), getTableFoods()]).then(() =>
-      setLoading(false)
-    );
+    Promise.all([getFoods(), getTableFoods()]).then(() => setLoading(false));
   }, []);
 
   // 페이지네이션
@@ -89,7 +105,7 @@ function FoodSearch() {
   return (
     <div>
       {loading ? (
-        <div className="Loading">Loading...</div>
+        <Loading />
       ) : (
         <div>
           <Navbar />
@@ -104,9 +120,9 @@ function FoodSearch() {
                   <div className="InnerFoodCardWrapper" key={index}>
                     <FoodCardFull
                       className="foodcardfull"
-                      backgroundImage={food.ATT_FILE_NO_MK}
-                      foodname={food.RCP_NM}
-                      kcal={food.INFO_ENG}
+                      backgroundImage={food.picture}
+                      foodname={food.foodname}
+                      kcal={food.kcal}
                     />
                   </div>
                 ))}
@@ -156,8 +172,12 @@ function FoodSearch() {
               </table>
             </div>
             <div className="pagination">
-              <Stack spacing={2} >
-                <Pagination count={pageNumber} shape="rounded" onChange={handleChange}/>
+              <Stack spacing={2}>
+                <Pagination
+                  count={pageNumber}
+                  shape="rounded"
+                  onChange={handleChange}
+                />
               </Stack>
             </div>
           </div>

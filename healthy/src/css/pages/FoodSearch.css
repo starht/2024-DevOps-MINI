@@ -57,7 +57,8 @@
   font-weight: bold;
 }
 
-.foodtable > th,td {
+.foodtable > th,
+td {
   padding: 5px 0;
 }
 
@@ -99,28 +100,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* 페이지네이션 */
-
-.pagination {
-  margin: 100px;
-}
-
-.pagebtn {
-  background-color: transparent;
-  border: none;
-  text-align: center;
-}
-
-.innerbtn {
-  text-align: center;
-  background-color: transparent;
-  border: none;
-}
-
-#active {
-  text-align: center;
-  background-color: skyblue;
-  border-radius: 10px;
 }
