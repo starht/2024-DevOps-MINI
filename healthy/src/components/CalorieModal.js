@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../css/components/CalorieModal.css";
 
-function CalorieModal({ calClose, calShow, calshow }) {
+function CalorieModal({ calClose, calShow, calshow, calresultShow }) {
   const [form, setForm] = useState({
     year: 2023,
     month: "01",
@@ -34,6 +34,11 @@ function CalorieModal({ calClose, calShow, calshow }) {
       days.push(d.toString());
     }
   }
+
+  const confirmClick = () => {
+    calClose();
+    calresultShow();
+  };
 
   return (
     <div
@@ -156,7 +161,7 @@ function CalorieModal({ calClose, calShow, calshow }) {
           <button onClick={calClose} className="cal-cancel-btn">
             Cancel
           </button>
-          <button onClick={calClose} className="cal-confirm-btn">
+          <button onClick={confirmClick} className="cal-confirm-btn">
             Confirm
           </button>
         </div>

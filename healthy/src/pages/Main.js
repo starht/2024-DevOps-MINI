@@ -12,6 +12,7 @@ import LoginModal from "../components/LoginModal";
 import BMIModal from "../components/BMIModal";
 import BMIResultModal from "../components/BMIResultModal"
 import CalorieModal from "../components/CalorieModal";
+import CalorieResultModal from "../components/CalorieResultModal";
 
 function Main() {
   const [foods, setFoods] = useState([]);
@@ -20,6 +21,7 @@ function Main() {
   const [bmishow, setBmishow] = useState(false);
   const [calshow, setCalshow] = useState(false);
   const [bmiresultshow, setBmiResultshow] = useState(false);
+  const [calresultshow, setCalResultshow] = useState(false);
   const navigate = useNavigate();
 
   // 검색
@@ -48,6 +50,10 @@ function Main() {
   // 칼로리 모달
   const calClose = () => setCalshow(false);
   const calShow = () => setCalshow(true);
+
+  //칼로리 결과 모달
+  const calresultClose = () => setCalResultshow(false);
+  const calresultShow = () => setCalResultshow(true);
 
   // 추천음식
   useEffect(() => {
@@ -138,8 +144,9 @@ function Main() {
       <Navbar onSearch={handleSearch} loginShow={loginShow}/>
       <LoginModal loginShow={loginShow} loginClose={loginClose} loginshow={loginshow}/>
       <BMIModal bmiShow={bmiShow} bmiClose={bmiClose} bmishow={bmishow} bmiresultShow={bmiresultShow} />
-      <CalorieModal calShow={calShow} calClose={calClose} calshow={calshow} />
+      <CalorieModal calShow={calShow} calClose={calClose} calshow={calshow} calresultShow={calresultShow}/>
       <BMIResultModal bmiresultShow={bmiresultShow} bmiresultClose={bmiresultClose} bmiresultshow={bmiresultshow}/>
+      <CalorieResultModal calresShow={calresultShow} calresClose={calresultClose} calresshow={calresultshow} />
       <div className="banner-container">
         <img className="banner" src={banner} />
         <div className="banner-text-wrap">
