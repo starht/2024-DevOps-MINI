@@ -8,13 +8,13 @@ function Navbar({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleCheckboxChange = (event) => {
-    setSearchType(event.target.checked ? "food" : "exercise");
+    setSearchType(event.target.checked ? "exercise" : "food");
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(searchType);
-    onSearch(searchQuery, searchType); // 검색어와 검색 유형 전달
+    onSearch(searchQuery, searchType);
   };
 
   const handleInputChange = (event) => {

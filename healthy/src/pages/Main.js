@@ -18,6 +18,17 @@ function Main() {
   const [bmishow, setBmishow] = useState([false]);
   const navigate = useNavigate();
 
+  // 검색
+  const handleSearch = (query, type) => {
+    console.log("검색어:", query);
+    console.log("검색 유형:", type);
+    if (type === "food") {
+      navigate(`/foodsearch?query=${query}`); // 음식 검색 결과 페이지로 이동
+    } else if (type === "exercise") {
+      navigate(`/exercisesearch?query=${query}`); // 운동 검색 결과 페이지로 이동
+    }
+  };
+
   // login modal 함수
   const loginClose = () => setLoginshow(false);
   const loginShow = () => setLoginshow(true);
@@ -109,12 +120,6 @@ function Main() {
       console.log(error);
     }
   };
-
-  const handleSearch = (query) => {
-    console.log("검색어:", query);
-    navigate(`/foodsearch?query=${query}`); // 검색 결과 페이지로 이동합니다.
-  };
-
 
   return (
     <div>
