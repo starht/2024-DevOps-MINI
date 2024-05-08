@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import "../css/pages/Main.css";
 import ExerciseCard from "../components/ExerciseCard";
 import FoodCardLeft from "../components/FoodCardLeft";
 import FoodCardRight from "../components/FoodCardRight";
 import Navbar from "../components/Navbar";
 import banner from "../assets/images/배너.png";
-import db from "../assets/json/db.json";
 import MiniCalendar from "../components/MiniCalendar";
 import LoginModal from "../components/LoginModal";
 import BMIModal from "../components/BMIModal";
@@ -62,13 +62,7 @@ function Main() {
 
   const getFoods = async () => {
     try {
-      let testData = JSON.parse(JSON.stringify(db));
-
-      const selectedTable = "foodlist";
-
-      const selectedData = {
-        [selectedTable]: testData[selectedTable],
-      };
+      const selectedData = await axios.get('http://localhost:4000/foodlist');
 
       const getRandomItems = (array, count) => {
         const shuffled = array.slice(0);
@@ -88,7 +82,7 @@ function Main() {
       };
 
       const selectedItems = getRandomItems(
-        Object.values(selectedData[selectedTable]),
+        Object.values(selectedData.data),
         2
       );
       setFoods(selectedItems);
@@ -104,13 +98,7 @@ function Main() {
 
   const getExercises = async () => {
     try {
-      let testData = JSON.parse(JSON.stringify(db));
-
-      const selectedTable = "exerciselist";
-
-      const selectedData = {
-        [selectedTable]: testData[selectedTable],
-      };
+      const selectedData = await axios.get('http://localhost:4000/exerciselist');
 
       const getRandomItems = (array, count) => {
         const shuffled = array.slice(0);
@@ -130,7 +118,7 @@ function Main() {
       };
 
       const selectedItems = getRandomItems(
-        Object.values(selectedData[selectedTable]),
+        Object.values(selectedData.data),
         2
       );
       setExercises(selectedItems);
