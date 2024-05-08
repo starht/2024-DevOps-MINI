@@ -16,9 +16,10 @@ import CalorieModal from "../components/CalorieModal";
 function Main() {
   const [foods, setFoods] = useState([]);
   const [exercises, setExercises] = useState([]);
-  const [loginshow, setLoginshow] = useState([false]);
-  const [bmishow, setBmishow] = useState([false]);
-  const [bmiresultshow, setBmiResultshow] = useState([false]);
+  const [loginshow, setLoginshow] = useState(false);
+  const [bmishow, setBmishow] = useState(false);
+  const [calshow, setCalshow] = useState(false);
+  const [bmiresultshow, setBmiResultshow] = useState(false);
   const navigate = useNavigate();
 
   // 검색
@@ -43,6 +44,10 @@ function Main() {
   //bmi result modal 함수
   const bmiresultClose = () => setBmiResultshow(false);
   const bmiresultShow = () => setBmiResultshow(true);
+
+  // 칼로리 모달
+  const calClose = () => setCalshow(false);
+  const calShow = () => setCalshow(true);
 
   // 추천음식
   useEffect(() => {
@@ -133,6 +138,7 @@ function Main() {
       <Navbar onSearch={handleSearch} loginShow={loginShow}/>
       <LoginModal loginShow={loginShow} loginClose={loginClose} loginshow={loginshow}/>
       <BMIModal bmiShow={bmiShow} bmiClose={bmiClose} bmishow={bmishow} bmiresultShow={bmiresultShow} />
+      <CalorieModal calShow={calShow} calClose={calClose} calshow={calshow} />
       <BMIResultModal bmiresultShow={bmiresultShow} bmiresultClose={bmiresultClose} bmiresultshow={bmiresultshow}/>
       <div className="banner-container">
         <img className="banner" src={banner} />
