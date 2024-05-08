@@ -1,0 +1,226 @@
+#cal-background-off {
+  width: 100%;
+  height: 100%;
+  background-color: lightgray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  display: none;
+}
+
+#cal-background-on {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+}
+
+.cal-modal-wrap {
+  width: 600px;
+  position: fixed; 
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 30px gray;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#cal-hide {
+  display: none;
+}
+
+#cal-show {
+  display: flex;
+}
+
+/* 헤더 */
+.cal-modal-header {
+  padding: 15px 10px 0 10px;
+}
+
+.cal-modal-title {
+  margin-left: 8px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.cal-explanation {
+  margin-left: 8px;
+  padding: 0 5px 5px 5px;
+  font-size: 0.8rem;
+  color: gray;
+}
+
+/* 바디 */
+.cal-modal-body {
+  padding: 10px 10px 0 10px;
+}
+
+/* 성별 */
+.sex-wrap {
+  margin: 5px 2px;
+}
+
+.sex-text {
+  margin: 0 10px;
+  font-size: 0.8rem;
+}
+
+.sex-radio-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.radio-man-wrap, .radio-woman-wrap {
+  display: inline-flex;
+  align-items: center;
+  margin: 5px;
+  width: 50%;
+  font-size: 0.8rem;
+}
+
+.cal-man, .cal-woman{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 연도 */
+.born-wrap {
+  display: flex;
+  width: 100%
+}
+
+.year-wrap, .month-wrap, .day-wrap {
+  margin: 10px;
+}
+
+.year-title, .month-title, .day-title {
+  font-size: 0.8rem;
+}
+
+.year-wrap {
+  width: 45%;
+}
+
+.year-text {
+  width: 100%;
+  margin-top: 8px;
+  height: 30px;
+  border-radius: 7px;
+  border: 1px solid lightgray;
+}
+
+.month-wrap {
+  width: 21%;
+  margin-left: 20px;
+}
+
+.month-select {
+  margin-top: 8px;
+  width: 100%;
+  height: 35px;
+  border-radius: 7px;
+  border: 1px solid lightgray;
+}
+
+.day-wrap {
+  width: 21%;
+}
+
+.day-select {
+  margin-top: 8px;
+  height: 35px;
+  width: 100%;
+  border-radius: 7px;
+  border: 1px solid lightgray;
+}
+
+/* 키몸무게 */
+.height-weight-wrap {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 8px;
+}
+
+.height-wrap, .weight-wrap {
+  margin: 5px;
+  width: 45%;
+}
+
+.height-wrap {
+  margin-right: 15px;
+}
+
+.weight-wrap {
+  margin-right: 15px;
+}
+
+.height-title, .weight-title {
+  margin: 5px 2px;
+  font-size: 0.8rem;
+}
+
+.height-text, .weight-text {
+  width: 100%;
+  height: 30px;
+  border-radius: 7px;
+  border: 1px solid lightgray;
+}
+
+/* 활동량 */
+.activity-wrap{
+  margin-left: 8px;
+  padding-top: 3px;
+  padding-bottom: 8px;
+}
+
+.activity-title{
+  margin: 5px 2px;
+  font-size: 0.8rem;
+}
+
+.radio-wrap{
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  font-size: 0.8rem;
+}
+
+.radio-activity{
+  margin: 3px;
+}
+
+
+/* 풋 */
+.cal-footer {
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.cal-cancel-btn, .cal-confirm-btn {
+  width: 47%;
+  height: 35px;
+}
+
+.cal-cancel-btn {
+  border: 1px solid lightgray;
+  background-color: #fff;
+  border-radius: 7px;
+}
+
+.cal-confirm-btn {
+  border: none;
+  background-color: #1F95AF;
+  color: white;
+  border-radius: 7px;
+} 
