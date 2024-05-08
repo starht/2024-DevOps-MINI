@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../css/components/BMIModal.css";
 
-function BMIModal({ bmiClose, bmishow, bmiShow }) {
+function BMIModal({ bmiClose, bmishow, bmiShow, bmiresultShow}) {
   const [form, setForm] = useState({
     year: 2023,
     month: "01",
@@ -23,13 +23,6 @@ function BMIModal({ bmiClose, bmishow, bmiShow }) {
     }
   }
   let days = [];
-  // let date = new Date(form.year, form.month, 0).getDate();
-  // for (let d = 1; d <= date; d += 1) {
-  //   if (d < 10) {
-  //     days.push("0" + d.toString());
-  //   } else {
-  //     days.push(d.toString());
-  //   }
   const selectedMonth = parseInt(form.month, 10);
   const selectedYear = parseInt(form.year, 10);
   const daysInMonth = new Date(selectedYear, selectedMonth, 0).getDate();
@@ -40,6 +33,11 @@ function BMIModal({ bmiClose, bmishow, bmiShow }) {
       days.push(d.toString());
     }
   }
+
+  const confirmClick = () => {
+    bmiClose();
+    bmiresultShow();
+  };
 
     return (
       <div
@@ -123,8 +121,8 @@ function BMIModal({ bmiClose, bmishow, bmiShow }) {
             <button onClick={bmiClose} className="bmicancelbtn">
               Cancel
             </button>
-            <button onClick={bmiClose} className="bmiconfirmbtn">
-              Login
+            <button onClick={confirmClick} className="bmiconfirmbtn">
+              Confirm
             </button>
           </div>
         </div>

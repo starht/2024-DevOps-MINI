@@ -10,14 +10,15 @@ import db from "../assets/json/db.json";
 import MiniCalendar from "../components/MiniCalendar";
 import LoginModal from "../components/LoginModal";
 import BMIModal from "../components/BMIModal";
+import BMIResultModal from "../components/BMIResultModal"
 import CalorieModal from "../components/CalorieModal";
 
 function Main() {
   const [foods, setFoods] = useState([]);
   const [exercises, setExercises] = useState([]);
-  const [loginshow, setLoginshow] = useState(false);
-  const [bmishow, setBmishow] = useState(false);
-  const [calshow, setCalshow] = useState(false);
+  const [loginshow, setLoginshow] = useState([false]);
+  const [bmishow, setBmishow] = useState([false]);
+  const [bmiresultshow, setBmiResultshow] = useState([false]);
   const navigate = useNavigate();
 
   // 검색
@@ -38,10 +39,10 @@ function Main() {
   //bmi modal 함수
   const bmiClose = () => setBmishow(false);
   const bmiShow = () => setBmishow(true);
-
-  //Calorie modal 함수
-  const calClose = () => setCalshow(false);
-  const calShow = () => setCalshow(true);
+  
+  //bmi result modal 함수
+  const bmiresultClose = () => setBmiResultshow(false);
+  const bmiresultShow = () => setBmiResultshow(true);
 
   // 추천음식
   useEffect(() => {
@@ -131,8 +132,8 @@ function Main() {
     <div>
       <Navbar onSearch={handleSearch} loginShow={loginShow}/>
       <LoginModal loginShow={loginShow} loginClose={loginClose} loginshow={loginshow}/>
-      <BMIModal bmiShow={bmiShow} bmiClose={bmiClose} bmishow={bmishow}/>
-      <CalorieModal calShow={calShow} calClose={calClose} calshow={calshow}/>
+      <BMIModal bmiShow={bmiShow} bmiClose={bmiClose} bmishow={bmishow} bmiresultShow={bmiresultShow} />
+      <BMIResultModal bmiresultShow={bmiresultShow} bmiresultClose={bmiresultClose} bmiresultshow={bmiresultshow}/>
       <div className="banner-container">
         <img className="banner" src={banner} />
         <div className="banner-text-wrap">
