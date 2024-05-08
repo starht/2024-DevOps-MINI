@@ -3,7 +3,7 @@ import "../css/components/Navbar.css";
 import logo from "../assets/images/logo.png";
 import search from "../assets/images/search.png";
 
-function Navbar({ onSearch }) {
+function Navbar({ onSearch,loginShow }) {
   const [searchType, setSearchType] = useState("food");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -62,7 +62,7 @@ function Navbar({ onSearch }) {
         </form>
       </div>
       <div className="nav-login">
-        <button className="login" href="/mypage">
+        <button className="login" href="/mypage" onClick={loginShow}>
           로그인
         </button>
       </div>
