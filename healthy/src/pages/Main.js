@@ -112,7 +112,7 @@ function Main() {
     <div>
       <Navbar loginShow={loginShow}/>
       <LoginModal loginShow={loginShow} loginClose={loginClose} loginshow={loginshow}/>
-      <BMIModal loginShow={bmiShow} loginClose={bmiClose} loginshow={bmishow}/>
+      <BMIModal bmiShow={bmiShow} bmiClose={bmiClose} bmishow={bmishow}/>
       <div className="banner-container">
         <img className="banner" src={banner} />
         <div className="banner-text-wrap">
