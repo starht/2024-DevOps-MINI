@@ -122,7 +122,7 @@ function BMIModal({ bmiClose, bmishow, bmiShow, bmiresultShow}) {
               Cancel
             </button>
             <button onClick={confirmClick} className="bmiconfirmbtn">
-              Login
+              Confirm
             </button>
           </div>
         </div>

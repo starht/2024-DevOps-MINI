@@ -7,8 +7,8 @@ function LoginModal({ loginShow, loginClose, loginshow }) {
       id={loginshow ? "idbackgroundon" : "idbackgroundoff"}
       onClick={(e) => {
         if (
-          e.target.id === "bmibackgroundon" ||
-          e.target.id === "bmibackgroundoff"
+          e.target.id === "idbackgroundon" ||
+          e.target.id === "idbackgroundoff"
         ) {
           loginClose();
         }
