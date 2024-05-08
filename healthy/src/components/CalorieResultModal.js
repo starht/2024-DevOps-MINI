@@ -3,6 +3,13 @@ import "../css/components/CalorieResultModal.css";
 import Checked from "../assets/images/check.png";
 
 function CalorieResultModal({ calresShow, calresClose, calresshow}) {
+  const segmentStyle = (value, color) => {
+    return {
+      flex: value,
+      backgroundColor: color,
+    };
+  };
+
   return (
     <div
       id={calresshow ? "calresbackgroundon" : "calresbackgroundoff"}
@@ -29,7 +36,7 @@ function CalorieResultModal({ calresShow, calresClose, calresshow}) {
           </div>
         </div>
         <div className="calresmodalbody">
-          <div className="fistrow">
+          <div className="firstrow">
           <div className="goalmonWrapper">
             <div className="goalmontitle">총 감량기간</div>
             <input
@@ -64,7 +71,7 @@ function CalorieResultModal({ calresShow, calresClose, calresshow}) {
               className="goalintakecal"
             />
           </div>
-          <div className="goalexvalWrapper">
+          <div className="goalexcalWrapper">
             <div className="goalexcaltitle">하루 동안 운동으로 소모해야 할 칼로리</div>
             <input
               readOnly="readonly"
@@ -77,9 +84,9 @@ function CalorieResultModal({ calresShow, calresClose, calresshow}) {
             <div className="calextitle">하루 소비 칼로리는 <span>Kcal</span></div>
             <div className="barbox">
               <div className="colorbarWrapper">
-                <div className="bmrbar"></div>
-                <div className="ambar"></div>
-                <div className="digenerbar"></div>
+                <div className="bmrbar" style={segmentStyle(50, "#3498db")}></div>
+                <div className="ambar" style={segmentStyle(20, "#2ecc71")}></div>
+                <div className="digenerbar"style={segmentStyle(30, "#ff9ff3")}></div>
               </div>
               <div className="exWrapper">
                 <div className="bmrex">기초대사량</div>

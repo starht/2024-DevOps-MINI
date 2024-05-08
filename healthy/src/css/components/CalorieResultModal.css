@@ -40,3 +40,148 @@
 #calresshow {
   display: flex;
 }
+
+/* 헤더 */
+
+.calresmodalheader {
+  padding: 15px 10px 0 10px;
+}
+
+.calresmodaltitle {
+  margin-left: 8px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.calresresultexplanation {
+  margin-left: 8px;
+  padding: 0 5px 5px 5px;
+  font-size: 0.8rem;
+  color: gray;
+}
+
+/* 바디 */
+.calresmodalbody {
+  padding: 10px 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.calresmodalbody input {
+  border: 1px solid lightgray;
+  border-radius: 7px;
+  height: 25px;
+}
+
+.firstrow {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 5px 10px 10px 10px;
+}
+
+.firstrow input {
+  width: 100%;
+  margin: 5px 0;
+}
+
+.secondrow {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 5px 10px 20px 10px;
+}
+
+.secondrow input {
+  margin: 5px 0;
+}
+
+.goalexcalWrapper, .goalintakecalWrapper {
+  width: 45%;
+}
+
+.goalexcal, .goalintakecal {
+  width: 100%;
+}
+
+.thridrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.barbox {
+  margin: 10px;
+  padding: 20px;
+  width: 90%;
+  border-radius: 13px;
+  box-shadow: 0 0 10px rgb(172, 172, 172);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calextitle {
+  width: 95%;
+  margin: 5px;
+}
+
+.colorbarWrapper {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+
+.bmrbar, .ambar, .digenerbar {
+  height: 20px;
+}
+
+.bmrbar {
+  border-radius: 10px 0 0 10px;
+}
+
+.digenerbar {
+  border-radius: 0 10px 10px 0;
+}
+
+
+.exWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.bmrex, .amex, .digenerex {
+  font-size: 0.8rem;
+  padding: 5px;
+}
+
+
+
+/* 풋 */
+
+.calresfooter {
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.calrescancelbtn, .calressavebtn {
+  width: 47%;
+  height: 35px;
+}
+
+.calrescancelbtn {
+  border: 1px solid lightgray;
+  background-color: #fff;
+  border-radius: 7px;
+}
+
+.calressavebtn {
+  border: none;
+  background-color: #1F95AF;
+  color: white;
+  border-radius: 7px;
+} 
