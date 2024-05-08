@@ -14,8 +14,8 @@ import BMIModal from "../components/BMIModal";
 function Main() {
   const [foods, setFoods] = useState([]);
   const [exercises, setExercises] = useState([]);
-  const [loginshow, setLoginshow] = useState([false]);
-  const [bmishow, setBmishow] = useState([false]);
+  const [loginshow, setLoginshow] = useState(false);
+  const [bmishow, setBmishow] = useState(false);
   const navigate = useNavigate();
 
   // 검색
