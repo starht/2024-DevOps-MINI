@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import axios from "axios";
 import "../css/components/LoginModal.css";
 
 function LoginModal({ loginShow, loginClose, loginshow }) {
+  const { login } = useAuth();
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("http://localhost:4000/userInfo", {
+        id,
+        password
+      });
+      if (id === response.data.id && password === response.data.password) {
+        login();
+        console.log("로그인 성공:", response.data);
+      }
+      loginClose();
+    } catch (error) {
+      console.error("Error logging in:", error.response.data);
+    }
+  };
+
   return (
     <div
       id={loginshow ? "idbackgroundon" : "idbackgroundoff"}
@@ -18,13 +40,14 @@ function LoginModal({ loginShow, loginClose, loginshow }) {
         <div className="loginmodalheader">
           <div className="loginmodaltitle">로그인</div>
         </div>
-        <div className="loginmodalbody">
+        <form className="loginmodalbody">
           <div className="idWrapper">
             <div className="idtitle">아이디</div>
             <input
               type="text"
               className="idtext"
               placeholder="아이디를 입력하세요."
+              onChange={(e) => setId(e.target.value)}
             />
           </div>
           <div className="pwWrapper">
@@ -33,14 +56,15 @@ function LoginModal({ loginShow, loginClose, loginshow }) {
               type="password"
               className="pwtext"
               placeholder="비밀번호를 입력하세요."
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-        </div>
+        </form>
         <div className="loginfooter">
           <button onClick={loginClose} className="logincancelbtn">
             Cancel
           </button>
-          <button onClick={loginClose} className="loginloginbtn">
+          <button onClick={handleLogin} className="loginloginbtn">
             Login
           </button>
         </div>

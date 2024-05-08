@@ -73,6 +73,7 @@
 }
 .login{
   background-color: #e1e3e19b;
+  font-weight: bold;
   border-radius: 20px;
   width: 130px;
   height: 40px;
@@ -81,6 +82,32 @@
   margin-top: 10px;
   cursor: pointer;
   font-family: "Nanum Gothic", sans-serif;
+}
+.mypage{
+  background-color: #1F95AF;
+  font-weight: bold;
+  color: white;
+  border-radius: 20px;
+  width: 90px;
+  height: 40px;
+  border: 0;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.605);
+  margin-top: 10px;
+  cursor: pointer;
+  font-family: "Nanum Gothic", sans-serif; 
+}
+.logout{
+  background-color: #e1e3e19b;
+  font-weight: bold;
+  border-radius: 20px;
+  width: 90px;
+  height: 40px;
+  border: 0;
+  margin-left: 10px;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.605);
+  margin-top: 10px;
+  cursor: pointer;
+  font-family: "Nanum Gothic", sans-serif; 
 }
 
 .food,

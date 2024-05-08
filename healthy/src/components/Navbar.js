@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/components/Navbar.css";
 import logo from "../assets/images/logo.png";
 import search from "../assets/images/search.png";
+import { useAuth } from "../contexts/AuthContext";
 
-function Navbar({ onSearch,loginShow }) {
+function Navbar({ onSearch, loginShow }) {
   const [searchType, setSearchType] = useState("food");
   const [searchQuery, setSearchQuery] = useState("");
+  const { isLoggedIn, login, logout } = useAuth();
+  const navigate = useNavigate();
 
   const handleCheckboxChange = (event) => {
     setSearchType(event.target.checked ? "exercise" : "food");
@@ -19,6 +23,11 @@ function Navbar({ onSearch,loginShow }) {
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
+  };
+
+  const handleLogoutClick = () => {
+    logout();
+    navigate("/");
   };
 
   return (
@@ -62,9 +71,20 @@ function Navbar({ onSearch,loginShow }) {
         </form>
       </div>
       <div className="nav-login">
-        <button className="login" href="/mypage" onClick={loginShow}>
-          로그인
-        </button>
+        {isLoggedIn ? (
+          <div>
+            <button className="mypage" onClick={() => navigate("/mypage")}>
+              마이페이지
+            </button>
+            <button className="logout" onClick={handleLogoutClick}>
+              로그아웃
+            </button>
+          </div>
+        ) : (
+          <button className="login" href="/mypage" onClick={loginShow}>
+            로그인
+          </button>
+        )}
       </div>
     </div>
   );
