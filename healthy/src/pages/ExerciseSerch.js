@@ -6,6 +6,7 @@ import Stack from "@mui/material/Stack";
 import FoodBanner from "../assets/images/운동배너.png";
 import youtube from "../assets/images/youtube-logo-icon.png";
 import Loading from "../components/Loading"
+import LoginModal from "../components/LoginModal";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function ExerciseSearch() {
@@ -15,8 +16,13 @@ function ExerciseSearch() {
   const API_KEY = process.env.REACT_APP_EXERCISE_KEY;
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [loginshow, setLoginshow] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  // login modal 함수
+  const loginClose = () => setLoginshow(false);
+  const loginShow = () => setLoginshow(true);
 
   // 페이지네이션
   const ramenPerPage = 10; // 페이지당 리스트 개수
@@ -119,7 +125,12 @@ function ExerciseSearch() {
         <Loading />
       ) : (
         <div>
-          <Navbar onSearch={handleSearch} />
+          <Navbar onSearch={handleSearch} loginShow={loginShow} />
+          <LoginModal
+            loginShow={loginShow}
+            loginClose={loginClose}
+            loginshow={loginshow}
+          />
           <div className="contentWrapper">
             <div>
               <img className="exercise-banner" src={FoodBanner} />

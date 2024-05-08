@@ -3,11 +3,29 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import "../css/pages/Detail.css";
 import Navbar from "../components/Navbar";
 import Loading from "../components/Loading";
+import LoginModal from "../components/LoginModal";
 
 function Detail() {
   const [foods, setFoods] = useState([]);
   const { recipename } = useParams();
   const [loading, setLoading] = useState(true);
+  const [loginshow, setLoginshow] = useState(false);
+  const navigate = useNavigate();
+
+  // 검색
+  const handleSearch = (query, type) => {
+    console.log("검색어:", query);
+    console.log("검색 유형:", type);
+    if (type === "food") {
+      navigate(`/foodsearch?query=${query}`); // 음식 검색 결과 페이지로 이동
+    } else if (type === "exercise") {
+      navigate(`/exercisesearch?query=${query}`); // 운동 검색 결과 페이지로 이동
+    }
+  };
+
+  // login modal 함수
+  const loginClose = () => setLoginshow(false);
+  const loginShow = () => setLoginshow(true);
 
   useEffect(() => {
     getFoods();
@@ -47,7 +65,12 @@ function Detail() {
         <Loading />
       ) : (
         <div className="body">
-          <Navbar />
+          <Navbar onSearch={handleSearch} loginShow={loginShow} />
+          <LoginModal
+            loginShow={loginShow}
+            loginClose={loginClose}
+            loginshow={loginshow}
+          />
           {foods.map((food, index) => (
             <div key={index}>
               <div className="Upper">

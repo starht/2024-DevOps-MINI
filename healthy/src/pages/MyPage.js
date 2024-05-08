@@ -1,13 +1,39 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Navbar from "../components/Navbar";
+import LoginModal from "../components/LoginModal";
 import foodicon from "../assets/images/foodicon.png";
 import exicon from "../assets/images/fitness.png"
 import heart from "../assets/images/heart.png"
 
 function MyPage() {
+  const [loginshow, setLoginshow] = useState(false);
+  const navigate = useNavigate();
+
+  // 검색
+  const handleSearch = (query, type) => {
+    console.log("검색어:", query);
+    console.log("검색 유형:", type);
+    if (type === "food") {
+      navigate(`/foodsearch?query=${query}`); // 음식 검색 결과 페이지로 이동
+    } else if (type === "exercise") {
+      navigate(`/exercisesearch?query=${query}`); // 운동 검색 결과 페이지로 이동
+    }
+  };
+
+  // login modal 함수
+  const loginClose = () => setLoginshow(false);
+  const loginShow = () => setLoginshow(true);
+
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar onSearch={handleSearch} loginShow={loginShow} />
+      <LoginModal
+        loginShow={loginShow}
+        loginClose={loginClose}
+        loginshow={loginshow}
+      />
       <div className="calendarinputWrapper">
         {/* calendar */}
         <div className="inputWrapper">

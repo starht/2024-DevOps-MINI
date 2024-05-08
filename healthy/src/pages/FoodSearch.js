@@ -9,6 +9,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import db from "../assets/json/db.json";
 import Loading from "../components/Loading";
+import LoginModal from "../components/LoginModal";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function FoodSearch() {
@@ -18,8 +19,13 @@ function FoodSearch() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [loginshow, setLoginshow] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  
+  // login modal 함수
+  const loginClose = () => setLoginshow(false);
+  const loginShow = () => setLoginshow(true);
 
   // 페이지네이션
   const ramenPerPage = 10; // 페이지당 리스트 개수
@@ -185,7 +191,12 @@ function FoodSearch() {
         <Loading />
       ) : (
         <div>
-          <Navbar onSearch={handleSearch} />
+          <Navbar onSearch={handleSearch} loginShow={loginShow} />
+          <LoginModal
+            loginShow={loginShow}
+            loginClose={loginClose}
+            loginshow={loginshow}
+          />
           <div className="contentWrapper">
             <div className="FoodrecommendWrapper">
               <div className="recommendtitle">
