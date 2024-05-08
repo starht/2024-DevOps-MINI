@@ -1,27 +1,26 @@
-#backgroundoff {
+#idbackgroundoff {
   width: 100%;
   height: 100%;
   background-color: lightgray;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 900;
   display: none;
 }
 
-#backgroundon {
+#idbackgroundon {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 900;
 }
 
-.ModalWrapper {
+.loginModalWrapper {
   width: 500px;
-  display: none;
   position: fixed; 
   top: 50%; 
   left: 50%;
@@ -30,7 +29,6 @@
   background-color: white;
   border-radius: 15px;
   box-shadow: 0 0 30px gray;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -40,7 +38,7 @@
 }
 
 #idshow {
-  display: block;
+  display: flex;
 }
 
 .loginmodalheader{
@@ -91,18 +89,18 @@
   justify-content: space-around;
 }
 
-.cancelbtn, .loginbtn {
+.logincancelbtn, .loginloginbtn {
   width: 47%;
   height: 35px;
 }
 
-.cancelbtn {
+.logincancelbtn {
   border: 1px solid lightgray;
   background-color: #fff;
   border-radius: 7px;
 }
 
-.loginbtn {
+.loginloginbtn {
   border: none;
   background-color: #1F95AF;
   color: white;

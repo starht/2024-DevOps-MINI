@@ -3,8 +3,18 @@ import "../css/components/LoginModal.css";
 
 function LoginModal({ loginShow, loginClose, loginshow }) {
   return (
-    <div id={loginshow ? "backgroundon" : "backgroundoff"} onClick={loginClose}>
-      <div className={`ModalWrapper ${loginshow ? "idshow" : "idhide"}`}>
+    <div
+      id={loginshow ? "idbackgroundon" : "idbackgroundoff"}
+      onClick={(e) => {
+        if (
+          e.target.id === "bmibackgroundon" ||
+          e.target.id === "bmibackgroundoff"
+        ) {
+          loginClose();
+        }
+      }}
+    >
+      <div className={`loginModalWrapper ${loginshow ? "idshow" : "idhide"}`}>
         <div className="loginmodalheader">
           <div className="loginmodaltitle">로그인</div>
         </div>
@@ -27,10 +37,10 @@ function LoginModal({ loginShow, loginClose, loginshow }) {
           </div>
         </div>
         <div className="loginfooter">
-          <button onClick={loginClose} className="cancelbtn">
+          <button onClick={loginClose} className="logincancelbtn">
             Cancel
           </button>
-          <button onClick={loginClose} className="loginbtn">
+          <button onClick={loginClose} className="loginloginbtn">
             Login
           </button>
         </div>

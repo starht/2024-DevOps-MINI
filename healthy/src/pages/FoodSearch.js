@@ -1,3 +1,4 @@
+// FoodSearch.js
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import FoodCardFull from "../components/FoodCardFull";
@@ -7,18 +8,52 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import db from "../assets/json/db.json";
 import Loading from "../components/Loading";
-import {Link} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function FoodSearch() {
   const [foods, setFoods] = useState([]);
-  const [tablefoods, settableFoods] = useState([]);
+  const [tableFoods, setTableFoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // 추천음식
+  // 페이지네이션
+  const ramenPerPage = 10; // 페이지당 리스트 개수
+  const currentPageLast = currentPage * ramenPerPage; // 현재 페이지의 처음
+  const currentPageFirst = currentPageLast - ramenPerPage; // 현재 페이지의 끝
+  const currentFoods = searchQuery ? searchResults : tableFoods;
+  const currentTableFoods = currentFoods.slice(currentPageFirst, currentPageLast); // 현재 페이지의 운동 목록
+  const pageNumber = Math.ceil(currentFoods.length / ramenPerPage); // 총 페이지 수
+
   useEffect(() => {
     getFoods();
+    getTableFoods();
   }, []);
+  
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const query = searchParams.get("query");
+    if (query) {
+      setSearchQuery(query);
+      searchFoods(query);
+    } else {
+      setSearchQuery("");
+      setSearchResults([]);
+    }
+  }, [location.search]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchResults]);
+
+  useEffect(() => {
+    if (searchQuery && tableFoods.length > 0) {
+      searchFoods(searchQuery);
+    }
+  }, [searchQuery, tableFoods]);
 
   const getFoods = async () => {
     try {
@@ -57,50 +92,96 @@ function FoodSearch() {
     }
   };
 
-  //테이블
-  let tabletarget = "";
-
-  if (tabletarget === "") {
-  } else {
-    tabletarget = "/RCP_NM=" + tabletarget;
-  }
-
   const getTableFoods = async () => {
     try {
       const response = await fetch(
-        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000${tabletarget}`
+        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000`
       );
       if (!response.ok) {
-        throw new Error("failed to fetch");
+        throw new Error("Failed to fetch");
       }
       const json = await response.json();
-      settableFoods(json.COOKRCP01.row);
+      setTableFoods(json.COOKRCP01.row);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
-
-  useEffect(() => {
-    Promise.all([getFoods(), getTableFoods()]).then(() => setLoading(false));
-  }, []);
-
-  // 페이지네이션
-  const ramenPerPage = 10; // 페이지당 리스트 개수
-  const currentPageLast = currentPage * ramenPerPage; // 현재 페이지의 처음
-  const currentPageFirst = currentPageLast - ramenPerPage; /// 현재 페이지의 끝
-  const currentTableFoods = tablefoods.slice(currentPageFirst, currentPageLast); // 현재 페이지의 음식 목록
-  const pageNumber = Math.ceil(tablefoods.length / ramenPerPage); // 총 페이지 수
 
   const handleChange = (event, value) => {
     setCurrentPage(value);
   };
 
-  //상세영양정보 함수
+  const handleSearch = (query, type) => {
+    console.log("검색어:", query);
+    console.log("검색 유형:", type);
+    if (type === "food") {
+      navigate(`/foodsearch?query=${query}`); // 음식 검색 결과 페이지로 이동
+    } else if (type === "exercise") {
+      navigate(`/exercisesearch?query=${query}`); // 운동 검색 결과 페이지로 이동
+    }
+    setSearchQuery(query);
+    searchFoods(query);
+  };
+
+  const searchFoods = (searchQuery) => {
+    if (!searchQuery) {
+      setSearchResults(tableFoods);
+    } else {
+      const filteredResults = tableFoods.filter((food) =>
+        food.RCP_NM.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSearchResults(filteredResults);
+    }
+  };
+
   const segmentStyle = (value, color) => {
     return {
       flex: value,
       backgroundColor: color,
     };
+  };
+
+  const renderTableFoods = (foods) => {
+    return foods.map((food, index) => (
+      <tr className="tablecontent" key={index}>
+        <td>
+          <Link className="link" to={`/detail/${food.RCP_NM}`}>
+            {food.RCP_NM}
+          </Link>
+        </td>
+        <td>
+          <Link className="link" to={`/detail/${food.RCP_NM}`}>
+            {food.INFO_ENG} Kcal
+          </Link>
+        </td>
+        <td className="colorbarwrapper">
+          <Link className="link" to={`/detail/${food.RCP_NM}`}>
+            <div className="color-bar">
+              <div
+                className="car-color-segment"
+                style={segmentStyle(food.INFO_CAR, "#3498db")}
+              >
+                {food.INFO_CAR}
+              </div>
+              <div
+                className="pro-color-segment"
+                style={segmentStyle(food.INFO_PRO, "#2ecc71")}
+              >
+                {food.INFO_PRO}
+              </div>
+              <div
+                className="fat-color-segment"
+                style={segmentStyle(food.INFO_FAT, "#ff9ff3")}
+              >
+                {food.INFO_FAT}
+              </div>
+            </div>
+          </Link>
+        </td>
+      </tr>
+    ));
   };
 
   return (
@@ -109,7 +190,7 @@ function FoodSearch() {
         <Loading />
       ) : (
         <div>
-          <Navbar />
+          <Navbar onSearch={handleSearch} />
           <div className="contentWrapper">
             <div className="FoodrecommendWrapper">
               <div className="recommendtitle">
@@ -141,44 +222,9 @@ function FoodSearch() {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentTableFoods.map((tablefood, index) => (
-                    <tr className="tablecontent" key={index}>
-                      <td>
-                      <Link className="link" to={`/detail/${tablefood.RCP_NM}`}>
-                          {tablefood.RCP_NM}
-                      </Link>
-                      </td>
-                      <td>
-                        <Link className="link" to={`/detail/${tablefood.RCP_NM}`}>
-                        {tablefood.INFO_ENG} Kcal
-                        </Link>
-                      </td>
-                      <td className="colorbarwrapper">
-                      <Link className="link" to={`/detail/${tablefood.RCP_NM}`}>
-                        <div className="color-bar">
-                          <div
-                            className="car-color-segment"
-                            style={segmentStyle(tablefood.INFO_CAR, "#3498db")}
-                          >
-                            {tablefood.INFO_CAR}
-                          </div>
-                          <div
-                            className="pro-color-segment"
-                            style={segmentStyle(tablefood.INFO_PRO, "#2ecc71")}
-                          >
-                            {tablefood.INFO_PRO}
-                          </div>
-                          <div
-                            className="fat-color-segment"
-                            style={segmentStyle(tablefood.INFO_FAT, "#ff9ff3")}
-                          >
-                            {tablefood.INFO_FAT}
-                          </div>
-                        </div>
-                        </Link>
-                      </td>
-                    </tr>
-                  ))}
+                  {searchQuery
+                    ? renderTableFoods(searchResults)
+                    : renderTableFoods(currentTableFoods)}
                 </tbody>
               </table>
             </div>

@@ -6,16 +6,51 @@ import Stack from "@mui/material/Stack";
 import FoodBanner from "../assets/images/운동배너.png";
 import youtube from "../assets/images/youtube-logo-icon.png";
 import Loading from "../components/Loading"
+import { useLocation, useNavigate } from "react-router-dom";
 
 function ExerciseSearch() {
   const [exercises, setExercises] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const API_KEY = process.env.REACT_APP_EXERCISE_KEY;
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // 페이지네이션
+  const ramenPerPage = 10; // 페이지당 리스트 개수
+  const currentPageLast = currentPage * ramenPerPage; // 현재 페이지의 처음
+  const currentPageFirst = currentPageLast - ramenPerPage; // 현재 페이지의 끝
+  const currentExercises = searchQuery ? searchResults : exercises;
+  const currentExercise = currentExercises.slice(currentPageFirst, currentPageLast); // 현재 페이지의 운동 목록
+  const pageNumber = Math.ceil(currentExercises.length / ramenPerPage); // 총 페이지 수
 
   useEffect(() => {
     getExercises().then(() => setLoading(false)); // 데이터를 불러온 후 로딩 상태 변경
   }, []);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const query = searchParams.get("query");
+    if (query) {
+      setSearchQuery(query);
+      searchExercises(query);
+    } else {
+      setSearchQuery("");
+      setSearchResults([]);
+    }
+  }, [location.search]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchResults]);
+
+  useEffect(() => {
+    if (searchQuery && exercises.length > 0) {
+      searchExercises(searchQuery);
+    }
+  }, [searchQuery, exercises]);
 
   const getExercises = async () => {
     try {
@@ -33,22 +68,50 @@ function ExerciseSearch() {
     }
   };
 
-  // 페이지네이션
-  const ramenPerPage = 10; // 페이지당 리스트 개수
-  const currentPageLast = currentPage * ramenPerPage; // 현재 페이지의 처음
-  const currentPageFirst = currentPageLast - ramenPerPage; /// 현재 페이지의 끝
-  const currentExercise = exercises.slice(currentPageFirst, currentPageLast); // 현재 페이지의 운동 목록
-  const pageNumber = Math.ceil(exercises.length / ramenPerPage); // 총 페이지 수
-
   const handleChange = (event, value) => {
     setCurrentPage(value);
+  };
+
+  const handleSearch = (query, type) => {
+    console.log("검색어:", query);
+    console.log("검색 유형:", type);
+    if (type === "food") {
+      navigate(`/foodsearch?query=${query}`); // 음식 검색 결과 페이지로 이동
+    } else if (type === "exercise") {
+      navigate(`/exercisesearch?query=${query}`); // 운동 검색 결과 페이지로 이동
+    }
+    setSearchQuery(query);
+    searchExercises(query);
+  };
+
+  const searchExercises = (searchQuery) => {
+    if (!searchQuery) {
+      setSearchResults(exercises);
+    } else {
+      const filteredResults = exercises.filter((exercise) =>
+      exercise.운동명.includes(searchQuery)
+      );
+      setSearchResults(filteredResults);
+    }
   };
 
   const handleSearchYouTube = (exerciseName) => {
     const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${exerciseName}+배우기`;
     window.open(youtubeSearchUrl, "_blank");
-    console.log("Search on YouTube:", youtubeSearchUrl);
   };
+
+  const renderExercises = (exercise) => {
+    return exercise.map((exercise, index) => (
+      <tr className="table-content" key={index}>
+        <td>{exercise.운동명}</td>
+        <td>1분</td>
+        <td>{exercise.단위체중당에너지소비량} Kcal</td>
+        <td className="youtube-logo-wrap">
+            <img className="youtube-logo" src={youtube} onClick={() => handleSearchYouTube(exercise.운동명)} />
+        </td>
+      </tr>
+    ))
+  }
 
   return (
     <div>
@@ -56,7 +119,7 @@ function ExerciseSearch() {
         <Loading />
       ) : (
         <div>
-          <Navbar />
+          <Navbar onSearch={handleSearch} />
           <div className="contentWrapper">
             <div>
               <img className="exercise-banner" src={FoodBanner} />
@@ -72,16 +135,9 @@ function ExerciseSearch() {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentExercise.map((exercise, index) => (
-                    <tr className="table-content" key={index}>
-                      <td>{exercise.운동명}</td>
-                      <td>1분</td>
-                      <td>{exercise.단위체중당에너지소비량} Kcal</td>
-                      <td className="youtube-logo-wrap">
-                          <img className="youtube-logo" src={youtube} onClick={() => handleSearchYouTube(exercise.운동명)} />
-                      </td>
-                    </tr>
-                  ))}
+                {searchQuery
+                    ? renderExercises(searchResults)
+                    : renderExercises(currentExercise)}
                 </tbody>
               </table>
             </div>
@@ -102,3 +158,4 @@ function ExerciseSearch() {
 }
 
 export default ExerciseSearch;
+
