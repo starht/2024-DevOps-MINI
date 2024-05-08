@@ -115,6 +115,7 @@
   width: 100%;
   margin-top: 8px;
   height: 30px;
+  padding-left: 10px;
   border-radius: 7px;
   border: 1px solid lightgray;
 }
@@ -128,6 +129,7 @@
   margin-top: 8px;
   width: 100%;
   height: 35px;
+  padding-left: 5px;
   border-radius: 7px;
   border: 1px solid lightgray;
 }
@@ -140,6 +142,7 @@
   margin-top: 8px;
   height: 35px;
   width: 100%;
+  padding-left: 5px;
   border-radius: 7px;
   border: 1px solid lightgray;
 }
@@ -173,6 +176,7 @@
   width: 100%;
   height: 30px;
   border-radius: 7px;
+  padding-left: 10px;
   border: 1px solid lightgray;
 }
 

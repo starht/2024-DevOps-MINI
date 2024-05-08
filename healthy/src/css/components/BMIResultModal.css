@@ -95,12 +95,14 @@
 
 .resulttitle{
   width: 96%;
+  font-size: 0.8rem;
 }
 
 .bmiresulttext{
   width: 96%;
   height: 25px;
   border-radius: 7px;
+  padding-left: 10px;
   border: 1px solid lightgray;
   margin-top: 5px;
 }

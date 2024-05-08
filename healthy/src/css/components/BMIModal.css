@@ -48,11 +48,13 @@
 }
 
 .bmimodaltitle {
+  margin-left: 8px;
   padding: 5px;
   font-weight: bold;
 }
 
 .bmiexplanation {
+  margin-left: 8px;
   padding: 0 5px 5px 5px;
   font-size: 0.8rem;
   color: gray;
@@ -72,6 +74,7 @@
 
 .sextext {
   margin: 0 10px;
+  font-size: 0.8rem;
 }
 
 .radioWrapper {
@@ -80,8 +83,11 @@
 }
 
 .radiomanWrapper, .radiowomanWrapper {
+  display: inline-flex;
+  align-items: center;
   margin: 5px;
   width: 50%;
+  font-size: 0.8rem;
 }
 
 /* 연도 */
@@ -94,14 +100,19 @@
   margin: 10px;
 }
 
+.yeartitle, .monthtitle, .daytitle {
+  font-size: 0.8rem;
+}
+
 .yearWrapper {
   width: 45%;
 }
 
 .yeartext {
   width: 100%;
-  margin-top: 10px;
-  height: 20px;
+  margin-top: 8px;
+  height: 30px;
+  padding-left: 10px;
   border-radius: 7px;
   border: 1px solid lightgray;
 }
@@ -112,9 +123,10 @@
 }
 
 .monthselect {
-  margin-top: 10px;
+  margin-top: 8px;
   width: 100%;
-  height: 25px;
+  height: 35px;
+  padding-left: 5px;
   border-radius: 7px;
   border: 1px solid lightgray;
 }
@@ -124,9 +136,10 @@
 }
 
 .dayselect {
-  margin-top: 10px;
-  height: 25px;
+  margin-top: 8px;
+  height: 35px;
   width: 100%;
+  padding-left: 5px;
   border-radius: 7px;
   border: 1px solid lightgray;
 }
@@ -135,6 +148,7 @@
 .heightandweightWrapper {
   display: flex;
   justify-content: space-around;
+  padding-bottom: 8px;
 }
 
 .heightWrapper, .weightWrapper {
@@ -152,12 +166,14 @@
 
 .heighttitle, .weighttitle {
   margin: 5px 2px;
+  font-size: 0.8rem;
 }
 
 .heighttext, .weighttext {
   width: 100%;
-  height: 25px;
+  height: 30px;
   border-radius: 7px;
+  padding-left: 10px;
   border: 1px solid lightgray;
 }
 
