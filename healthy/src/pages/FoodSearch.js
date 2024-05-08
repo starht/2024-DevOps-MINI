@@ -1,3 +1,4 @@
+// FoodSearch.js
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import FoodCardFull from "../components/FoodCardFull";
@@ -7,17 +8,18 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import db from "../assets/json/db.json";
 import Loading from "../components/Loading";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function FoodSearch() {
   const [foods, setFoods] = useState([]);
-  const [tablefoods, settableFoods] = useState([]);
+  const [tableFoods, setTableFoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchResults, setSearchResults] = useState([]);
 
-  // 추천음식
   useEffect(() => {
     getFoods();
+    getTableFoods();
   }, []);
 
   const getFoods = async () => {
@@ -57,45 +59,46 @@ function FoodSearch() {
     }
   };
 
-  //테이블
-  let tabletarget = "";
-
-  if (tabletarget === "") {
-  } else {
-    tabletarget = "/RCP_NM=" + tabletarget;
-  }
-
   const getTableFoods = async () => {
     try {
       const response = await fetch(
-        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000${tabletarget}`
+        `https://openapi.foodsafetykorea.go.kr/api/${process.env.REACT_APP_FOOD_KEY}/COOKRCP01/json/1/1000`
       );
       if (!response.ok) {
-        throw new Error("failed to fetch");
+        throw new Error("Failed to fetch");
       }
       const json = await response.json();
-      settableFoods(json.COOKRCP01.row);
+      setTableFoods(json.COOKRCP01.row);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
-  useEffect(() => {
-    Promise.all([getFoods(), getTableFoods()]).then(() => setLoading(false));
-  }, []);
+  const ramenPerPage = 10;
+  const currentPageLast = currentPage * ramenPerPage;
+  const currentPageFirst = currentPageLast - ramenPerPage;
+  const currentTableFoods = tableFoods.slice(currentPageFirst, currentPageLast);
+  const pageNumber = Math.ceil(tableFoods.length / ramenPerPage);
 
-  // 페이지네이션
-  const ramenPerPage = 10; // 페이지당 리스트 개수
-  const currentPageLast = currentPage * ramenPerPage; // 현재 페이지의 처음
-  const currentPageFirst = currentPageLast - ramenPerPage; /// 현재 페이지의 끝
-  const currentTableFoods = tablefoods.slice(currentPageFirst, currentPageLast); // 현재 페이지의 음식 목록
-  const pageNumber = Math.ceil(tablefoods.length / ramenPerPage); // 총 페이지 수
-
+  const handleSearch = (query, type) => {
+    console.log("검색어:", query);
+    console.log("검색 유형:", type);
+    searchFoods(query);
+  };
   const handleChange = (event, value) => {
     setCurrentPage(value);
   };
 
-  //상세영양정보 함수
+  const searchFoods = (searchQuery) => {
+    const filteredResults = tableFoods.filter((food) =>
+      food.RCP_NM.includes(searchQuery)
+    );
+    setSearchResults(filteredResults);
+    console.log(searchResults);
+  };
+
   const segmentStyle = (value, color) => {
     return {
       flex: value,
@@ -109,7 +112,7 @@ function FoodSearch() {
         <Loading />
       ) : (
         <div>
-          <Navbar />
+          <Navbar onSearch={handleSearch} />
           <div className="contentWrapper">
             <div className="FoodrecommendWrapper">
               <div className="recommendtitle">
@@ -141,44 +144,119 @@ function FoodSearch() {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentTableFoods.map((tablefood, index) => (
-                    <tr className="tablecontent" key={index}>
-                      <td>
-                      <Link className="link" to={`/detail/${tablefood.RCP_NM}`}>
-                          {tablefood.RCP_NM}
-                      </Link>
-                      </td>
-                      <td>
-                        <Link className="link" to={`/detail/${tablefood.RCP_NM}`}>
-                        {tablefood.INFO_ENG} Kcal
-                        </Link>
-                      </td>
-                      <td className="colorbarwrapper">
-                      <Link className="link" to={`/detail/${tablefood.RCP_NM}`}>
-                        <div className="color-bar">
-                          <div
-                            className="car-color-segment"
-                            style={segmentStyle(tablefood.INFO_CAR, "#3498db")}
-                          >
-                            {tablefood.INFO_CAR}
-                          </div>
-                          <div
-                            className="pro-color-segment"
-                            style={segmentStyle(tablefood.INFO_PRO, "#2ecc71")}
-                          >
-                            {tablefood.INFO_PRO}
-                          </div>
-                          <div
-                            className="fat-color-segment"
-                            style={segmentStyle(tablefood.INFO_FAT, "#ff9ff3")}
-                          >
-                            {tablefood.INFO_FAT}
-                          </div>
-                        </div>
-                        </Link>
-                      </td>
-                    </tr>
-                  ))}
+                  {searchResults.length > 0
+                    ? searchResults.map((result, index) => (
+                        <tr className="tablecontent" key={index}>
+                          <td>
+                            <Link
+                              className="link"
+                              to={`/detail/${result.RCP_NM}`}
+                            >
+                              {result.RCP_NM}
+                            </Link>
+                          </td>
+                          <td>
+                            <Link
+                              className="link"
+                              to={`/detail/${result.RCP_NM}`}
+                            >
+                              {result.INFO_ENG} Kcal
+                            </Link>
+                          </td>
+                          <td className="colorbarwrapper">
+                            <Link
+                              className="link"
+                              to={`/detail/${result.RCP_NM}`}
+                            >
+                              <div className="color-bar">
+                                <div
+                                  className="car-color-segment"
+                                  style={segmentStyle(
+                                    result.INFO_CAR,
+                                    "#3498db"
+                                  )}
+                                >
+                                  {result.INFO_CAR}
+                                </div>
+                                <div
+                                  className="pro-color-segment"
+                                  style={segmentStyle(
+                                    result.INFO_PRO,
+                                    "#2ecc71"
+                                  )}
+                                >
+                                  {result.INFO_PRO}
+                                </div>
+                                <div
+                                  className="fat-color-segment"
+                                  style={segmentStyle(
+                                    result.INFO_FAT,
+                                    "#ff9ff3"
+                                  )}
+                                >
+                                  {result.INFO_FAT}
+                                </div>
+                              </div>
+                            </Link>
+                          </td>
+                        </tr>
+                      ))
+                    : currentTableFoods.map((tablefood, index) => (
+                        <tr className="tablecontent" key={index}>
+                          <td>
+                            <Link
+                              className="link"
+                              to={`/detail/${tablefood.RCP_NM}`}
+                            >
+                              {tablefood.RCP_NM}
+                            </Link>
+                          </td>
+                          <td>
+                            <Link
+                              className="link"
+                              to={`/detail/${tablefood.RCP_NM}`}
+                            >
+                              {tablefood.INFO_ENG} Kcal
+                            </Link>
+                          </td>
+                          <td className="colorbarwrapper">
+                            <Link
+                              className="link"
+                              to={`/detail/${tablefood.RCP_NM}`}
+                            >
+                              <div className="color-bar">
+                                <div
+                                  className="car-color-segment"
+                                  style={segmentStyle(
+                                    tablefood.INFO_CAR,
+                                    "#3498db"
+                                  )}
+                                >
+                                  {tablefood.INFO_CAR}
+                                </div>
+                                <div
+                                  className="pro-color-segment"
+                                  style={segmentStyle(
+                                    tablefood.INFO_PRO,
+                                    "#2ecc71"
+                                  )}
+                                >
+                                  {tablefood.INFO_PRO}
+                                </div>
+                                <div
+                                  className="fat-color-segment"
+                                  style={segmentStyle(
+                                    tablefood.INFO_FAT,
+                                    "#ff9ff3"
+                                  )}
+                                >
+                                  {tablefood.INFO_FAT}
+                                </div>
+                              </div>
+                            </Link>
+                          </td>
+                        </tr>
+                      ))}
                 </tbody>
               </table>
             </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/pages/Main.css";
 import ExerciseCard from "../components/ExerciseCard";
 import FoodCardLeft from "../components/FoodCardLeft";
@@ -13,6 +14,7 @@ function Main() {
   const [foods, setFoods] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [loginshow, setLoginshow] = useState([false]);
+  const navigate = useNavigate();
 
   // login modal 함수
   const loginClose = () => setLoginshow(false);
@@ -103,9 +105,15 @@ function Main() {
     }
   };
 
+  const handleSearch = (query) => {
+    console.log("검색어:", query);
+    navigate(`/foodsearch?query=${query}`); // 검색 결과 페이지로 이동합니다.
+  };
+
+
   return (
     <div>
-      <Navbar loginShow={loginShow}/>
+      <Navbar onSearch={handleSearch} loginShow={loginShow}/>
       <LoginModal loginShow={loginShow} loginClose={loginClose} loginshow={loginshow}/>
       <div className="banner-container">
         <img className="banner" src={banner} />
