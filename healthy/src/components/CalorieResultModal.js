@@ -29,7 +29,7 @@ function CalorieResultModal({ calresShow, calresClose, calresshow}) {
       >
         <div className="calresmodalheader">
           <img src={Checked} className="resultcheckicon" alt="" />
-          <div className="calresmodaltitle">칼로리 처방 받기</div>
+          <div className="calresmodaltitle">칼로리 처방 결과</div>
           <div className="calresresultexplanation">
             체중감량 시 운동으로 소모하는 열량을 늘리고 섭취량을 줄이는 것을
             병행하는 것을 권장합니다.

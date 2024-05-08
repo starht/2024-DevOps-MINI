@@ -71,7 +71,7 @@
 .calresmodalbody input {
   border: 1px solid lightgray;
   border-radius: 7px;
-  height: 25px;
+  height: 30px;
 }
 
 .firstrow {
@@ -127,6 +127,7 @@
 .calextitle {
   width: 95%;
   margin: 5px;
+  font-size: 0.8rem;
 }
 
 .colorbarWrapper {
@@ -147,6 +148,9 @@
   border-radius: 0 10px 10px 0;
 }
 
+.goalmontitle, .nowkgtitle, .goalkgtitle, .goalintakecaltitle, .goalexcaltitle{
+  font-size: 0.8rem;
+}
 
 .exWrapper {
   display: flex;
@@ -154,7 +158,7 @@
 }
 
 .bmrex, .amex, .digenerex {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   padding: 5px;
 }
 
