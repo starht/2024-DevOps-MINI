@@ -1,0 +1,132 @@
+#bmiresultbackgroundoff {
+  width: 100%;
+  height: 100%;
+  background-color: lightgray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  display: none;
+}
+
+#bmiresultbackgroundon {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+}
+
+.bmiResultModalWrapper {
+  width: 600px;
+  position: fixed; 
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 30px gray;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#bmihide {
+  display: none;
+}
+
+#bmishow {
+  display: flex;
+}
+
+/* 헤더 */
+
+.bmiresultmodalheader {
+  padding: 15px 10px 0 10px;
+}
+
+.resultcheckicon {
+  width: 30px;
+  margin-bottom: 5px;
+  margin-left: 3px;
+}
+
+.bmiresultmodaltitle {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.bmiresultexplanation {
+  padding: 0 5px 5px 5px;
+  font-size: 0.8rem;
+  color: gray;
+}
+
+
+/* 바디 */
+
+.bmiresultmodalbody {
+  padding: 10px 10px 0 10px;
+}
+
+.eximgWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bmiexplanationphoto {
+  width: 98%;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgb(210, 210, 210);
+  margin: 5px 0 10px 0;
+}
+
+.bmiresultWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.resulttitle{
+  width: 96%;
+}
+
+.bmiresulttext{
+  width: 96%;
+  height: 25px;
+  border-radius: 7px;
+  border: 1px solid lightgray;
+  margin-top: 5px;
+}
+
+/* 풋 */
+
+.bmiresultfooter {
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bmiresultcancelbtn, .bmiresultsavebtn {
+  width: 47%;
+  height: 35px;
+}
+
+.bmiresultcancelbtn {
+  border: 1px solid lightgray;
+  background-color: #fff;
+  border-radius: 7px;
+}
+
+.bmiresultsavebtn {
+  border: none;
+  background-color: #1F95AF;
+  color: white;
+  border-radius: 7px;
+} 
