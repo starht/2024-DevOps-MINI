@@ -1,5 +1,6 @@
 // FoodSearch.js
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Navbar from "../components/Navbar";
 import FoodCardFull from "../components/FoodCardFull";
 import "../css/pages/FoodSearch.css";
@@ -25,14 +26,17 @@ function FoodSearch() {
   const currentPageLast = currentPage * ramenPerPage; // 현재 페이지의 처음
   const currentPageFirst = currentPageLast - ramenPerPage; // 현재 페이지의 끝
   const currentFoods = searchQuery ? searchResults : tableFoods;
-  const currentTableFoods = currentFoods.slice(currentPageFirst, currentPageLast); // 현재 페이지의 운동 목록
+  const currentTableFoods = currentFoods.slice(
+    currentPageFirst,
+    currentPageLast
+  ); // 현재 페이지의 운동 목록
   const pageNumber = Math.ceil(currentFoods.length / ramenPerPage); // 총 페이지 수
 
   useEffect(() => {
     getFoods();
     getTableFoods();
   }, []);
-  
+
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const query = searchParams.get("query");
@@ -57,13 +61,7 @@ function FoodSearch() {
 
   const getFoods = async () => {
     try {
-      let testData = JSON.parse(JSON.stringify(db));
-
-      const selectedTable = "foodlist";
-
-      const selectedData = {
-        [selectedTable]: testData[selectedTable],
-      };
+      const selectedData = await axios.get("http://localhost:4000/foodlist");
 
       const getRandomItems = (array, count) => {
         const shuffled = array.slice(0);
@@ -82,10 +80,7 @@ function FoodSearch() {
         return shuffled.slice(min);
       };
 
-      const selectedItems = getRandomItems(
-        Object.values(selectedData[selectedTable]),
-        5
-      );
+      const selectedItems = getRandomItems(Object.values(selectedData.data), 5);
       setFoods(selectedItems);
     } catch (error) {
       console.log(error);

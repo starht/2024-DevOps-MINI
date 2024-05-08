@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import "../css/pages/Main.css";
 import ExerciseCard from "../components/ExerciseCard";
 import FoodCardLeft from "../components/FoodCardLeft";
@@ -10,7 +10,7 @@ import banner from "../assets/images/배너.png";
 import MiniCalendar from "../components/MiniCalendar";
 import LoginModal from "../components/LoginModal";
 import BMIModal from "../components/BMIModal";
-import BMIResultModal from "../components/BMIResultModal"
+import BMIResultModal from "../components/BMIResultModal";
 import CalorieModal from "../components/CalorieModal";
 import CalorieResultModal from "../components/CalorieResultModal";
 
@@ -42,7 +42,7 @@ function Main() {
   //bmi modal 함수
   const bmiClose = () => setBmishow(false);
   const bmiShow = () => setBmishow(true);
-  
+
   //bmi result modal 함수
   const bmiresultClose = () => setBmiResultshow(false);
   const bmiresultShow = () => setBmiResultshow(true);
@@ -62,7 +62,7 @@ function Main() {
 
   const getFoods = async () => {
     try {
-      const selectedData = await axios.get('http://localhost:4000/foodlist');
+      const selectedData = await axios.get("http://localhost:4000/foodlist");
 
       const getRandomItems = (array, count) => {
         const shuffled = array.slice(0);
@@ -81,10 +81,7 @@ function Main() {
         return shuffled.slice(min);
       };
 
-      const selectedItems = getRandomItems(
-        Object.values(selectedData.data),
-        2
-      );
+      const selectedItems = getRandomItems(Object.values(selectedData.data), 2);
       setFoods(selectedItems);
     } catch (error) {
       console.log(error);
@@ -98,7 +95,9 @@ function Main() {
 
   const getExercises = async () => {
     try {
-      const selectedData = await axios.get('http://localhost:4000/exerciselist');
+      const selectedData = await axios.get(
+        "http://localhost:4000/exerciselist"
+      );
 
       const getRandomItems = (array, count) => {
         const shuffled = array.slice(0);
@@ -117,10 +116,7 @@ function Main() {
         return shuffled.slice(min);
       };
 
-      const selectedItems = getRandomItems(
-        Object.values(selectedData.data),
-        2
-      );
+      const selectedItems = getRandomItems(Object.values(selectedData.data), 2);
       setExercises(selectedItems);
     } catch (error) {
       console.log(error);
@@ -129,12 +125,34 @@ function Main() {
 
   return (
     <div>
-      <Navbar onSearch={handleSearch} loginShow={loginShow}/>
-      <LoginModal loginShow={loginShow} loginClose={loginClose} loginshow={loginshow}/>
-      <BMIModal bmiShow={bmiShow} bmiClose={bmiClose} bmishow={bmishow} bmiresultShow={bmiresultShow} />
-      <CalorieModal calShow={calShow} calClose={calClose} calshow={calshow} calresultShow={calresultShow}/>
-      <BMIResultModal bmiresultShow={bmiresultShow} bmiresultClose={bmiresultClose} bmiresultshow={bmiresultshow}/>
-      <CalorieResultModal calresShow={calresultShow} calresClose={calresultClose} calresshow={calresultshow} />
+      <Navbar onSearch={handleSearch} loginShow={loginShow} />
+      <LoginModal
+        loginShow={loginShow}
+        loginClose={loginClose}
+        loginshow={loginshow}
+      />
+      <BMIModal
+        bmiShow={bmiShow}
+        bmiClose={bmiClose}
+        bmishow={bmishow}
+        bmiresultShow={bmiresultShow}
+      />
+      <CalorieModal
+        calShow={calShow}
+        calClose={calClose}
+        calshow={calshow}
+        calresultShow={calresultShow}
+      />
+      <BMIResultModal
+        bmiresultShow={bmiresultShow}
+        bmiresultClose={bmiresultClose}
+        bmiresultshow={bmiresultshow}
+      />
+      <CalorieResultModal
+        calresShow={calresultShow}
+        calresClose={calresultClose}
+        calresshow={calresultshow}
+      />
       <div className="banner-container">
         <img className="banner" src={banner} />
         <div className="banner-text-wrap">
@@ -145,9 +163,13 @@ function Main() {
       </div>
       <div className="cal-container">
         <div className="cal-wrapper">
-          <button className="cal-btn" onClick={calShow}>칼로리 처방</button>
+          <button className="cal-btn" onClick={calShow}>
+            칼로리 처방
+          </button>
           <div className="v-line"></div>
-          <button className="cal-btn" onClick={bmiShow}>BMI 계산</button>
+          <button className="cal-btn" onClick={bmiShow}>
+            BMI 계산
+          </button>
         </div>
       </div>
       <div className="cards-container">
