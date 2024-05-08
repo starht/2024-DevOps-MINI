@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../css/pages/MyPage.css"
 import Navbar from "../components/Navbar";
 import LoginModal from "../components/LoginModal";
 import foodicon from "../assets/images/foodicon.png";
@@ -36,6 +37,7 @@ function MyPage() {
       />
       <div className="calendarinputWrapper">
         {/* calendar */}
+        <div className="right">
         <div className="inputWrapper">
           <div className="inputbuttonWrapper">
             <div className="foodinput"></div>
@@ -50,15 +52,20 @@ function MyPage() {
             <div className="mpcalvalue">1000kcal</div>
           </div>
         </div>
+        </div>
       </div>
       <div className="onGoing">
         <div className="ongoingGoal">
           <div className="ongoingGoaltitle">
             <img src={heart} className="heart" alt="" />
+            <div className="actualtitle">
+              현재 진행중인 목표
+            </div>
+          </div>
             <div className="actualgoal">
               <span className="onspan">2</span>개월 동안 <span className="onspan">5kg</span>감량
             </div>
-          </div>
+            </div>
           <div className="monthgoalWrapper">
             <div className="monthgoalkcal">
               이번 달에 <span className="monthspan">19500kcal</span>를 소모해야 합니다.
@@ -67,7 +74,6 @@ function MyPage() {
               1일마다 <span className="monthspan">650kcal</span>를 소모해야 해요!
             </div>
           </div>
-        </div>
       </div>
       <div className="favfoodWrapper">
         <div className="favtitle">
