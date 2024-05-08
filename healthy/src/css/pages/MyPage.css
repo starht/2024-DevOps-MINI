@@ -31,6 +31,7 @@
   height: 50px;
   border-radius: 25px;
   background-color: #fcff46;
+  cursor: pointer;
 }
 
 .exerinput{
@@ -41,6 +42,7 @@
   height: 50px;
   border-radius: 25px;
   background-color: #fcff46;
+  cursor: pointer;
 }
 
 .monthlyintake, .monthlyexer {

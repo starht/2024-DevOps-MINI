@@ -7,10 +7,22 @@ import LoginModal from "../components/LoginModal";
 import foodicon from "../assets/images/foodicon.png";
 import exicon from "../assets/images/fitness.png"
 import heart from "../assets/images/heart.png"
+import ExCalModal from "../components/ExCalModal";
+import FoodCalModal from "../components/FoodCalModal";
 
 function MyPage() {
   const [loginshow, setLoginshow] = useState(false);
+  const [excalshow, setExCalshow] = useState(false);
+  const [foodcalshow, setFoodCalshow] = useState(false);
   const navigate = useNavigate();
+
+  // login modal 함수
+  const excalClose = () => setExCalshow(false);
+  const excalShow = () => setExCalshow(true);
+
+  // login modal 함수
+  const foodcalClose = () => setFoodCalshow(false);
+  const foodcalShow = () => setFoodCalshow(true);
 
   // 검색
   const handleSearch = (query, type) => {
@@ -35,13 +47,15 @@ function MyPage() {
         loginClose={loginClose}
         loginshow={loginshow}
       />
+      <FoodCalModal foodcalshow={foodcalshow} foodcalShow={foodcalShow} foodcalClose={foodcalClose}/>
+      <ExCalModal excalshow={excalshow} excalShow={excalShow} excalClose={excalClose}/>
       <div className="calendarinputWrapper">
         {/* calendar */}
         <div className="right">
         <div className="inputWrapper">
           <div className="inputbuttonWrapper">
-            <div className="foodinput"></div>
-            <div className="exerinput"></div>
+            <div className="foodinput" onClick={foodcalShow}></div>
+            <div className="exerinput" onClick={excalShow}></div>
           </div>
           <div className="monthlyintake">
             <div className="mpcaltitle">5월 섭취 칼로리 총합</div>
