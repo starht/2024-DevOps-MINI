@@ -161,6 +161,13 @@
       "foodname": "다이어트국수",
       "kcal": "36.9",
       "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00386_2.png"
+    },
+    {
+      "id": "3b7f",
+      "userid": 2,
+      "foodname": "냉토마토파스타",
+      "kcal": "202.3",
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00510_2.png"
     }
   ],
   "exercisefavorite": [
