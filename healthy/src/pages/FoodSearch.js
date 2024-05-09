@@ -205,7 +205,7 @@ function FoodSearch() {
             <div className="FoodrecommendWrapper">
               <div className="recommendtitle">
                 <img alt="" src={foodicon} className="iconimg" />
-                <p className="text">오늘의 추천음식</p>
+                <p className="text highlight">오늘의 추천음식</p>
               </div>
               <div className="FoodCardWrapper">
                 {foods.map((food, index) => (

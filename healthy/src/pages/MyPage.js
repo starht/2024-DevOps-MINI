@@ -295,7 +295,7 @@ function MyPage() {
       <div className="favfoodWrapper">
         <div className="favtitle">
           <img alt="" src={foodicon} className="mpicon" />
-          <p className="mptext">즐겨찾는 음식</p>
+          <p className="mptext highlight">즐겨찾는 음식</p>
         </div>
         <div className="favfoodcardWrapper">
           {favfoods
@@ -342,7 +342,7 @@ function MyPage() {
         <div className="favexWrapper">
           <div className="favtitle">
             <img alt="" src={exicon} className="mpicon" />
-            <p className="mptext">즐겨찾는 운동</p>
+            <p className="mptext highlight">즐겨찾는 운동</p>
           </div>
           <div className="favexcardWrapper">
             <div className="midexcardWrapper">
