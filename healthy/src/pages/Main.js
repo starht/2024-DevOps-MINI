@@ -23,6 +23,13 @@ function Main() {
   const [bmiresultshow, setBmiResultshow] = useState(false);
   const [bmiResult, setBMIResult] = useState("");
   const [calresultshow, setCalResultshow] = useState(false);
+  const [bmrResult, setBmrResult] = useState("");
+  const [amrResult, setAmrResult] = useState("");
+  const [calResult, setCalResult] = useState("");
+  const [tdeeResult, setTdeeResult] = useState("");
+  const [dur, setDur] = useState("");
+  const [weight, setWeight] = useState("");
+  const [wishweight, setWishWeight] = useState("");
   const navigate = useNavigate();
 
   // 검색
@@ -60,6 +67,42 @@ function Main() {
   //칼로리 결과 모달
   const calresultClose = () => setCalResultshow(false);
   const calresultShow = () => setCalResultshow(true);
+
+  const handleBmrResult = (result) => {
+    setBmrResult(result); 
+    console.log(result)
+  };
+
+  const handleAmrResult = (result) => {
+    setAmrResult(result); 
+    console.log(result)
+  };
+
+  const handleCalResult = (result) => {
+    setCalResult(result); 
+    console.log(result)
+  };
+
+  const handleTdeeResult = (result) => {
+    setTdeeResult(result); 
+    console.log(result)
+  };
+
+  const handleDur = (result) => {
+    setDur(result);
+    console.log(result)
+  };
+
+  const handleWeight = (result) => {
+    setWeight(result);
+    console.log(result)
+  };
+
+  const handleWishWeight = (result) => {
+    setWishWeight(result);
+    console.log(result)
+  };
+  
 
   // 추천음식
   useEffect(() => {
@@ -149,7 +192,14 @@ function Main() {
         calClose={calClose}
         calshow={calshow}
         calresultShow={calresultShow}
-      />
+        onBmrResult={handleBmrResult}
+        onAmrResult={handleAmrResult}
+        onCalResult={handleCalResult}
+        onTDEE={handleTdeeResult}
+        onDur={handleDur}
+        onWeight={handleWeight}
+        onWishWeight={handleWishWeight}
+        />
       <BMIResultModal
         bmiresultShow={bmiresultShow}
         bmiresultClose={bmiresultClose}
@@ -160,6 +210,13 @@ function Main() {
         calresShow={calresultShow}
         calresClose={calresultClose}
         calresshow={calresultshow}
+        bmrResult={bmrResult}
+        amrResult={amrResult}
+        calResult={calResult}
+        tdeeResult={tdeeResult}
+        dur={dur}
+        weight={weight}
+        wishweight={wishweight}
       />
       <div className="banner-container">
         <img className="banner" src={banner} />

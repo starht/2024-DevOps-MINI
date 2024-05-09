@@ -98,11 +98,12 @@
 }
 
 .goalexcalWrapper, .goalintakecalWrapper {
-  width: 45%;
+  width: 48%;
 }
 
 .goalexcal, .goalintakecal {
   width: 100%;
+  padding-left: 10px;
 }
 
 .thridrow {
@@ -110,6 +111,14 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+
+.goalmonWrapper, .nowkgWrapper, .goalkgWrapper{
+  width: 30.5%;
+}
+
+.goalmon, .nowkg, .goalkg{
+  padding-left: 10px;
 }
 
 .barbox {
@@ -136,15 +145,25 @@
   width: 80%;
 }
 
+.tdee-result{
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #DE415D
+}
+
 .bmrbar, .ambar, .digenerbar {
-  height: 20px;
+  height: fit-content;
+  font-size: 0.6rem;
+  text-align: center;
+  padding: 5px;
+  color: rgba(42, 42, 42, 0.716);
 }
 
 .bmrbar {
   border-radius: 10px 0 0 10px;
 }
 
-.digenerbar {
+.ambar {
   border-radius: 0 10px 10px 0;
 }
 
@@ -155,11 +174,39 @@
 .exWrapper {
   display: flex;
   justify-content: center;
+  justify-content: center;
 }
 
-.bmrex, .amex, .digenerex {
+.bmrex, .amex {
   font-size: 0.7rem;
   padding: 5px;
+  text-align: center;
+  margin: 0px 10px;
+}
+
+.bmrex-box{
+  width: 10px;
+  height: 10px;
+  background-color: #D7ECD5;
+  margin-right: 7px;
+}
+.bmrex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+}
+.amex-box{
+  width: 10px;
+  height: 10px;
+  background-color: #FFD980;
+  margin-right: 7px;
+}
+.amex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
 }
 
 
