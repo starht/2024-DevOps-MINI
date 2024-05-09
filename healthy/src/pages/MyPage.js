@@ -9,20 +9,30 @@ import exicon from "../assets/images/fitness.png"
 import heart from "../assets/images/heart.png"
 import ExCalModal from "../components/ExCalModal";
 import FoodCalModal from "../components/FoodCalModal";
+import BigCalendar from "../components/BigCalendar";
+import ExerciseCard from "../components/ExerciseCard";
+import FoodCardLeft from "../components/FoodCardLeft";
+import FoodCardRight from "../components/FoodCardRight";
 
 function MyPage() {
   const [loginshow, setLoginshow] = useState(false);
   const [excalshow, setExCalshow] = useState(false);
   const [foodcalshow, setFoodCalshow] = useState(false);
+  const [foods, setFoods] = useState([]);
+  const [exercises, setExercises] = useState([]);
   const navigate = useNavigate();
 
-  // login modal 함수
+  // 운동 칼로리 입력 함수
   const excalClose = () => setExCalshow(false);
   const excalShow = () => setExCalshow(true);
 
-  // login modal 함수
+  // 음식 칼로리 입력 함수
   const foodcalClose = () => setFoodCalshow(false);
   const foodcalShow = () => setFoodCalshow(true);
+
+  // login modal 함수
+  const loginClose = () => setLoginshow(false);
+  const loginShow = () => setLoginshow(true);
 
   // 검색
   const handleSearch = (query, type) => {
@@ -35,9 +45,34 @@ function MyPage() {
     }
   };
 
-  // login modal 함수
-  const loginClose = () => setLoginshow(false);
-  const loginShow = () => setLoginshow(true);
+  const getFoods = async () => {
+    try {
+      const selectedData = await axios.get("http://localhost:4000/favfood");
+
+      const getRandomItems = (array, count) => {
+        const shuffled = array.slice(0);
+        let i = array.length;
+        const min = i - count;
+        let temp;
+        let index;
+
+        while (i-- > min) {
+          index = Math.floor((i + 1) * Math.random());
+          temp = shuffled[index];
+          shuffled[index] = shuffled[i];
+          shuffled[i] = temp;
+        }
+
+        return shuffled.slice(min);
+      };
+
+      const selectedItems = getRandomItems(Object.values(selectedData.data), 2);
+      setFoods(selectedItems);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   return (
     <div>
@@ -50,7 +85,9 @@ function MyPage() {
       <FoodCalModal foodcalshow={foodcalshow} foodcalShow={foodcalShow} foodcalClose={foodcalClose}/>
       <ExCalModal excalshow={excalshow} excalShow={excalShow} excalClose={excalClose}/>
       <div className="calendarinputWrapper">
-        {/* calendar */}
+        <div className="left">
+        <BigCalendar className="bigcalendar"/>
+        </div>
         <div className="right">
         <div className="inputWrapper">
           <div className="inputbuttonWrapper">
