@@ -154,6 +154,13 @@
       "foodname": "된장국",
       "kcal": "20",
       "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00037_2.png"
+    },
+    {
+      "id": "813a",
+      "userid": 2,
+      "foodname": "다이어트국수",
+      "kcal": "36.9",
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00386_2.png"
     }
   ],
   "exercisefavorite": [
