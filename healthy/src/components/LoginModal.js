@@ -5,17 +5,17 @@ import "../css/components/LoginModal.css";
 
 function LoginModal({ loginShow, loginClose, loginshow }) {
   const { login } = useAuth();
-  const [id, setId] = useState("");
+  const [userid, setUserId] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:4000/userInfo", {
-        id,
+        userid,
         password
       });
-      if (id === response.data.id && password === response.data.password) {
-        login();
+      if (response.data && response.data.userid === userid  && response.data.password === password) {
+        login(userid, password); // id와 password를 전달하여 로그인
         console.log("로그인 성공:", response.data);
       }
       loginClose();
@@ -47,7 +47,7 @@ function LoginModal({ loginShow, loginClose, loginshow }) {
               type="text"
               className="idtext"
               placeholder="아이디를 입력하세요."
-              onChange={(e) => setId(e.target.value)}
+              onChange={(e) => setUserId(e.target.value)}
             />
           </div>
           <div className="pwWrapper">

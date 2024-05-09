@@ -1,390 +1,365 @@
 {
   "userInfo": [
     {
-      "userid": 1,
-      "id": "test1",
+      "id": 1,
+      "userid": "test1",
       "password": "test1",
       "name": "test1",
-      "bmi": null
+      "bmi": "24.22"
     },
     {
-      "userid": 2,
-      "id": "test2",
+      "id": 2,
+      "userid": "test2",
       "password": "test2",
       "name": "test2",
       "bmi": null
     },
     {
       "id": "test1",
-      "password": "tedt1"
+      "password": "test1",
+      "bmi": "17.30"
     },
     {
-      "id": "test1",
+      "id": "bc5b",
+      "userid": "test3",
+      "password": "test3"
+    },
+    {
+      "id": "da3b",
+      "userid": "test1",
       "password": "test1"
     },
     {
-      "id": "test1",
-      "password": "test1"
+      "id": "66ea",
+      "userid": "test5",
+      "password": "test5"
     }
   ],
   "calories": [],
   "burncalorie": [
     {
-      "burnid": 1,
+      "id": 1,
       "userid": 1,
       "date": "2024-05-01",
-      "calorie": 100,
-      "id": "9314"
+      "calorie": 100
     },
     {
-      "burnid": 2,
+      "id": 2,
       "userid": 1,
       "date": "2024-05-02",
-      "calorie": 150,
-      "id": "5c97"
+      "calorie": 150
     },
     {
-      "burnid": 3,
+      "id": 3,
       "userid": 1,
       "date": "2024-05-04",
-      "calorie": 300,
-      "id": "89f1"
+      "calorie": 300
     },
     {
-      "burnid": 4,
+      "id": 4,
       "userid": 2,
       "date": "2024-05-03",
-      "calorie": 100,
-      "id": "b561"
+      "calorie": 100
     }
   ],
   "intakecalorie": [
     {
-      "intakeid": 1,
+      "id": 1,
       "userid": 1,
       "date": "2024-05-01",
       "breakfast": 200,
       "lunch": 300,
       "dinner": null,
-      "snack": 150,
-      "id": "17f8"
+      "snack": 150
     },
     {
-      "intakeid": 2,
+      "id": 2,
       "userid": 1,
       "date": "2024-05-02",
       "breakfast": null,
       "lunch": 500,
       "dinner": 600,
-      "snack": null,
-      "id": "68c5"
+      "snack": null
     },
     {
-      "intakeid": 3,
+      "id": 3,
       "userid": 1,
       "date": "2024-05-03",
       "breakfast": 200,
       "lunch": 300,
       "dinner": 300,
-      "snack": 200,
-      "id": "9b54"
+      "snack": 200
     },
     {
-      "intakeid": 4,
+      "id": 4,
       "userid": 1,
       "date": "2024-05-05",
       "breakfast": 150,
       "lunch": 600,
       "dinner": 400,
-      "snack": 500,
-      "id": "0294"
+      "snack": 500
     },
     {
-      "intakeid": 5,
+      "id": 5,
       "userid": 2,
       "date": "2024-05-04",
       "breakfast": 400,
       "lunch": 400,
       "dinner": 400,
-      "snack": 300,
-      "id": "cbb5"
+      "snack": 300
     },
     {
-      "intakeid": 6,
+      "id": 6,
       "userid": 2,
       "date": "2024-05-06",
       "breakfast": 300,
       "lunch": 600,
       "dinner": 800,
-      "snack": null,
-      "id": "98cd"
+      "snack": null
     }
   ],
   "foodfavorite": [
     {
-      "favoriteid": 1,
+      "id": 1,
       "userid": 1,
       "foodname": "블랙빈 곤약국수",
       "kcal": "54.3",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00113_2.png",
-      "id": "8fd5"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00113_2.png"
     },
     {
-      "favoriteid": 2,
+      "id": 2,
       "userid": 1,
       "foodname": "닭가슴살 브로콜리 만두",
       "kcal": "123.2",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00114_2.png",
-      "id": "4627"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00114_2.png"
     },
     {
-      "favoriteid": 3,
+      "id": 3,
       "userid": 1,
       "foodname": "함초 냉이 국수",
       "kcal": "35.8",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00131_2.png",
-      "id": "ded1"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00131_2.png"
     },
     {
-      "favoriteid": 4,
+      "id": 4,
       "userid": 1,
       "foodname": "토마토 미소 된장국",
       "kcal": "46.85",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/20190409/20190409055823_1554800303065.jpg",
-      "id": "d669"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/20190409/20190409055823_1554800303065.jpg"
     },
     {
-      "favoriteid": 5,
+      "id": 5,
       "userid": 2,
       "foodname": "된장국",
       "kcal": "20",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00037_2.png",
-      "id": "a704"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00037_2.png"
     }
   ],
   "exercisefavorite": [
     {
-      "favoriteid": 1,
+      "id": 1,
       "userid": 1,
       "단위체중당에너지소비량": "7.0",
       "운동명": "싸이클",
       "youtubeId": "weOd8r9JHdU",
-      "picture": "https://img.youtube.com/vi/weOd8r9JHdU/maxresdefault.jpg",
-      "id": "d69f"
+      "picture": "https://img.youtube.com/vi/weOd8r9JHdU/maxresdefault.jpg"
     },
     {
-      "favoriteid": 2,
+      "id": 2,
       "userid": 1,
       "단위체중당에너지소비량": "3.8",
       "운동명": "플랭크",
       "youtubeId": "v54Jtmi2BwU",
-      "picture": "https://img.youtube.com/vi/v54Jtmi2BwU/maxresdefault.jpg",
-      "id": "4af3"
+      "picture": "https://img.youtube.com/vi/v54Jtmi2BwU/maxresdefault.jpg"
     },
     {
-      "favoriteid": 3,
+      "id": 3,
       "userid": 1,
       "단위체중당에너지소비량": "8.0",
       "운동명": "타바타 운동",
       "youtubeId": "4EKo44DUvjg",
-      "picture": "https://img.youtube.com/vi/4EKo44DUvjg/maxresdefault.jpg",
-      "id": "d126"
+      "picture": "https://img.youtube.com/vi/4EKo44DUvjg/maxresdefault.jpg"
     },
     {
-      "favoriteid": 4,
+      "id": 4,
       "userid": 1,
       "단위체중당에너지소비량": "5.5",
       "운동명": "스텝박스",
       "youtubeId": "UNo9mBQu8jY",
-      "picture": "https://img.youtube.com/vi/UNo9mBQu8jY/maxresdefault.jpg",
-      "id": "f776"
+      "picture": "https://img.youtube.com/vi/UNo9mBQu8jY/maxresdefault.jpg"
     },
     {
-      "favoriteid": 5,
+      "id": 5,
       "userid": 2,
       "단위체중당에너지소비량": "3.8",
       "운동명": "플랭크",
       "youtubeId": "v54Jtmi2BwU",
-      "picture": "https://img.youtube.com/vi/v54Jtmi2BwU/maxresdefault.jpg",
-      "id": "039b"
+      "picture": "https://img.youtube.com/vi/v54Jtmi2BwU/maxresdefault.jpg"
     },
     {
-      "favoriteid": 6,
+      "id": 6,
       "userid": 2,
       "단위체중당에너지소비량": "5.5",
       "운동명": "사이드 런지",
       "youtubeId": "bGbL8VYiQi8",
-      "picture": "https://img.youtube.com/vi/bGbL8VYiQi8/maxresdefault.jpg",
-      "id": "6d51"
+      "picture": "https://img.youtube.com/vi/bGbL8VYiQi8/maxresdefault.jpg"
     },
     {
-      "favoriteid": 7,
+      "id": 7,
       "userid": 2,
       "단위체중당에너지소비량": "8.0",
       "운동명": "타바타 운동",
       "youtubeId": "4EKo44DUvjg",
-      "picture": "https://img.youtube.com/vi/4EKo44DUvjg/maxresdefault.jpg",
-      "id": "852a"
+      "picture": "https://img.youtube.com/vi/4EKo44DUvjg/maxresdefault.jpg"
     },
     {
-      "favoriteid": 8,
+      "id": 8,
       "userid": 2,
       "단위체중당에너지소비량": "5.5",
       "운동명": "스텝박스",
       "youtubeId": "UNo9mBQu8jY",
-      "picture": "https://img.youtube.com/vi/UNo9mBQu8jY/maxresdefault.jpg",
-      "id": "f4bc"
+      "picture": "https://img.youtube.com/vi/UNo9mBQu8jY/maxresdefault.jpg"
     }
   ],
   "exerciselist": [
     {
+      "id": 1,
       "단위체중당에너지소비량": "6.0",
       "운동명": "바벨 스쿼트",
       "youtubeId": "vQNFiMi0m9M",
-      "picture": "https://img.youtube.com/vi/vQNFiMi0m9M/maxresdefault.jpg",
-      "id": "abaf"
+      "picture": "https://img.youtube.com/vi/vQNFiMi0m9M/maxresdefault.jpg"
     },
     {
+      "id": 2,
       "단위체중당에너지소비량": "5.0",
       "운동명": "레그 레이즈",
       "youtubeId": "QpY6A0RhsKw",
-      "picture": "https://img.youtube.com/vi/QpY6A0RhsKw/maxresdefault.jpg",
-      "id": "6f1d"
+      "picture": "https://img.youtube.com/vi/QpY6A0RhsKw/maxresdefault.jpg"
     },
     {
+      "id": 3,
       "단위체중당에너지소비량": "5.5",
       "운동명": "사이드 런지",
       "youtubeId": "bGbL8VYiQi8",
-      "picture": "https://img.youtube.com/vi/bGbL8VYiQi8/maxresdefault.jpg",
-      "id": "1851"
+      "picture": "https://img.youtube.com/vi/bGbL8VYiQi8/maxresdefault.jpg"
     },
     {
+      "id": 4,
       "단위체중당에너지소비량": "7.0",
       "운동명": "싸이클",
       "youtubeId": "weOd8r9JHdU",
-      "picture": "https://img.youtube.com/vi/weOd8r9JHdU/maxresdefault.jpg",
-      "id": "1364"
+      "picture": "https://img.youtube.com/vi/weOd8r9JHdU/maxresdefault.jpg"
     },
     {
+      "id": 5,
       "단위체중당에너지소비량": "5.5",
       "운동명": "스텝박스",
       "youtubeId": "UNo9mBQu8jY",
-      "picture": "https://img.youtube.com/vi/UNo9mBQu8jY/maxresdefault.jpg",
-      "id": "cda9"
+      "picture": "https://img.youtube.com/vi/UNo9mBQu8jY/maxresdefault.jpg"
     },
     {
+      "id": 6,
       "단위체중당에너지소비량": "8.0",
       "운동명": "계단오르기",
       "youtubeId": "27zSEATjckA",
-      "picture": "https://img.youtube.com/vi/27zSEATjckA/maxresdefault.jpg",
-      "id": "6dd1"
+      "picture": "https://img.youtube.com/vi/27zSEATjckA/maxresdefault.jpg"
     },
     {
+      "id": 7,
       "단위체중당에너지소비량": "8.0",
       "운동명": "풋살",
       "youtubeId": "_Tp-7QV9Ees",
-      "picture": "https://img.youtube.com/vi/_Tp-7QV9Ees/maxresdefault.jpg",
-      "id": "c0b3"
+      "picture": "https://img.youtube.com/vi/_Tp-7QV9Ees/maxresdefault.jpg"
     },
     {
+      "id": 8,
       "단위체중당에너지소비량": "6.0",
       "운동명": "점프 스쿼트",
       "youtubeId": "spm9wmt6w8Q",
-      "picture": "https://img.youtube.com/vi/spm9wmt6w8Q/maxresdefault.jpg",
-      "id": "f3a3"
+      "picture": "https://img.youtube.com/vi/spm9wmt6w8Q/maxresdefault.jpg"
     },
     {
+      "id": 9,
       "단위체중당에너지소비량": "8.0",
       "운동명": "타바타 운동",
       "youtubeId": "4EKo44DUvjg",
-      "picture": "https://img.youtube.com/vi/4EKo44DUvjg/maxresdefault.jpg",
-      "id": "6f5c"
+      "picture": "https://img.youtube.com/vi/4EKo44DUvjg/maxresdefault.jpg"
     },
     {
+      "id": 10,
       "단위체중당에너지소비량": "7.8",
       "운동명": "복싱",
       "youtubeId": "O9w6KhKI-pM",
-      "picture": "https://img.youtube.com/vi/O9w6KhKI-pM/maxresdefault.jpg",
-      "id": "9f1f"
+      "picture": "https://img.youtube.com/vi/O9w6KhKI-pM/maxresdefault.jpg"
     },
     {
+      "id": 11,
       "단위체중당에너지소비량": "3.8",
       "운동명": "플랭크",
       "youtubeId": "v54Jtmi2BwU",
-      "picture": "https://img.youtube.com/vi/v54Jtmi2BwU/maxresdefault.jpg",
-      "id": "f14c"
+      "picture": "https://img.youtube.com/vi/v54Jtmi2BwU/maxresdefault.jpg"
     }
   ],
   "foodlist": [
     {
-      "listid": 1,
+      "id": 1,
       "foodname": "함초 냉이 국수",
       "kcal": "35.8",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00131_2.png",
-      "id": "e911"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00131_2.png"
     },
     {
-      "listid": 2,
+      "id": 2,
       "foodname": "닭가슴살 브로콜리 만두",
       "kcal": "123.2",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00114_2.png",
-      "id": "47d6"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00114_2.png"
     },
     {
-      "listid": 3,
+      "id": 3,
       "foodname": "산채쌀파스타",
       "kcal": "176.7",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00303_2.png",
-      "id": "fb4a"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00303_2.png"
     },
     {
-      "listid": 4,
+      "id": 4,
       "foodname": "토마토 가지 카프레제",
       "kcal": "90.5",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00202_2.png",
-      "id": "dd32"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00202_2.png"
     },
     {
-      "listid": 5,
+      "id": 5,
       "foodname": "초계탕과 사색곤약",
       "kcal": "100.1",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00638_2.png",
-      "id": "d961"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00638_2.png"
     },
     {
-      "listid": 6,
+      "id": 6,
       "foodname": "다이어트국수",
       "kcal": "36.9",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00386_2.png",
-      "id": "b986"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00386_2.png"
     },
     {
-      "listid": 7,
+      "id": 7,
       "foodname": "냉토마토파스타",
       "kcal": "202.3",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00510_2.png",
-      "id": "2a7a"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00510_2.png"
     },
     {
-      "listid": 8,
+      "id": 8,
       "foodname": "뿌리채소두부선",
       "kcal": "184.5",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00421_2.png",
-      "id": "b242"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00421_2.png"
     },
     {
-      "listid": 9,
+      "id": 9,
       "foodname": "닭고기월남쌈",
       "kcal": "353.7",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00535_2.png",
-      "id": "f429"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00535_2.png"
     },
     {
-      "listid": 10,
+      "id": 10,
       "foodname": "닭가슴살현미스테이크",
       "kcal": "400",
-      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00541_2.png",
-      "id": "7ac3"
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00541_2.png"
     }
   ]
 }

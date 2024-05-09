@@ -21,6 +21,7 @@ function Main() {
   const [bmishow, setBmishow] = useState(false);
   const [calshow, setCalshow] = useState(false);
   const [bmiresultshow, setBmiResultshow] = useState(false);
+  const [bmiResult, setBMIResult] = useState("");
   const [calresultshow, setCalResultshow] = useState(false);
   const navigate = useNavigate();
 
@@ -46,6 +47,11 @@ function Main() {
   //bmi result modal 함수
   const bmiresultClose = () => setBmiResultshow(false);
   const bmiresultShow = () => setBmiResultshow(true);
+
+  const handleBMIResult = (result) => {
+    setBMIResult(result); // BMIModal로부터 BMI 결과를 받아옴
+    console.log(result)
+  };
 
   // 칼로리 모달
   const calClose = () => setCalshow(false);
@@ -136,6 +142,7 @@ function Main() {
         bmiClose={bmiClose}
         bmishow={bmishow}
         bmiresultShow={bmiresultShow}
+        onBMIResult={handleBMIResult}
       />
       <CalorieModal
         calShow={calShow}
@@ -147,6 +154,7 @@ function Main() {
         bmiresultShow={bmiresultShow}
         bmiresultClose={bmiresultClose}
         bmiresultshow={bmiresultshow}
+        bmiResult={bmiResult}
       />
       <CalorieResultModal
         calresShow={calresultShow}
