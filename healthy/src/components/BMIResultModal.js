@@ -16,21 +16,23 @@ function BMIResultModal({
   console.log("bmiResult :", bmiResult);
 
   useEffect(() => {
+    const storedId = localStorage.getItem("id");
     const storedUserId = localStorage.getItem("userid");
-    console.log("storedUserId:", storedUserId);
     const storedPassword = localStorage.getItem("password");
-    console.log("storedPassword:", storedPassword);
 
     if (storedUserId && storedPassword) {
+      const storedIdObj = JSON.parse(storedId);
+      const id = storedIdObj.id;
       const storedUserIdObj = JSON.parse(storedUserId);
-      const Id = storedUserIdObj.userid;
+      const userId = storedUserIdObj.userid;
       const storedPasswordObj = JSON.parse(storedPassword);
       const password = storedPasswordObj.password;
-      console.log("Id:", Id);
+      console.log("id:", id);
+      console.log("userId:", userId);
       console.log("password:", password);
 
       axios
-        .get(`http://localhost:4000/userInfo?name=${Id}`)
+        .get(`http://localhost:4000/userInfo?id=${id}`)
         .then((response) => {
           if (response.data) {
             setUserInfo(response.data);
@@ -43,12 +45,12 @@ function BMIResultModal({
     }
   }, []);
 
-  const updateUserInfo = async (name, newBMI) => {
+  const updateUserInfo = async (id, newBMI) => {
     try {
-      console.log("name:", name);
+      console.log("id:", id);
       console.log("newBMI:", newBMI);
       await axios.patch(
-        `http://localhost:4000/userInfo/${name}`,
+        `http://localhost:4000/userInfo/${id}`,
         {
           bmi: newBMI,
         }
@@ -74,10 +76,11 @@ function BMIResultModal({
     const storedPassword = localStorage.getItem("password");
 
     if (storedUserId && storedPassword) {
-      const storedUserIdObj = JSON.parse(storedUserId);
-      const Id = storedUserIdObj.userid;
+      const storedId = localStorage.getItem("id");
+      const storedIdObj = JSON.parse(storedId);
+      const id = storedIdObj.id;
 
-      updateUserInfo(Id, bmiResult)
+      updateUserInfo(id, bmiResult)
         .then(() => {
           console.log("BMI result saved successfully.");
           bmiresultClose();

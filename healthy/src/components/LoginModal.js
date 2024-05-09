@@ -5,22 +5,31 @@ import "../css/components/LoginModal.css";
 
 function LoginModal({ loginShow, loginClose, loginshow }) {
   const { login } = useAuth();
+  const [id, setId] = useState("");
   const [userid, setUserId] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:4000/userInfo", {
-        userid,
-        password
-      });
-      if (response.data && response.data.userid === userid  && response.data.password === password) {
-        login(userid, password); // id와 password를 전달하여 로그인
-        console.log("로그인 성공:", response.data);
+      const testUser1 = {
+        id: 1,
+        userid: "test1",
+        password: "test1"
+      };
+      const testUser2 = {
+        id: 2,
+        userid: "test2",
+        password: "test2"
+      };
+      if (userid === testUser1.userid  && password === testUser1.password) {
+        login(1, userid, password); // id와 password를 전달하여 로그인
+      }
+      if(userid === testUser2.userid  && password === testUser2.password){
+        login(2, userid, password); // id와 password를 전달하여 로그인
       }
       loginClose();
     } catch (error) {
-      console.error("Error logging in:", error.response.data);
+      console.error("Error logging in:", error);
     }
   };
 
