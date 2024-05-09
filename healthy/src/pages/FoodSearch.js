@@ -22,7 +22,7 @@ function FoodSearch() {
   const [loginshow, setLoginshow] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   // login modal 함수
   const loginClose = () => setLoginshow(false);
   const loginShow = () => setLoginshow(true);
@@ -166,19 +166,19 @@ function FoodSearch() {
             <div className="color-bar">
               <div
                 className="car-color-segment"
-                style={segmentStyle(food.INFO_CAR, "#3498db")}
+                style={segmentStyle(food.INFO_CAR, "#D7ECD5")}
               >
                 {food.INFO_CAR}
               </div>
               <div
                 className="pro-color-segment"
-                style={segmentStyle(food.INFO_PRO, "#2ecc71")}
+                style={segmentStyle(food.INFO_PRO, "#7ED1E3")}
               >
                 {food.INFO_PRO}
               </div>
               <div
                 className="fat-color-segment"
-                style={segmentStyle(food.INFO_FAT, "#ff9ff3")}
+                style={segmentStyle(food.INFO_FAT, "#FFD980")}
               >
                 {food.INFO_FAT}
               </div>
@@ -227,7 +227,21 @@ function FoodSearch() {
                     <th style={{ width: "30%" }}>음식명</th>
                     <th style={{ width: "30%" }}>1인분당 칼로리</th>
                     <th style={{ width: "40%", textAlign: "left" }}>
-                      상세영양정보
+                      <div className="nut-wrap">
+                      <span className="nut-span">상세영양정보</span>
+                        <div className="nut-text">
+                          <div className="tan-box"></div>
+                          <div>탄수화물</div>
+                        </div>
+                        <div className="nut-text">
+                          <div className="dan-box"></div>
+                          <div>단백질</div>
+                        </div>
+                        <div className="nut-text">
+                          <div className="ji-box"></div>
+                          <div>지방</div>
+                        </div>
+                      </div>
                     </th>
                   </tr>
                 </thead>

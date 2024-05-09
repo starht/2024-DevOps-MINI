@@ -106,3 +106,37 @@ td {
   align-items: center;
   justify-content: center;
 }
+
+.nut-wrap {
+  display: flex;
+}
+
+.nut-span{
+  margin-right: 80px;
+}
+
+.nut-text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+  margin-right: 10px;
+}
+.tan-box{
+  width: 10px;
+  height: 10px;
+  background-color: #D7ECD5;
+  margin-right: 7px;
+}
+.dan-box{
+  width: 10px;
+  height: 10px;
+  background-color: #7ED1E3;
+  margin-right: 7px;
+}
+.ji-box{
+  width: 10px;
+  height: 10px;
+  background-color: #FFD980;
+  margin-right: 7px;
+}
