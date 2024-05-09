@@ -115,8 +115,8 @@
       "date": "2024-05-06",
       "breakfast": 300,
       "lunch": 600,
-      "dinner": 800,
-      "snack": null
+      "dinner": null,
+      "snack": 800
     }
   ],
   "foodfavorite": [

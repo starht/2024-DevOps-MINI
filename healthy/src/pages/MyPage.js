@@ -56,6 +56,8 @@ function MyPage() {
   useEffect(() => {
     getIntake();
   }, []);
+
+  let insumtemp = 0;
   
   const getIntake = async () => {
     try {
@@ -67,14 +69,30 @@ function MyPage() {
       const intakeselectedData = response.data;
   
       setIntake(intakeselectedData);
+      setInSum(0);
     
       for(let i = 0; i<intakeselectedData.length; i++){
         let tmp = 0;
-        tmp += parseInt(intakeselectedData[i].breakfast);
-        tmp += parseInt(intakeselectedData[i].lunch);
-        tmp += parseInt(intakeselectedData[i].dinner);
-        tmp += parseInt(intakeselectedData[i].snack);
+        if (intakeselectedData[i].breakfast !== null) {
+          tmp += parseInt(intakeselectedData[i].breakfast);
+        }
+        if (intakeselectedData[i].lunch !== null) {
+          tmp += parseInt(intakeselectedData[i].lunch);
+        }
+        if (intakeselectedData[i].dinner !== null) {
+          tmp += parseInt(intakeselectedData[i].dinner);
+        }
+        if (intakeselectedData[i].snack !== null) {
+          tmp += parseInt(intakeselectedData[i].snack);
+        }    
+        console.log(intakeselectedData[i].date+" eat "+tmp);
+        tmp += (insum+tmp);
         setInSum(tmp);
+        insumtemp += tmp;
+        console.log("added : "+insum);
+        console.log("added var : " + insumtemp);
+        console.log("insum : " + insum);
+        console.log(" ");
       }
 
     } catch (error) {
@@ -100,6 +118,8 @@ function MyPage() {
       for(let i = 0; i<consumeselectedData.length; i++){
         let tmp = 0;
         tmp += parseInt(consumeselectedData[i].calorie)
+        console.log("exer"+tmp);
+        tmp += exsum+tmp;
         setExSum(tmp);
       }
       
