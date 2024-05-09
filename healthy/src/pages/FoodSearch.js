@@ -32,6 +32,10 @@ function FoodSearch() {
   const currentPageLast = currentPage * ramenPerPage; // 현재 페이지의 처음
   const currentPageFirst = currentPageLast - ramenPerPage; // 현재 페이지의 끝
   const currentFoods = searchQuery ? searchResults : tableFoods;
+  const currentResultFoods = searchResults.slice(
+    currentPageFirst,
+    currentPageLast
+  );
   const currentTableFoods = currentFoods.slice(
     currentPageFirst,
     currentPageLast
@@ -229,7 +233,7 @@ function FoodSearch() {
                 </thead>
                 <tbody>
                   {searchQuery
-                    ? renderTableFoods(searchResults)
+                    ? renderTableFoods(currentResultFoods)
                     : renderTableFoods(currentTableFoods)}
                 </tbody>
               </table>

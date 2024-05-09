@@ -29,6 +29,7 @@ function ExerciseSearch() {
   const currentPageLast = currentPage * ramenPerPage; // 현재 페이지의 처음
   const currentPageFirst = currentPageLast - ramenPerPage; // 현재 페이지의 끝
   const currentExercises = searchQuery ? searchResults : exercises;
+  const currentResultExercise = searchResults.slice(currentPageFirst, currentPageLast); // 현재 페이지의 운동 목록
   const currentExercise = currentExercises.slice(currentPageFirst, currentPageLast); // 현재 페이지의 운동 목록
   const pageNumber = Math.ceil(currentExercises.length / ramenPerPage); // 총 페이지 수
 
@@ -147,7 +148,7 @@ function ExerciseSearch() {
                 </thead>
                 <tbody>
                 {searchQuery
-                    ? renderExercises(searchResults)
+                    ? renderExercises(currentResultExercise)
                     : renderExercises(currentExercise)}
                 </tbody>
               </table>
