@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../css/components/CalorieResultModal.css";
 import Checked from "../assets/images/check.png";
+import { useAuth } from "../contexts/AuthContext";
 
 function CalorieResultModal({
   calresShow,
@@ -14,6 +16,96 @@ function CalorieResultModal({
   weight,
   wishweight,
 }) {
+  const [calories, setCalories] = useState(null);
+  const { isLoggedIn } = useAuth();
+
+  useEffect(() => {
+    const storedId = localStorage.getItem("id");
+    const storedUserId = localStorage.getItem("userid");
+    const storedPassword = localStorage.getItem("password");
+
+    if (storedUserId && storedPassword) {
+      const storedIdObj = JSON.parse(storedId);
+      const id = storedIdObj.id;
+
+      axios
+        .get(`http://localhost:4000/calories?id=${id}`)
+        .then((response) => {
+          if (response.data) {
+            setCalories(response.data);
+            console.log("data:", response.data);
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching calories:", error);
+        });
+    }
+  }, []);
+
+  const updateCalories = async (
+    id,
+    bmrResult,
+    amrResult,
+    calResult,
+    tdeeResult,
+    dur,
+    weight,
+    wishweight
+  ) => {
+    try {
+      console.log("id:", id);
+      await axios.patch(`http://localhost:4000/calories/${id}`, {
+        monthunit: dur,
+        goalkg: weight - wishweight,
+        bmr: bmrResult,
+        amr: amrResult,
+        tdee: tdeeResult,
+        eatneeded: (tdeeResult - calResult * 0.55).toFixed(2),
+        workoutneeded: (calResult * 0.45).toFixed(2) 
+      });
+    } catch (error) {
+      console.error("Error updating calories:", error);
+    }
+  };
+
+  const handleSaveResult = () => {
+    if (!isLoggedIn) {
+      console.log("User is not logged in.");
+      return;
+    }
+    if (!calories) {
+      console.log(
+        "Calories is not available yet. Please wait for it to load."
+      );
+      return;
+    }
+
+    const storedUserId = localStorage.getItem("userid");
+    const storedPassword = localStorage.getItem("password");
+
+    if (storedUserId && storedPassword) {
+      const storedId = localStorage.getItem("id");
+      const storedIdObj = JSON.parse(storedId);
+      const id = storedIdObj.id;
+
+      updateCalories(id,
+        bmrResult,
+        amrResult,
+        calResult,
+        tdeeResult,
+        dur,
+        weight,
+        wishweight)
+        .then(() => {
+          console.log("Calories result saved successfully.");
+          calresClose();
+        })
+        .catch((error) => {
+          console.error("Error updating Calories result:", error);
+        });
+    }
+  };
+
   const segmentStyle = (value, color) => {
     return {
       flex: value,
@@ -106,7 +198,10 @@ function CalorieResultModal({
           </div>
           <div className="thridrow">
             <div className="calextitle">
-              하루 소비 칼로리는 <span className="tdee-result">{tdeeResult ? tdeeResult : ""} Kcal</span>
+              하루 소비 칼로리는{" "}
+              <span className="tdee-result">
+                {tdeeResult ? tdeeResult : ""} Kcal
+              </span>
             </div>
             <div className="barbox">
               <div className="colorbarWrapper">
@@ -133,7 +228,7 @@ function CalorieResultModal({
           <button onClick={calresClose} className="calrescancelbtn">
             Cancel
           </button>
-          <button onClick={calresClose} className="calressavebtn">
+          <button onClick={handleSaveResult} className="calressavebtn">
             SAVE
           </button>
         </div>

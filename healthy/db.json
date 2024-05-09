@@ -17,15 +17,24 @@
   ],
   "calories": [
     {
-      "id":2,
-      "monthunit" : 2,
-      "goalkg" : 5,
-      "bmr": 1459,
-      "amr" : 437,
-      "tdee" : 210,
-      "eatneeded" : 1378,
-      "workoutneeded" : 293,
-      "totalcalorie" : 1759
+      "id": "1",
+      "monthunit": "2",
+      "goalkg": 5,
+      "bmr": "1595.85",
+      "amr": "598.44",
+      "tdee": 2193,
+      "eatneeded": "1840.08",
+      "workoutneeded": "288.75"
+    },
+    {
+      "id": "2",
+      "monthunit": "4",
+      "goalkg": 10,
+      "bmr": "1761.85",
+      "amr": "660.69",
+      "tdee": 2421,
+      "eatneeded": "2068.08",
+      "workoutneeded": "288.75"
     }
   ],
   "burncalorie": [

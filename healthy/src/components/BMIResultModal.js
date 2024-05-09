@@ -13,7 +13,6 @@ function BMIResultModal({
 }) {
   const [userInfo, setUserInfo] = useState(null);
   const { isLoggedIn } = useAuth();
-  console.log("bmiResult :", bmiResult);
 
   useEffect(() => {
     const storedId = localStorage.getItem("id");
