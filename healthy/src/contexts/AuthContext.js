@@ -13,17 +13,18 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const user = localStorage.getItem("user");
     if (user) {
-      const { isLoggedIn, userid, password } = JSON.parse(user);
+      const { isLoggedIn, id, userid, password } = JSON.parse(user);
       setIsLoggedIn(isLoggedIn);
-      setLoggedInUser({ userid, password }); // 로그인한 사용자 정보 설정
+      setLoggedInUser({ id, userid, password }); // 로그인한 사용자 정보 설정
     }
   }, []);
 
-  const login = (userid, password) => {
+  const login = (id, userid, password) => {
     setIsLoggedIn(true);
-    localStorage.setItem("user", JSON.stringify({ isLoggedIn: true }));
+    localStorage.setItem("id", JSON.stringify({ id }));
     localStorage.setItem("userid", JSON.stringify({ userid }));
     localStorage.setItem("password", JSON.stringify({ password }));
+    localStorage.setItem("user", JSON.stringify({ isLoggedIn: true }));
   };
 
   const logout = () => {
@@ -31,6 +32,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
     localStorage.removeItem("userid");
     localStorage.removeItem("password");
+    localStorage.removeItem("id");
     setLoggedInUser(null); // 로그아웃 시 사용자 정보 초기화
   };
 
