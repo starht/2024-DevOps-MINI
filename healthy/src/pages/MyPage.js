@@ -18,7 +18,7 @@ function MyPage() {
   const [loginshow, setLoginshow] = useState(false);
   const [excalshow, setExCalshow] = useState(false);
   const [foodcalshow, setFoodCalshow] = useState(false);
-  const [foods, setFoods] = useState([]);
+  const [favfoods, setfavFoods] = useState([]);
   const [exercises, setExercises] = useState([]);
   const navigate = useNavigate();
 
@@ -45,33 +45,26 @@ function MyPage() {
     }
   };
 
-  const getFoods = async () => {
+  //즐겨찾기 음식
+
+  useEffect(() => {
+    getfavFoods();
+  }, []);
+  
+  const getfavFoods = async () => {
     try {
-      const selectedData = await axios.get("http://localhost:4000/favfood");
-
-      const getRandomItems = (array, count) => {
-        const shuffled = array.slice(0);
-        let i = array.length;
-        const min = i - count;
-        let temp;
-        let index;
-
-        while (i-- > min) {
-          index = Math.floor((i + 1) * Math.random());
-          temp = shuffled[index];
-          shuffled[index] = shuffled[i];
-          shuffled[i] = temp;
-        }
-
-        return shuffled.slice(min);
-      };
-
-      const selectedItems = getRandomItems(Object.values(selectedData.data), 2);
-      setFoods(selectedItems);
+      const testuserid = 1
+      // const selectedData = await axios.get(`http://localhost:4000/favfood?userid=${userid}`);
+      const response = await axios.get(`http://localhost:4000/foodfavorite?userid=${testuserid}`);
+      const selectedData = response.data;
+  
+      setfavFoods(selectedData);
+      console.log(selectedData);
     } catch (error) {
       console.log(error);
     }
   };
+  
 
 
   return (
@@ -132,8 +125,27 @@ function MyPage() {
           <p className="mptext">즐겨찾는 음식</p>
         </div>
         <div className="favfoodcardWrapper">
-
-        </div>
+          {favfoods.map((food, index) => (
+            <div className="midcardWrapper"key={index}>
+              <div className="innerfoodcard">
+                {index % 4 > 1 ? (
+                  <FoodCardLeft
+                    key={food.foodname}
+                    ATT_FILE_NO_MK={food.picture}
+                    RCP_NM={food.foodname}
+                    INFO_ENG={food.kcal}
+                  />
+                ) : (
+                  <FoodCardRight
+                    key={food.foodname}
+                    ATT_FILE_NO_MK={food.picture}
+                    RCP_NM={food.foodname}
+                    INFO_ENG={food.kcal}
+                  />
+                )}
+              </div>
+            </div>
+          ))}
       </div>
       <div className="favexWrapper">
         <div className="favtitle">
@@ -145,6 +157,7 @@ function MyPage() {
           </div>
       </div>
     </div>
+  </div>
   );
 }
 
