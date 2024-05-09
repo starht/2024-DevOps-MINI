@@ -1,0 +1,86 @@
+.bigcalandar .react-calendar{
+  /* width: max-content; */
+  width: max-content;
+  height: 800px;
+  border: 1px solid rgba(125, 125, 125, 0.325);;
+  border-radius: 22px;
+  box-shadow: 0 0 15px lightgray;
+}
+
+.bigcalandar{
+  height: max-content;
+}
+
+.bigcalandar .react-calendar__navigation {
+  background:hsla(191, 70%, 40%, 0.29);
+  border-bottom: 1px solid rgba(125, 125, 125, 0.325);
+  height: 70px;
+  border-radius: 20px 20px 0 0;
+  span {
+    font-family: "Nanum Gothic", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+  }
+}
+
+.bigcalandar .react-calendar__navigation button:disabled {
+  background-color: hsla(191, 70%, 40%, 0.19);
+  border-radius: 20px 20px 0 0;
+}
+abbr{
+  border: none;
+}
+
+.bigcalandar .react-calendar__navigation button:enabled:hover,
+.bigcalandar .react-calendar__navigation button:enabled:focus {
+  background-color: hsla(191, 70%, 40%, 0.19);
+  border-radius: 20px 20px 0 0;
+}
+
+.bigcalandar .react-calendar__month-view {
+  padding: 20px 32px;
+  abbr {
+    font-family: "Nanum Gothic", sans-serif;
+    color: rgb(30, 30, 30);
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+.bigcalandar .react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+  padding-bottom: 10px;
+}
+.bigcalandar .react-calendar__month-view__weekdays__weekday > abbr{
+  text-decoration: none;
+}
+
+.bigcalandar .react-calendar__month-view__weekdays {
+  abbr {
+    border: none;
+    font-size: 18px;
+    font-weight: 900;
+  }
+}
+
+.bigcalandar .react-calendar__tile {
+  text-align: center;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+  padding: 13px 7px;
+}
+
+.bigcalandar .react-calendar__tile--now {
+  background: #ffe87672;
+  border-radius: 20px;
+}
+
+.bigcalandar .react-calendar__tile:enabled:hover,
+.bigcalandar .react-calendar__tile:enabled:focus,
+.bigcalandar .react-calendar__tile--active {
+  background: rgba(41, 128, 67, 0.297);
+  border-radius: 20px;
+}

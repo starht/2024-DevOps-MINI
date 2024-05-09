@@ -1,0 +1,189 @@
+/* 달력 */
+.calendarinputWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0 50px 0;
+}
+
+.left {
+  margin: 0 20px;
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+  /* height: 100%; */
+}
+
+.inputWrapper {
+  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.inputbuttonWrapper {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+}
+
+.foodinput {
+  background-image: url("../../assets/images/foodicon.png");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #fcff46;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.exerinput{
+  background-image: url("../../assets/images/fitness.png");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #fcff46;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.monthlyintake, .monthlyexer {
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px;
+  margin: 20px 0;
+}
+
+.monthlyintake {
+  background-color: rgb(184, 235, 255);
+}
+
+.monthlyexer {
+  background-color: rgb(255, 217, 224);
+}
+
+.mpcaltitle {
+  font-size: 1.8rem;
+  color: rgb(74, 74, 74);
+  margin: 20px;
+}
+
+.mpcalvalue {
+  margin: 0 10px 20px 10px;
+  width: 80%;
+  padding: 30px;
+  background-color: lightgray;
+  opacity: 80%;
+  border-radius: 7px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* 진행중목표 */
+
+.onGoing {
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
+}
+
+.ongoingGoal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(210, 242, 255);
+  width: 30%;
+  border-radius: 15px;
+}
+
+.ongoingGoaltitle {
+  display: flex;
+  padding: 20px;
+}
+
+.actualtitle {
+  color: gray;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.heart {
+  width:40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.actualgoal {
+  font-size: 1.8rem;
+  padding: 0 20px 20px;
+}
+
+.onspan {
+  color: red;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.monthgoalWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  padding: 50px;
+}
+
+.monthdaykcal, .monthgoalkcal {
+  font-size: 1.8rem;
+  margin: 10px;
+}
+
+
+.monthspan {
+  color: red;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+/* 즐겨찾기 */
+
+.favtitle {
+  display: flex;
+  align-items: center;
+}
+
+.mpicon {
+  width: 25px;
+  height: 25px;
+  padding-right: 10px;
+}
+
+.mptext {
+  font-size: 1.3rem;
+  padding-right: 10px;
+}
+
+.favexWrapper, .favfoodWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0;
+}
+

@@ -1,0 +1,123 @@
+#foodcalbackgroundoff {
+  width: 100%;
+  height: 100%;
+  background-color: lightgray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  display: none;
+}
+
+#foodcalbackgroundon {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+}
+
+.foodcalModalWrapper {
+  width: 500px;
+  position: fixed; 
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 0 30px gray;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#foodcalhide {
+  display: none;
+}
+
+#foodcalshow {
+  display: flex;
+}
+
+/* 헤더 */
+
+.foodcalmodalheader {
+  padding: 15px 10px 0 10px;
+}
+
+.foodcalmodaltitle {
+  margin: 5px 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* 바디 */
+
+.foodcalmodalbody {
+  padding: 10px 10px 0 10px;
+}
+
+.bigradioWrapper{
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 8px;
+}
+
+.radioWrapper {
+  margin: 5px 10px 10px 0;
+  display: flex;
+  align-items: center;
+
+}
+
+.radiobtn {
+  margin-right: 5px;
+  margin-bottom: 4px;
+}
+
+.mealtext {
+  margin: 5px 8px;
+}
+
+.excalcalWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.kcal {
+  margin: 5px 8px;
+}
+.caltext {
+  border-radius: 7px;
+  border: 1px solid lightgray;
+  height: 25px;
+  margin: 5px 8px;
+  width: 95%;
+}
+
+/* 풋 */
+.excalfooter {
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.foodcalcancelbtn, .foodcalconfirmbtn {
+  width: 47%;
+  height: 35px;
+}
+
+.foodcalcancelbtn {
+  border: 1px solid lightgray;
+  background-color: #fff;
+  border-radius: 7px;
+}
+
+.foodcalconfirmbtn {
+  border: none;
+  background-color: #1F95AF;
+  color: white;
+  border-radius: 7px;
+} 
