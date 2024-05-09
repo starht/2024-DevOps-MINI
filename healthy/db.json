@@ -168,6 +168,20 @@
       "foodname": "냉토마토파스타",
       "kcal": "202.3",
       "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00510_2.png"
+    },
+    {
+      "id": "df90",
+      "userid": 2,
+      "foodname": "닭가슴살현미스테이크",
+      "kcal": "400",
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00541_2.png"
+    },
+    {
+      "id": "39c0",
+      "userid": 2,
+      "foodname": "산채쌀파스타",
+      "kcal": "176.7",
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00303_2.png"
     }
   ],
   "exercisefavorite": [
@@ -234,6 +248,14 @@
       "운동명": "스텝박스",
       "youtubeId": "UNo9mBQu8jY",
       "picture": "https://img.youtube.com/vi/UNo9mBQu8jY/maxresdefault.jpg"
+    },
+    {
+      "id": "1fee",
+      "userid": 2,
+      "단위체중당에너지소비량": "8.0",
+      "운동명": "계단오르기",
+      "youtubeId": "27zSEATjckA",
+      "picture": "https://img.youtube.com/vi/27zSEATjckA/maxresdefault.jpg"
     }
   ],
   "exerciselist": [

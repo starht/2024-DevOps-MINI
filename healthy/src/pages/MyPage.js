@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../css/pages/MyPage.css"
+import "../css/pages/MyPage.css";
 import Navbar from "../components/Navbar";
 import LoginModal from "../components/LoginModal";
 import foodicon from "../assets/images/foodicon.png";
-import exicon from "../assets/images/fitness.png"
-import heart from "../assets/images/heart.png"
+import exicon from "../assets/images/fitness.png";
+import heart from "../assets/images/heart.png";
 import ExCalModal from "../components/ExCalModal";
 import FoodCalModal from "../components/FoodCalModal";
 import BigCalendar from "../components/BigCalendar";
 import ExerciseCard from "../components/ExerciseCard";
 import FoodCardLeft from "../components/FoodCardLeft";
 import FoodCardRight from "../components/FoodCardRight";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 function MyPage() {
   const [loginshow, setLoginshow] = useState(false);
@@ -26,6 +28,9 @@ function MyPage() {
   const [workoutNeeded, setWorkoutNeeded] = useState(0);
   const [exsum, setExSum] = useState(0);
   const [insum, setInSum] = useState(0);
+  const [foodPage, setFoodPage] = useState(1);
+  const [exercisePage, setExercisePage] = useState(1);
+  const [itemsPerPage] = useState(4);
   const navigate = useNavigate();
 
   // 운동 칼로리 입력 함수
@@ -51,27 +56,28 @@ function MyPage() {
     }
   };
 
-  //섭취 칼로리 총합
-
+  // 섭취 칼로리 총합
   useEffect(() => {
     getIntake();
   }, []);
 
   let insumtemp = 0;
-  
+
   const getIntake = async () => {
     try {
       const storedId = localStorage.getItem("id");
       const storedIdObj = JSON.parse(storedId);
       const id = storedIdObj.id;
 
-      const response = await axios.get(`http://localhost:4000/intakecalorie?userid=${id}`);
+      const response = await axios.get(
+        `http://localhost:4000/intakecalorie?userid=${id}`
+      );
       const intakeselectedData = response.data;
-  
+
       setIntake(intakeselectedData);
       setInSum(0);
-    
-      for(let i = 0; i<intakeselectedData.length; i++){
+
+      for (let i = 0; i < intakeselectedData.length; i++) {
         let tmp = 0;
         if (intakeselectedData[i].breakfast !== null) {
           tmp += parseInt(intakeselectedData[i].breakfast);
@@ -84,63 +90,65 @@ function MyPage() {
         }
         if (intakeselectedData[i].snack !== null) {
           tmp += parseInt(intakeselectedData[i].snack);
-        }    
-        console.log(intakeselectedData[i].date+" eat "+tmp);
-        tmp += (insum+tmp);
+        }
+        console.log(intakeselectedData[i].date + " eat " + tmp);
+        tmp += insum + tmp;
         setInSum(tmp);
         insumtemp += tmp;
-        console.log("added : "+insum);
+        console.log("added : " + insum);
         console.log("added var : " + insumtemp);
         console.log("insum : " + insum);
         console.log(" ");
       }
-
     } catch (error) {
       console.log(error);
     }
   };
 
-  //운동 칼로리 총합
+  // 운동 칼로리 총합
   useEffect(() => {
     getConsume();
   }, []);
-  
+
   const getConsume = async () => {
     try {
       const storedId = localStorage.getItem("id");
       const storedIdObj = JSON.parse(storedId);
       const id = storedIdObj.id;
-      const response = await axios.get(`http://localhost:4000/burncalorie?userid=${id}`);
+      const response = await axios.get(
+        `http://localhost:4000/burncalorie?userid=${id}`
+      );
       const consumeselectedData = response.data;
-  
+
       setConsume(consumeselectedData);
 
-      for(let i = 0; i<consumeselectedData.length; i++){
+      for (let i = 0; i < consumeselectedData.length; i++) {
         let tmp = 0;
-        tmp += parseInt(consumeselectedData[i].calorie)
-        console.log("exer"+tmp);
-        tmp += exsum+tmp;
+        tmp += parseInt(consumeselectedData[i].calorie);
+        console.log("exer" + tmp);
+        tmp += exsum + tmp;
         setExSum(tmp);
       }
-      
     } catch (error) {
       console.log(error);
     }
   };
 
-  //목표 데이터
+  // 목표 데이터
   useEffect(() => {
     getGoal();
   }, []);
-  
+
   const getGoal = async () => {
     try {
       const storedId = localStorage.getItem("id");
       const storedIdObj = JSON.parse(storedId);
       const id = storedIdObj.id;
-      const response = await axios.get(`http://localhost:4000/calories?id=${id}`);
+      const response = await axios.get(
+        `http://localhost:4000/calories?id=${id}`
+      );
       const goalselectedData = response.data;
-  
+
       setGoal(goalselectedData);
       // console.log(goalselectedData);
 
@@ -152,25 +160,30 @@ function MyPage() {
     }
   };
 
-  //달 목표를 위한 현재 날짜 구하기
+  // 달 목표를 위한 현재 날짜 구하기
   const currentDate = new Date();
-  const numberOfDaysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
-  const monthGoal = numberOfDaysInMonth*workoutNeeded;
+  const numberOfDaysInMonth = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth() + 1,
+    0
+  ).getDate();
+  const monthGoal = numberOfDaysInMonth * workoutNeeded;
 
-  //즐겨찾기 음식
-
+  // 즐겨찾기 음식
   useEffect(() => {
     getfavFoods();
   }, []);
-  
+
   const getfavFoods = async () => {
     try {
       const storedId = localStorage.getItem("id");
       const storedIdObj = JSON.parse(storedId);
       const id = storedIdObj.id;
-      const response = await axios.get(`http://localhost:4000/foodfavorite?userid=${id}`);
+      const response = await axios.get(
+        `http://localhost:4000/foodfavorite?userid=${id}`
+      );
       const foodselectedData = response.data;
-  
+
       setfavFoods(foodselectedData);
       // console.log(foodselectedData);
     } catch (error) {
@@ -178,25 +191,35 @@ function MyPage() {
     }
   };
 
-  //즐겨찾기 운동
-
+  // 즐겨찾기 운동
   useEffect(() => {
     getfavExercises();
   }, []);
-  
+
   const getfavExercises = async () => {
     try {
       const storedId = localStorage.getItem("id");
       const storedIdObj = JSON.parse(storedId);
       const id = storedIdObj.id;
-      const response = await axios.get(`http://localhost:4000/exercisefavorite?userid=${id}`);
+      const response = await axios.get(
+        `http://localhost:4000/exercisefavorite?userid=${id}`
+      );
       const exselectedData = response.data;
-  
+
       setfavExercises(exselectedData);
       // console.log(exselectedData);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  // 페이지네이션
+  const handleFoodPageChange = (event, value) => {
+    setFoodPage(value);
+  };
+
+  const handleExercisePageChange = (event, value) => {
+    setExercisePage(value);
   };
 
   return (
@@ -207,57 +230,67 @@ function MyPage() {
         loginClose={loginClose}
         loginshow={loginshow}
       />
-      <FoodCalModal foodcalshow={foodcalshow} foodcalShow={foodcalShow} foodcalClose={foodcalClose}/>
-      <ExCalModal excalshow={excalshow} excalShow={excalShow} excalClose={excalClose}/>
+      <FoodCalModal
+        foodcalshow={foodcalshow}
+        foodcalShow={foodcalShow}
+        foodcalClose={foodcalClose}
+      />
+      <ExCalModal
+        excalshow={excalshow}
+        excalShow={excalShow}
+        excalClose={excalClose}
+      />
       <div className="calendarinputWrapper">
         <div className="left">
-        <BigCalendar className="bigcalendar"
-          exscheduleData={consume}
-          intakescheduleData={intake}
-        />
-        {consume.map((consume)=>(
-          <div></div>
-        ))}
+          <BigCalendar
+            className="bigcalendar"
+            exscheduleData={consume}
+            intakescheduleData={intake}
+          />
+          {consume.map((consume) => (
+            <div></div>
+          ))}
         </div>
         <div className="right">
-        <div className="inputWrapper">
-          <div className="inputbuttonWrapper">
-            <div className="foodinput" onClick={foodcalShow}></div>
-            <div className="exerinput" onClick={excalShow}></div>
+          <div className="inputWrapper">
+            <div className="inputbuttonWrapper">
+              <div className="foodinput" onClick={foodcalShow}></div>
+              <div className="exerinput" onClick={excalShow}></div>
+            </div>
+            <div className="monthlyintake">
+              <div className="mpcaltitle">5월 섭취 칼로리 총합</div>
+              <div className="mpcalvalue">{insum}kcal</div>
+            </div>
+            <div className="monthlyexer">
+              <div className="mpcaltitle">5월 운동 칼로리 총합</div>
+              <div className="mpcalvalue">{exsum}kcal</div>
+            </div>
           </div>
-          <div className="monthlyintake">
-            <div className="mpcaltitle">5월 섭취 칼로리 총합</div>
-            <div className="mpcalvalue">{insum}kcal</div>
-          </div>
-          <div className="monthlyexer">
-            <div className="mpcaltitle">5월 운동 칼로리 총합</div>
-            <div className="mpcalvalue">{exsum}kcal</div>
-          </div>
-        </div>
         </div>
       </div>
       <div className="onGoing">
-          {goals.map((goal)=>(
-            <div className="ongoingGoal">
-              <div className="ongoingGoaltitle">
-            <img src={heart} className="heart" alt="" />
-            <div className="actualtitle">
-              현재 진행중인 목표
+        {goals.map((goal) => (
+          <div className="ongoingGoal">
+            <div className="ongoingGoaltitle">
+              <img src={heart} className="heart" alt="" />
+              <div className="actualtitle">현재 진행중인 목표</div>
             </div>
-          </div>
             <div className="actualgoal">
-              <span className="onspan">{goal.monthunit}</span>개월 동안 <span className="onspan">{goal.goalkg}kg</span>감량
-            </div>
-            </div>
-          ))}
-          <div className="monthgoalWrapper">
-            <div className="monthgoalkcal">
-              이번 달에 <span className="monthspan">{monthGoal}kcal</span>를 소모해야 합니다.
-            </div>
-            <div className="monthdaykcal">
-              1일마다 <span className="monthspan">{workoutNeeded}kcal</span>를 소모해야 해요!
+              <span className="onspan">{goal.monthunit}</span>개월 동안{" "}
+              <span className="onspan">{goal.goalkg}kg</span>감량
             </div>
           </div>
+        ))}
+        <div className="monthgoalWrapper">
+          <div className="monthgoalkcal">
+            이번 달에 <span className="monthspan">{monthGoal}kcal</span>를
+            소모해야 합니다.
+          </div>
+          <div className="monthdaykcal">
+            1일마다 <span className="monthspan">{workoutNeeded}kcal</span>를
+            소모해야 해요!
+          </div>
+        </div>
       </div>
       <div className="favfoodWrapper">
         <div className="favtitle">
@@ -265,50 +298,85 @@ function MyPage() {
           <p className="mptext">즐겨찾는 음식</p>
         </div>
         <div className="favfoodcardWrapper">
-        {favfoods.map((food, index) => (
-          <div className="midcardWrapper" key={index} style={{ justifyContent: index % 2 === 0 ? 'flex-end' : 'flex-start' }}>
-            <div className="innerfoodcard">
-              {index % 4 > 1 ? (
-                <FoodCardLeft
-                  index={food.foodname + index}
-                  ATT_FILE_NO_MK={food.picture}
-                  RCP_NM={food.foodname}
-                  INFO_ENG={food.kcal}
-                />
-              ) : (
-                <FoodCardRight
-                  index={food.foodname+index}
-                  ATT_FILE_NO_MK={food.picture}
-                  RCP_NM={food.foodname}
-                  INFO_ENG={food.kcal}
-                />
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="favexWrapper">
-        <div className="favtitle">
-          <img alt="" src={exicon} className="mpicon" />
-          <p className="mptext">즐겨찾는 운동</p>
-        </div>
-        <div className="favexcardWrapper">
-          <div className="midexcardWrapper">
-        {favexercises.map((exercise, index) => (
-          <div className="innerexcard" key={index}>
-            <ExerciseCard
-                index={exercise.운동명+index}
-                kcal={exercise.단위체중당에너지소비량}
-                name={exercise.운동명}
-                backgroundImage={exercise.picture}
-                youtubeId={exercise.youtubeId}
-              />
-            </div>
+          {favfoods
+            .slice((foodPage - 1) * itemsPerPage, foodPage * itemsPerPage)
+            .map((food, index) => (
+              <div
+                className="midcardWrapper"
+                key={index}
+                style={{
+                  justifyContent: index % 2 === 0 ? "flex-end" : "flex-start",
+                }}
+              >
+                <div className="innerfoodcard">
+                  {index % 4 > 1 ? (
+                    <FoodCardLeft
+                      index={food.foodname + index}
+                      ATT_FILE_NO_MK={food.picture}
+                      RCP_NM={food.foodname}
+                      INFO_ENG={food.kcal}
+                    />
+                  ) : (
+                    <FoodCardRight
+                      index={food.foodname + index}
+                      ATT_FILE_NO_MK={food.picture}
+                      RCP_NM={food.foodname}
+                      INFO_ENG={food.kcal}
+                    />
+                  )}
+                </div>
+              </div>
             ))}
+        </div>
+        <div className="mypage-pagination">
+          <Stack spacing={2}>
+            <Pagination
+              count={Math.ceil(favfoods.length / itemsPerPage)}
+              page={foodPage}
+              onChange={handleFoodPageChange}
+              variant="outlined"
+              shape="rounded"
+            />
+          </Stack>
+        </div>
+        <div className="favexWrapper">
+          <div className="favtitle">
+            <img alt="" src={exicon} className="mpicon" />
+            <p className="mptext">즐겨찾는 운동</p>
+          </div>
+          <div className="favexcardWrapper">
+            <div className="midexcardWrapper">
+              {favexercises
+                .slice(
+                  (exercisePage - 1) * itemsPerPage,
+                  exercisePage * itemsPerPage
+                )
+                .map((exercise, index) => (
+                  <div className="innerexcard" key={index}>
+                    <ExerciseCard
+                      index={exercise.운동명 + index}
+                      kcal={exercise.단위체중당에너지소비량}
+                      name={exercise.운동명}
+                      backgroundImage={exercise.picture}
+                      youtubeId={exercise.youtubeId}
+                    />
+                  </div>
+                ))}
             </div>
           </div>
+        </div>
+        <div className="mypage-pagination">
+          <Stack spacing={2}>
+            <Pagination
+              count={Math.ceil(favexercises.length / itemsPerPage)}
+              page={exercisePage}
+              onChange={handleExercisePageChange}
+              variant="outlined"
+              shape="rounded"
+            />
+          </Stack>
+        </div>
       </div>
-    </div>
     </div>
   );
 }

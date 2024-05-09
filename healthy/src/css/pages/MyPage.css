@@ -186,7 +186,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 100px;
+}
+
+.favfoodcardWrapper{
+  height: 410px;
+}
+
+.favexcardWrapper{
+  height: 420px;
 }
 
 .favfoodcardWrapper {
@@ -201,6 +208,7 @@
   display: flex;
   justify-content: center;
   margin: 0 10px;
+
 }
 
 .innerfoodcard {
@@ -216,4 +224,9 @@
 
 .innerexcard {
   margin: 10px 15px;
+}
+
+.mypage-pagination{
+  margin-top: 20px;
+  margin-bottom: 100px;
 }
