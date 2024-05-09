@@ -15,7 +15,19 @@
       "bmi": null
     }
   ],
-  "calories": [],
+  "calories": [
+    {
+      "id":2,
+      "monthunit" : 2,
+      "goalkg" : 65,
+      "bmr": 1459,
+      "amr" : 437,
+      "tdee" : 210,
+      "eatneeded" : 1378,
+      "workoutneeded" : 293,
+      "totalcalorie" : 1759
+    }
+  ],
   "burncalorie": [
     {
       "burnid": 1,
