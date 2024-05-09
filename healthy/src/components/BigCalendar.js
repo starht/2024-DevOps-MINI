@@ -20,7 +20,9 @@ function BigCalendar({ exscheduleData, intakescheduleData }) {
   const getconsumeCal = (date) => {
     const exformattedDate = moment(date).format('YYYY-MM-DD');
     const exschedule = exscheduleData.find((item) => item.date === exformattedDate);
-    return exschedule ? `exercise: ${exschedule.calorie}kcal` : "";
+    return exschedule ? (
+      <div className="exinner">exercise: {exschedule.calorie}kcal</div>
+    ) : "";
   };
 
   //달력에 섭취 칼로리 표시
@@ -32,10 +34,10 @@ function BigCalendar({ exscheduleData, intakescheduleData }) {
     if (intakeschedule) {
       return (
         <div>
-          {intakeschedule.breakfast !== null && <div>Breakfast: {intakeschedule.breakfast}kcal</div>}
-          {intakeschedule.lunch !== null && <div>Lunch: {intakeschedule.lunch}kcal</div>}
-          {intakeschedule.dinner !== null && <div>Dinner: {intakeschedule.dinner}kcal</div>}
-          {intakeschedule.snack !== null && <div>Snack: {intakeschedule.snack}kcal</div>}
+          {intakeschedule.breakfast !== null && <div className="inner">Breakfast: {intakeschedule.breakfast}kcal</div>}
+          {intakeschedule.lunch !== null && <div className="inner">Lunch: {intakeschedule.lunch}kcal</div>}
+          {intakeschedule.dinner !== null && <div className="inner">Dinner: {intakeschedule.dinner}kcal</div>}
+          {intakeschedule.snack !== null && <div className="inner">Snack: {intakeschedule.snack}kcal</div>}
         </div>
       );
     } else {

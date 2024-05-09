@@ -59,9 +59,11 @@ function MyPage() {
   
   const getIntake = async () => {
     try {
-      const testuserid = 1;
-      // const selectedData = await axios.get(`http://localhost:4000/favfood?userid=${userid}`);
-      const response = await axios.get(`http://localhost:4000/intakecalorie?userid=${testuserid}`);
+      const storedId = localStorage.getItem("id");
+      const storedIdObj = JSON.parse(storedId);
+      const id = storedIdObj.id;
+
+      const response = await axios.get(`http://localhost:4000/intakecalorie?userid=${id}`);
       const intakeselectedData = response.data;
   
       setIntake(intakeselectedData);
@@ -87,9 +89,10 @@ function MyPage() {
   
   const getConsume = async () => {
     try {
-      const testuserid = 1;
-      // const selectedData = await axios.get(`http://localhost:4000/favfood?userid=${userid}`);
-      const response = await axios.get(`http://localhost:4000/burncalorie?userid=${testuserid}`);
+      const storedId = localStorage.getItem("id");
+      const storedIdObj = JSON.parse(storedId);
+      const id = storedIdObj.id;
+      const response = await axios.get(`http://localhost:4000/burncalorie?userid=${id}`);
       const consumeselectedData = response.data;
   
       setConsume(consumeselectedData);
@@ -112,9 +115,10 @@ function MyPage() {
   
   const getGoal = async () => {
     try {
-      const testuserid = 2
-      // const selectedData = await axios.get(`http://localhost:4000/favfood?userid=${userid}`);
-      const response = await axios.get(`http://localhost:4000/calories?id=${testuserid}`);
+      const storedId = localStorage.getItem("id");
+      const storedIdObj = JSON.parse(storedId);
+      const id = storedIdObj.id;
+      const response = await axios.get(`http://localhost:4000/calories?id=${id}`);
       const goalselectedData = response.data;
   
       setGoal(goalselectedData);
@@ -141,9 +145,10 @@ function MyPage() {
   
   const getfavFoods = async () => {
     try {
-      const testuserid = 1
-      // const selectedData = await axios.get(`http://localhost:4000/favfood?userid=${userid}`);
-      const response = await axios.get(`http://localhost:4000/foodfavorite?userid=${testuserid}`);
+      const storedId = localStorage.getItem("id");
+      const storedIdObj = JSON.parse(storedId);
+      const id = storedIdObj.id;
+      const response = await axios.get(`http://localhost:4000/foodfavorite?userid=${id}`);
       const foodselectedData = response.data;
   
       setfavFoods(foodselectedData);
@@ -161,9 +166,10 @@ function MyPage() {
   
   const getfavExercises = async () => {
     try {
-      const testuserid = 1
-      // const selectedData = await axios.get(`http://localhost:4000/favfood?userid=${userid}`);
-      const response = await axios.get(`http://localhost:4000/exercisefavorite?userid=${testuserid}`);
+      const storedId = localStorage.getItem("id");
+      const storedIdObj = JSON.parse(storedId);
+      const id = storedIdObj.id;
+      const response = await axios.get(`http://localhost:4000/exercisefavorite?userid=${id}`);
       const exselectedData = response.data;
   
       setfavExercises(exselectedData);
@@ -244,14 +250,14 @@ function MyPage() {
             <div className="innerfoodcard">
               {index % 4 > 1 ? (
                 <FoodCardLeft
-                  key={food.foodname}
+                  index={food.foodname + index}
                   ATT_FILE_NO_MK={food.picture}
                   RCP_NM={food.foodname}
                   INFO_ENG={food.kcal}
                 />
               ) : (
                 <FoodCardRight
-                  key={food.foodname}
+                  index={food.foodname+index}
                   ATT_FILE_NO_MK={food.picture}
                   RCP_NM={food.foodname}
                   INFO_ENG={food.kcal}
@@ -271,7 +277,7 @@ function MyPage() {
         {favexercises.map((exercise, index) => (
           <div className="innerexcard" key={index}>
             <ExerciseCard
-                key={exercise.운동명}
+                index={exercise.운동명+index}
                 kcal={exercise.단위체중당에너지소비량}
                 name={exercise.운동명}
                 backgroundImage={exercise.picture}
