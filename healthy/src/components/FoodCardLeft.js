@@ -3,10 +3,10 @@ import menu from "../assets/images/menu.png";
 import "../css/components/FoodCardLeft.css";
 import React from "react";
 
-function FoodCardLeft({ATT_FILE_NO_MK,RCP_NM, INFO_ENG}) {
+function FoodCardLeft({index, ATT_FILE_NO_MK,RCP_NM, INFO_ENG}) {
 
   return (
-        <div className="FoodCardLeft">
+        <div className="FoodCardLeft" key={index}>
           <div className="FoodImgWrapperLeft">
             <img src={ATT_FILE_NO_MK} alt="" className="FoodImgLeft" />
           </div>

@@ -3,10 +3,10 @@ import menu from "../assets/images/menu.png";
 import "../css/components/FoodCardRight.css";
 import React from "react";
 
-function FoodCardRight({ATT_FILE_NO_MK,RCP_NM, INFO_ENG}) {
+function FoodCardRight({index, ATT_FILE_NO_MK,RCP_NM, INFO_ENG}) {
 
   return (
-        <div className="FoodCardRight">
+        <div className="FoodCardRight" key={index}>
           <div className="FoodExplanationWrapperRight">
             <h3>{RCP_NM}</h3>
             <p>{INFO_ENG} Kcal</p>
