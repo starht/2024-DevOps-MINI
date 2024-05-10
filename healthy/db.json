@@ -144,6 +144,24 @@
       "lunch": 0,
       "dinner": 0,
       "snack": "200"
+    },
+    {
+      "id": "11c8",
+      "userid": 1,
+      "date": "2024-05-09",
+      "breakfast": 0,
+      "lunch": 0,
+      "dinner": "1000",
+      "snack": 0
+    },
+    {
+      "id": "522b",
+      "userid": 1,
+      "date": "2024-05-07",
+      "breakfast": 0,
+      "lunch": 0,
+      "dinner": "150",
+      "snack": 0
     }
   ],
   "foodfavorite": [
