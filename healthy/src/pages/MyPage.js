@@ -76,6 +76,8 @@ function MyPage() {
 
       setIntake(intakeselectedData);
       setInSum(0);
+      let arr =[];
+      let k =0;
 
       for (let i = 0; i < intakeselectedData.length; i++) {
         let tmp = 0;
@@ -91,15 +93,14 @@ function MyPage() {
         if (intakeselectedData[i].snack !== null) {
           tmp += parseInt(intakeselectedData[i].snack);
         }
-        console.log(intakeselectedData[i].date + " eat " + tmp);
-        tmp += insum + tmp;
-        setInSum(tmp);
-        insumtemp += tmp;
-        console.log("added : " + insum);
-        console.log("added var : " + insumtemp);
-        console.log("insum : " + insum);
-        console.log(" ");
+        arr[k++] = tmp;
       }
+      let total = 0;
+      for(let j =0;j<arr.length;j++) {
+        total += arr[j];
+      }
+
+      setInSum(total);
     } catch (error) {
       console.log(error);
     }
@@ -121,14 +122,13 @@ function MyPage() {
       const consumeselectedData = response.data;
 
       setConsume(consumeselectedData);
-
+      let tmp = 0;
       for (let i = 0; i < consumeselectedData.length; i++) {
-        let tmp = 0;
         tmp += parseInt(consumeselectedData[i].calorie);
-        console.log("exer" + tmp);
-        tmp += exsum + tmp;
-        setExSum(tmp);
       }
+
+      setExSum(tmp);
+
     } catch (error) {
       console.log(error);
     }
