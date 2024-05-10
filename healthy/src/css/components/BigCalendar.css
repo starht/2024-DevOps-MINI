@@ -96,12 +96,12 @@ abbr{
 
 .bigcalandar .inner {
   background-color: rgba(255, 213, 248, 0.686);
-  padding:0 6px;
+  padding:0 8px;
   border-radius: 10px;
 }
 
 .bigcalandar .exinner {
   background-color: rgba(190, 237, 255, 0.539);
-  padding:0 6px;
+  padding:0 8px;
   border-radius: 10px;
 }

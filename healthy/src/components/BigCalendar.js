@@ -21,7 +21,7 @@ function BigCalendar({ exscheduleData, intakescheduleData }) {
     const exformattedDate = moment(date).format('YYYY-MM-DD');
     const exschedule = exscheduleData.find((item) => item.date === exformattedDate);
     return exschedule ? (
-      <div className="exinner">exercise: {exschedule.calorie}kcal</div>
+      <div className="exinner">운동 : {exschedule.calorie}kcal</div>
     ) : "";
   };
 
@@ -34,10 +34,10 @@ function BigCalendar({ exscheduleData, intakescheduleData }) {
     if (intakeschedule) {
       return (
         <div>
-          {intakeschedule.breakfast !== null && <div className="inner">Breakfast: {intakeschedule.breakfast}kcal</div>}
-          {intakeschedule.lunch !== null && <div className="inner">Lunch: {intakeschedule.lunch}kcal</div>}
-          {intakeschedule.dinner !== null && <div className="inner">Dinner: {intakeschedule.dinner}kcal</div>}
-          {intakeschedule.snack !== null && <div className="inner">Snack: {intakeschedule.snack}kcal</div>}
+          {intakeschedule.breakfast !== null && <div className="inner">아침 : {intakeschedule.breakfast}kcal</div>}
+          {intakeschedule.lunch !== null && <div className="inner">점심 : {intakeschedule.lunch}kcal</div>}
+          {intakeschedule.dinner !== null && <div className="inner">저녁 : {intakeschedule.dinner}kcal</div>}
+          {intakeschedule.snack !== null && <div className="inner">간식 : {intakeschedule.snack}kcal</div>}
         </div>
       );
     } else {
@@ -62,7 +62,7 @@ function BigCalendar({ exscheduleData, intakescheduleData }) {
           getActiveMonth(activeStartDate)
         }
         tileContent={({ date }) => (
-          <div className="kcalbox" style={{fontSize:"0.7rem"}}>
+          <div className="kcalbox" style={{fontSize:"0.6rem"}}>
             <div className="consumeCalWrapper">
             {getconsumeCal(date)}
             </div>
