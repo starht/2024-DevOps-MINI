@@ -7,12 +7,11 @@
 }
 
 .react-calendar__navigation {
-  background:hsla(191, 70%, 40%, 0.29);
+  background:#d1e5ee;
   border-bottom: 1px solid rgba(125, 125, 125, 0.325);
-  height: 90px;
+  height: 80px;
   border-radius: 20px 20px 0 0;
   span {
-    font-family: "Nanum Gothic", sans-serif;
     font-size: 24px;
     font-weight: 600;
     color: rgb(0, 0, 0);
@@ -20,7 +19,7 @@
 }
 
 .react-calendar__navigation button:disabled {
-  background-color: hsla(191, 70%, 40%, 0.19);
+  background-color: #d1e5ee;
   border-radius: 20px 20px 0 0;
 }
 abbr{
@@ -75,16 +74,16 @@ abbr{
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus,
 .react-calendar__tile--active {
-  background: rgba(41, 128, 67, 0.297);
+  background: rgba(241, 242, 175, 0.459);
   border-radius: 30px;
 }
 
 .minical .missionsuccess {
-  background-color: lightblue;
+  background-color: #d1e5ee;
   border-radius: 30px;
 }
 
 .minical .missionfailed {
   border-radius: 30px;
-  background-color: rgb(255, 110, 110);
+  background-color: rgba(255, 212, 212, 0.803);
 }

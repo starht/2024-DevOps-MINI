@@ -54,7 +54,7 @@ function FoodCardLeft({index, ATT_FILE_NO_MK,RCP_NM, INFO_ENG}) {
             <img src={ATT_FILE_NO_MK} alt="" className="FoodImgLeft" />
           </div>
           <div className="FoodExplanationWrapperLeft">
-            <h3>{RCP_NM}</h3>
+            <div className="food-card-name">{RCP_NM}</div>
             <p>{INFO_ENG} Kcal</p>
             <button className='buttonLeft' onClick={() => handleSave()}>
               <img className="menuLeft" src={menu} alt="" />
