@@ -38,7 +38,7 @@
 
 .foodinput {
   background-image: url("../../assets/images/foodicon.png");
-  background-size: 80%;
+  background-size: 70%;
   background-repeat: no-repeat;
   width: 50px;
   height: 50px;
@@ -46,11 +46,12 @@
   background-color: #fcff46;
   cursor: pointer;
   margin: 10px;
+  background-position: center;
 }
 
 .exerinput{
   background-image: url("../../assets/images/fitness.png");
-  background-size: 80%;
+  background-size: 70%;
   background-repeat: no-repeat;
   width: 50px;
   height: 50px;
@@ -58,6 +59,7 @@
   background-color: #fcff46;
   cursor: pointer;
   margin: 10px;
+  background-position: center;
 }
 
 .monthlyintake, .monthlyexer {

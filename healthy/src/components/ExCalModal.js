@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../css/components/ExCalModal.css";
+import axios from "axios";
 
 function ExCalModal({ excalshow, excalShow, excalClose}) {
   const [isSaved, setIsSaved] = useState(false);

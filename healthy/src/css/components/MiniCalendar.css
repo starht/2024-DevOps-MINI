@@ -78,3 +78,13 @@ abbr{
   background: rgba(41, 128, 67, 0.297);
   border-radius: 30px;
 }
+
+.minical .missionsuccess {
+  background-color: lightblue;
+  border-radius: 30px;
+}
+
+.minical .missionfailed {
+  border-radius: 30px;
+  background-color: rgb(255, 110, 110);
+}
