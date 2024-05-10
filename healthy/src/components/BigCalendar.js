@@ -8,7 +8,6 @@ function BigCalendar({ exscheduleData, intakescheduleData }) {
   const [value, onChange] = useState(new Date());
   const monthOfActiveDate = moment(value).format("YYYY-MM");
   const [activeMonth, setActiveMonth] = useState(monthOfActiveDate);
-  
 
   const getActiveMonth = (activeStartDate) => {
     const newActiveMonth = moment(activeStartDate).format("YYYY-MM");
@@ -16,36 +15,49 @@ function BigCalendar({ exscheduleData, intakescheduleData }) {
   };
 
   //달력에 운동 칼로리 표시
-  
+
   const getconsumeCal = (date) => {
-    const exformattedDate = moment(date).format('YYYY-MM-DD');
-    const exschedule = exscheduleData.find((item) => item.date === exformattedDate);
+    const exformattedDate = moment(date).format("YYYY-MM-DD");
+    const exschedule = exscheduleData.find(
+      (item) => item.date === exformattedDate
+    );
     return exschedule ? (
       <div className="exinner">운동 : {exschedule.calorie}kcal</div>
-    ) : "";
+    ) : (
+      ""
+    );
   };
 
   //달력에 섭취 칼로리 표시
 
   const getintakeCal = (date) => {
-    const intakeformattedDate = moment(date).format('YYYY-MM-DD');
-    const intakeschedule = intakescheduleData.find((item) => item.date === intakeformattedDate);
+    const intakeformattedDate = moment(date).format("YYYY-MM-DD");
+    const intakeschedule = intakescheduleData.find(
+      (item) => item.date === intakeformattedDate
+    );
 
     if (intakeschedule) {
       return (
         <div>
-          {intakeschedule.breakfast !== null && <div className="inner">아침 : {intakeschedule.breakfast}kcal</div>}
-          {intakeschedule.lunch !== null && <div className="inner">점심 : {intakeschedule.lunch}kcal</div>}
-          {intakeschedule.dinner !== null && <div className="inner">저녁 : {intakeschedule.dinner}kcal</div>}
-          {intakeschedule.snack !== null && <div className="inner">간식 : {intakeschedule.snack}kcal</div>}
+          {intakeschedule.breakfast !== null &&
+            intakeschedule.breakfast !== 0 && (
+              <div className="inner">아침 : {intakeschedule.breakfast}kcal</div>
+            )}
+          {intakeschedule.lunch !== null && intakeschedule.lunch !== 0 && (
+            <div className="inner">점심 : {intakeschedule.lunch}kcal</div>
+          )}
+          {intakeschedule.dinner !== null && intakeschedule.dinner !== 0 && (
+            <div className="inner">저녁 : {intakeschedule.dinner}kcal</div>
+          )}
+          {intakeschedule.snack !== null && intakeschedule.snack !== 0 && (
+            <div className="inner">간식 : {intakeschedule.snack}kcal</div>
+          )}
         </div>
       );
     } else {
       return "";
     }
   };
-
-  
 
   return (
     <div>
@@ -62,13 +74,9 @@ function BigCalendar({ exscheduleData, intakescheduleData }) {
           getActiveMonth(activeStartDate)
         }
         tileContent={({ date }) => (
-          <div className="kcalbox" style={{fontSize:"0.6rem"}}>
-            <div className="consumeCalWrapper">
-            {getconsumeCal(date)}
-            </div>
-            <div className="intakeCalWrapper">
-            {getintakeCal(date)}
-            </div>
+          <div className="kcalbox" style={{ fontSize: "0.6rem" }}>
+            <div className="consumeCalWrapper">{getconsumeCal(date)}</div>
+            <div className="intakeCalWrapper">{getintakeCal(date)}</div>
           </div>
         )}
       />
