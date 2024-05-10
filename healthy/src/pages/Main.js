@@ -6,7 +6,7 @@ import ExerciseCard from "../components/ExerciseCard";
 import FoodCardLeft from "../components/FoodCardLeft";
 import FoodCardRight from "../components/FoodCardRight";
 import Navbar from "../components/Navbar";
-import banner from "../assets/images/bannertext.png";
+import banner from "../assets/images/fullbanner.png";
 import MiniCalendar from "../components/MiniCalendar";
 import LoginModal from "../components/LoginModal";
 import BMIModal from "../components/BMIModal";

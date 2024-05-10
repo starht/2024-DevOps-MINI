@@ -47,7 +47,13 @@
     border-top : 1px solid #00000040;
     border-left: none;
   }
+  .banner{
+    width: 100%;
+    border-radius: 0;
+    padding: 0;
+  }
 }
+
 .cal-btn{
   font-weight: bold;
   font-size: 40px;
