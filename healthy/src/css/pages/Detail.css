@@ -24,15 +24,76 @@
   box-shadow: 0 0 20px lightgray;
 }
 
+@media (max-width: 1350px) {
+  .FoodRecipeWrapper{
+    width: 900px;
+  }
+}
+
+@media (max-width: 950px) {
+  .FoodRecipeWrapper{
+    width: 600px;
+    height: fit-content;
+    flex-direction: column;
+  }
+}
+
 .RecipeImg {
   width: 650px;
   height: 500px;
-  border-radius: 60px 30px 30px 60px;
+  border-radius: 60px 0 0 60px;
+}
+
+@media (max-width: 1350px) {
+  .RecipeImg {
+    width: 50%;
+  }
+}
+
+@media (max-width: 950px) {
+  .RecipeImg {
+    width: 100%;
+    height: 450px;
+    border-radius: 60px 60px 0 0;
+  }
 }
 
 .FoodExplain {
   width: 650px;
   height: 500px;
+}
+
+@media (max-width: 950px) {
+  .FoodExplain {
+    width: fit-content;
+    height: 450px;
+    padding-top: 10px;
+  }
+}
+
+.detail-youtube-btn{
+  width: 35px;
+  height: 35px;
+  background-image: url('../../assets/images/youtube.png');
+  background-size: cover;
+  margin: 10px;
+  cursor: pointer;
+  position: relative;
+  left: 550px;
+  bottom: 50px;
+}
+
+@media (max-width: 1350px) {
+  .detail-youtube-btn{
+    left: 350px;
+    bottom: 50px;
+  }
+}
+@media (max-width: 950px) {
+  .detail-youtube-btn{
+    left: 500px;
+    bottom: 50px;
+  }
 }
 
 .RecipeName {
@@ -42,6 +103,10 @@
   padding: 20px 0 0 ;
   margin: 0;
   height: 10%;
+}
+
+@media (max-width: 950px) {
+
 }
 
 .Recipe {
@@ -59,6 +124,13 @@
 .Lower {
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 1350px) {
+  .Lower{
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* 왼쪽 박스 */
@@ -118,18 +190,6 @@
   font-size: 1rem;
   font-weight: bold;
   margin: 20px 0 5px 0;
-}
-
-.detail-youtube-btn{
-  width: 35px;
-  height: 35px;
-  background-image: url('../../assets/images/youtube.png');
-  background-size: cover;
-  margin: 10px;
-  cursor: pointer;
-  position: relative;
-  left: 550px;
-  bottom: 50px;
 }
 
 .kcal-highlight{
