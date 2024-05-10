@@ -127,7 +127,11 @@
   background-size: cover;
   margin: 10px;
   cursor: pointer;
-  position: absolute;
-  right: 350px;
-  top: 530px;
+  position: relative;
+  left: 550px;
+  bottom: 50px;
+}
+
+.kcal-highlight{
+  box-shadow: inset 0 -12px 0 #fff36c; 
 }

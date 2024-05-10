@@ -108,7 +108,7 @@ function Detail() {
                 <div className="FoodCalorieWrapper" id="box">
                   <div className="UpperCalorie">
                     <p id="upperinfobox">영양 상세 정보</p>
-                    <p id="upperinfobox">총 열량 : {food.INFO_ENG} Kcal</p>
+                    <p id="upperinfobox"><span className="kcal-highlight">총 열량 : {food.INFO_ENG} Kcal</span></p>
                   </div>
                   <div className="LowerCalorie">
                 <p id="lowerinfobox">
