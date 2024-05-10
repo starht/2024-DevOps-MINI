@@ -50,7 +50,9 @@ function Navbar({ onSearch, loginShow }) {
     <div className="nav">
       <div className="logo-title">
         <img className="nav-logo" src={logo} alt="Logo" />
-        <div className="title">HealthyWorld</div>
+        <a className="title" href="/">
+          <div className="nav-title">HealthyWorld</div>
+        </a>
       </div>
       <div>
         <a href="#" className="navbar-toggle" onClick={toggleActiveClass}>
@@ -58,9 +60,6 @@ function Navbar({ onSearch, loginShow }) {
         </a>
       </div>
       <div className="nav-wrap">
-        <a className="nav-item" href="/">
-          <div className="nav-text">Home</div>
-        </a>
         <a className="nav-item" href="/foodsearch">
           <div className="nav-text">음식 조회</div>
         </a>
@@ -68,48 +67,48 @@ function Navbar({ onSearch, loginShow }) {
           <div className="nav-text">운동 조회</div>
         </a>
       </div>
-        <div className="nav-search">
-          <form onSubmit={handleSubmit}>
-            <div className="search-wrap">
-              <input
-                className="search-input"
-                type="search"
-                placeholder="Search"
-                value={searchQuery}
-                onChange={handleInputChange}
-              />
-              <button className="search-btn-wrap" type="submit">
-                <img className="search-btn" src={search} alt="Search" />
-              </button>
-            </div>
-            <div className="toggle-btn r" id="button-1">
-              <input
-                type="checkbox"
-                className="checkbox"
-                onChange={handleCheckboxChange}
-              />
-              <div className="food"></div>
-              <div className="exercise"></div>
-            </div>
-          </form>
-        </div>
-        <div className="nav-login">
-          {isLoggedIn ? (
-            <div>
-              <button className="mypage" onClick={() => navigate("/mypage")}>
-                마이페이지
-              </button>
-              <button className="logout" onClick={handleLogoutClick}>
-                로그아웃
-              </button>
-            </div>
-          ) : (
-            <button className="login" href="/mypage" onClick={loginShow}>
-              로그인
+      <div className="nav-search">
+        <form onSubmit={handleSubmit}>
+          <div className="search-wrap">
+            <input
+              className="search-input"
+              type="search"
+              placeholder="Search"
+              value={searchQuery}
+              onChange={handleInputChange}
+            />
+            <button className="search-btn-wrap" type="submit">
+              <img className="search-btn" src={search} alt="Search" />
             </button>
-          )}
-        </div>
+          </div>
+          <div className="toggle-btn r" id="button-1">
+            <input
+              type="checkbox"
+              className="checkbox"
+              onChange={handleCheckboxChange}
+            />
+            <div className="food"></div>
+            <div className="exercise"></div>
+          </div>
+        </form>
       </div>
+      <div className="nav-login">
+        {isLoggedIn ? (
+          <div>
+            <button className="mypage" onClick={() => navigate("/mypage")}>
+              마이페이지
+            </button>
+            <button className="logout" onClick={handleLogoutClick}>
+              로그아웃
+            </button>
+          </div>
+        ) : (
+          <button className="login" href="/mypage" onClick={loginShow}>
+            로그인
+          </button>
+        )}
+      </div>
+    </div>
   );
 }
 
