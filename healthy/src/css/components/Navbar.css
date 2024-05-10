@@ -14,10 +14,14 @@
   padding-left: 10px;
 }
 .title {
+  text-decoration-line: none;
+  min-width: 15%;
+}
+.nav-title{
   font-family: "Sedan SC", serif;
   font-size: 30px;
   font-weight: bold;
-  min-width: 15%;
+  color: black;
 }
 .nav-wrap {
   display: flex;
@@ -227,9 +231,10 @@
 
   .nav-login {
     display: none;
-    justify-content: end;
+    justify-content: center;
     padding: 20px 0;
-    
+    width: 100%;
+    margin-left: 30px;
   }
   .nav-login.active{
     display: flex;
@@ -253,43 +258,5 @@
   .navbar-toggle{
     display: block;
   }
-  .login {
-    background-color: #e1e3e19b;
-    font-weight: bold;
-    border-radius: 20px;
-    width: 130px;
-    height: 40px;
-    border: 0;
-    box-shadow: 0 0 10px rgba(128, 128, 128, 0.605);
-    margin-top: 10px;
-    cursor: pointer;
-    font-family: "Nanum Gothic", sans-serif;
-  }
-  .mypage {
-    background-color: #1f95af;
-    font-weight: bold;
-    color: white;
-    border-radius: 20px;
-    width: 90px;
-    height: 40px;
-    border: 0;
-    box-shadow: 0 0 10px rgba(128, 128, 128, 0.605);
-    margin-top: 10px;
-    cursor: pointer;
-    font-family: "Nanum Gothic", sans-serif;
-  }
-  .logout {
-    background-color: #e1e3e19b;
-    font-weight: bold;
-    border-radius: 20px;
-    width: 90px;
-    height: 40px;
-    border: 0;
-    margin-left: 10px;
-    box-shadow: 0 0 10px rgba(128, 128, 128, 0.605);
-    margin-top: 10px;
-    cursor: pointer;
-    font-family: "Nanum Gothic", sans-serif;
-  }
-  
+
 }
