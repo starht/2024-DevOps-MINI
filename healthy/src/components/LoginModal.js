@@ -32,6 +32,8 @@ function LoginModal({ loginShow, loginClose, loginshow }) {
     } catch (error) {
       console.error("Error logging in:", error);
     }
+    // 로그인 성공시 새로고침
+    window.location.reload();
   };
 
   return (
