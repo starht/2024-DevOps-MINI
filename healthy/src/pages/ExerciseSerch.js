@@ -132,10 +132,10 @@ function ExerciseSearch() {
             loginClose={loginClose}
             loginshow={loginshow}
           />
-          <div className="contentWrapper">
-            <div>
+            <div className="banner-wrap">
               <img className="exercise-banner" src={FoodBanner} />
             </div>
+          <div className="contentWrapper">
             <div className="table-wrapper">
               <table className="exercise-table">
                 <thead>
