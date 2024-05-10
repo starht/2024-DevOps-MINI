@@ -1,50 +1,56 @@
-.nav{
+.nav {
   display: flex;
   align-items: center;
   min-width: 100%;
   height: 80px;
   font-family: "Nanum Gothic", sans-serif;
 }
-.nav-logo{
+.logo-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-logo {
   padding-left: 10px;
 }
-.title{
+.title {
   font-family: "Sedan SC", serif;
   font-size: 30px;
   font-weight: bold;
   min-width: 15%;
 }
-.nav-wrap{
+.nav-wrap {
+  display: flex;
   width: 40%;
   margin-left: 50px;
 }
-.nav-item{
+.nav-item {
   font-family: "Nanum Gothic", sans-serif;
   font-size: 18px;
   font-weight: light;
   padding: 17px;
   padding-right: 40px;
   text-decoration-line: none;
-  color:rgb(63, 63, 63);
+  color: rgb(63, 63, 63);
 }
-.nav-item:visited{
-  color:rgb(63, 63, 63);
+.nav-item:visited {
+  color: rgb(63, 63, 63);
 }
-.nav-item:hover{
-  color:black;
+.nav-item:hover {
+  color: black;
   font-weight: bold;
 }
-.nav-search{
+.nav-search {
   display: flex;
   justify-content: end;
   width: 25%;
 }
-.search-wrap{
+.search-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.search-input{
+.search-input {
   height: 40px;
   width: 200px;
   border: none;
@@ -53,11 +59,11 @@
   padding-left: 15px;
   border-radius: 50px;
 }
-.search-btn-wrap{
+.search-btn-wrap {
   border: none;
   background-color: white;
 }
-.search-btn{
+.search-btn {
   cursor: pointer;
   background-image: url("../../assets/images/search.png");
   background-size: cover;
@@ -66,13 +72,13 @@
   border: none;
   background-color: white;
 }
-.nav-login{
+.nav-login {
   display: flex;
   justify-content: end;
   width: 20%;
-  padding-right:30px;
+  padding-right: 30px;
 }
-.login{
+.login {
   background-color: #e1e3e19b;
   font-weight: bold;
   border-radius: 20px;
@@ -84,8 +90,8 @@
   cursor: pointer;
   font-family: "Nanum Gothic", sans-serif;
 }
-.mypage{
-  background-color: #1F95AF;
+.mypage {
+  background-color: #1f95af;
   font-weight: bold;
   color: white;
   border-radius: 20px;
@@ -95,9 +101,9 @@
   box-shadow: 0 0 10px rgba(128, 128, 128, 0.605);
   margin-top: 10px;
   cursor: pointer;
-  font-family: "Nanum Gothic", sans-serif; 
+  font-family: "Nanum Gothic", sans-serif;
 }
-.logout{
+.logout {
   background-color: #e1e3e19b;
   font-weight: bold;
   border-radius: 20px;
@@ -108,7 +114,7 @@
   box-shadow: 0 0 10px rgba(128, 128, 128, 0.605);
   margin-top: 10px;
   cursor: pointer;
-  font-family: "Nanum Gothic", sans-serif; 
+  font-family: "Nanum Gothic", sans-serif;
 }
 
 .food,
@@ -158,17 +164,132 @@
   text-align: center;
   line-height: 1;
   padding: 7px 5px;
-  background-color: #5179EF;
+  background-color: #5179ef;
   border-radius: 50%;
   transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
 }
 #button-1 .checkbox:checked + .food:before {
   content: "운동";
   left: 30px;
-  background-color: #5179EF;
+  background-color: #5179ef;
 }
 #button-1 .food,
 #button-1 .food:before,
 #button-1 .exercise {
   transition: 0.3s ease all;
+}
+
+.hamburger{
+  display: none;
+}
+
+@media screen and (max-width: 1230px) {
+  .nav{
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    height: fit-content;
+    width: 100%;
+    margin: 0;
+  }
+  .nav-wrap {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+  }
+  .nav-item {
+    display: none;
+    font-family: "Nanum Gothic", sans-serif;
+    font-size: 15px;
+    width: 100%;
+    text-align: center;
+    font-weight: light;
+    text-decoration-line: none;
+    color: rgb(63, 63, 63);
+
+  }
+  .nav-item.active{
+    display: flex;
+  }
+  .nav-text{
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+  }
+  .nav-search {
+    display: none;
+    justify-content: end;
+    width: fit-content;
+    margin: 10px;
+  }
+
+  .nav-login {
+    display: none;
+    justify-content: end;
+    padding: 20px 0;
+    
+  }
+  .nav-login.active{
+    display: flex;
+  }
+  
+  .search-input {
+    height: 40px;
+    width: 200px;
+    border: none;
+    background-color: rgba(207, 207, 207, 0.138);
+    margin-right: 5px;
+    padding-left: 15px;
+    border-radius: 50px;
+  }
+  .hamburger{
+    display: flex;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+  }
+  .navbar-toggle{
+    display: block;
+  }
+  .login {
+    background-color: #e1e3e19b;
+    font-weight: bold;
+    border-radius: 20px;
+    width: 130px;
+    height: 40px;
+    border: 0;
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.605);
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: "Nanum Gothic", sans-serif;
+  }
+  .mypage {
+    background-color: #1f95af;
+    font-weight: bold;
+    color: white;
+    border-radius: 20px;
+    width: 90px;
+    height: 40px;
+    border: 0;
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.605);
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: "Nanum Gothic", sans-serif;
+  }
+  .logout {
+    background-color: #e1e3e19b;
+    font-weight: bold;
+    border-radius: 20px;
+    width: 90px;
+    height: 40px;
+    border: 0;
+    margin-left: 10px;
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.605);
+    margin-top: 10px;
+    cursor: pointer;
+    font-family: "Nanum Gothic", sans-serif;
+  }
+  
 }
