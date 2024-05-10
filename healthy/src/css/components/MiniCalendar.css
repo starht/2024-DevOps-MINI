@@ -1,6 +1,10 @@
+/* .react-calendar button {
+  margin: 0px;
+} */
+
+
 .react-calendar{
   width: max-content;
-  height: 400px;
   border: 1px solid rgba(125, 125, 125, 0.325);;
   border-radius: 22px;
   box-shadow: 0 0 15px lightgray;
