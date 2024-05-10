@@ -10,15 +10,18 @@
   width: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: center;
 }
-
+.mid {
+  width: 75%;
+}
 .recommendtitle {
   display: flex;
   align-items: center;
   margin: 40px 0 10px 0;
   font-size: 30px;
   font-weight: bold;
+  width: 100%;
 }
 
 .highlight{
@@ -37,9 +40,16 @@
 }
 
 .FoodCardWrapper {
+  width: 110%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 20px 0 50px 0;
+  height: 400px;
+}
+
+.container > :nth-child(n+5) {
+  display: none; /* 두 번째 줄의 아이템들을 숨김 처리 */
 }
 
 .InnerFoodCardWrapper {
@@ -47,6 +57,10 @@
 }
 
 /* 테이블 */
+
+.hidden {
+  visibility: hidden;
+}
 
 .TableWrapper {
   width: 80%;

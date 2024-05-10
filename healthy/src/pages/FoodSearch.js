@@ -189,6 +189,72 @@ function FoodSearch() {
     ));
   };
 
+  useEffect(() => {
+    hideSecondRow(); // 페이지 로드 시 두 번째 줄 이후의 카드를 숨김 처리
+    window.addEventListener('resize', handleResize); // 윈도우 크기 변경 시 처리
+    return () => {
+      window.removeEventListener('resize', handleResize); // 컴포넌트가 unmount 되면 이벤트 리스너 제거
+    };
+  }, []);
+  
+  function hideSecondRow() {
+    const container = document.querySelector('.FoodCardWrapper');
+    if (!container) return; // 컨테이너가 없으면 중지
+    const items = container.querySelectorAll('.InnerFoodCardWrapper');
+    if (!items || items.length === 0) return; // 아이템이 없으면 중지
+  
+    let rowItemCount = 0;
+    let secondRowStartIndex = -1;
+  
+    for (let i = 0; i < items.length; i++) {
+      const itemRect = items[i].getBoundingClientRect();
+      if (itemRect.top !== items[0].getBoundingClientRect().top) {
+        break;
+      }
+      rowItemCount++;
+    }
+  
+    secondRowStartIndex = rowItemCount;
+  
+    for (let i = 0; i < items.length; i++) {
+      if (i >= secondRowStartIndex) {
+        items[i].classList.add('hidden'); // 두 번째 줄부터는 숨기도록 클래스 추가
+      } else {
+        items[i].classList.remove('hidden'); // 첫 번째 줄은 보이도록 클래스 제거
+      }
+    }
+  }
+  
+  function handleResize() {
+    const container = document.querySelector('.FoodCardWrapper');
+    if (!container) return; // 컨테이너가 없으면 중지
+    const items = container.querySelectorAll('.InnerFoodCardWrapper');
+    if (!items || items.length === 0) return; // 아이템이 없으면 중지
+  
+    let rowItemCount = 0;
+    let secondRowStartIndex = -1;
+  
+    for (let i = 0; i < items.length; i++) {
+      const itemRect = items[i].getBoundingClientRect();
+      if (itemRect.top !== items[0].getBoundingClientRect().top) {
+        break;
+      }
+      rowItemCount++;
+    }
+  
+    secondRowStartIndex = rowItemCount;
+  
+    for (let i = 0; i < items.length; i++) {
+      if (i < secondRowStartIndex) {
+        items[i].classList.remove('hidden'); // 첫 번째 줄은 보이도록 클래스 제거
+      } else {
+        items[i].classList.add('hidden'); // 두 번째 줄부터는 숨기도록 클래스 추가
+      }
+    }
+  }
+  
+  
+
   return (
     <div>
       {loading ? (
@@ -203,9 +269,11 @@ function FoodSearch() {
           />
           <div className="contentWrapper">
             <div className="FoodrecommendWrapper">
+              <div className="mid">
               <div className="recommendtitle">
                 <img alt="" src={foodicon} className="iconimg" />
                 <p className="text highlight">오늘의 추천음식</p>
+              </div>
               </div>
               <div className="FoodCardWrapper">
                 {foods.map((food, index) => (
