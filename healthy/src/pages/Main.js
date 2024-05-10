@@ -6,7 +6,7 @@ import ExerciseCard from "../components/ExerciseCard";
 import FoodCardLeft from "../components/FoodCardLeft";
 import FoodCardRight from "../components/FoodCardRight";
 import Navbar from "../components/Navbar";
-import banner from "../assets/images/배너.png";
+import banner from "../assets/images/bannertext.png";
 import MiniCalendar from "../components/MiniCalendar";
 import LoginModal from "../components/LoginModal";
 import BMIModal from "../components/BMIModal";
@@ -220,13 +220,7 @@ function Main() {
       />
       <div className="banner-container">
         <img className="banner" src={banner} />
-        <div className="banner-text-wrap">
-          <div className="banner-text">Protect</div>
-          <div className="banner-text">Your</div>
-          <div className="banner-text">Health</div>
-        </div>
-      </div>
-      <div className="cal-container">
+        <div className="cal-container">
         <div className="cal-wrapper">
           <button className="cal-btn" onClick={calShow}>
             칼로리 처방
@@ -236,6 +230,7 @@ function Main() {
             BMI 계산
           </button>
         </div>
+      </div>
       </div>
       <div className="cards-container">
         <div className="mini-calendar">
