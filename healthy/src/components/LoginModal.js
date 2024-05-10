@@ -28,6 +28,7 @@ function LoginModal({ loginShow, loginClose, loginshow }) {
         login(2, userid, password); // id와 password를 전달하여 로그인
       }
       loginClose();
+      
     } catch (error) {
       console.error("Error logging in:", error);
     }
