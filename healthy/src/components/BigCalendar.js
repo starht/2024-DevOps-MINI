@@ -74,7 +74,7 @@ function BigCalendar({ exscheduleData, intakescheduleData }) {
           getActiveMonth(activeStartDate)
         }
         tileContent={({ date }) => (
-          <div className="kcalbox" style={{ fontSize: "0.6rem" }}>
+          <div className="kcalbox" style={{ fontSize: "0.7rem" }}>
             <div className="consumeCalWrapper">{getconsumeCal(date)}</div>
             <div className="intakeCalWrapper">{getintakeCal(date)}</div>
           </div>

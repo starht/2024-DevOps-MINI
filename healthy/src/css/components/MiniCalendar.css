@@ -68,13 +68,13 @@ abbr{
   padding: 13px 7px;
 }
 .react-calendar__tile--now {
-  background: #ffe87672;
+  background: #ffe87640;
   border-radius: 30px;
 }
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus,
 .react-calendar__tile--active {
-  background: rgba(241, 242, 175, 0.459);
+  background-color: #d1e5ee3f;
   border-radius: 30px;
 }
 

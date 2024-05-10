@@ -15,6 +15,7 @@ import FoodCardLeft from "../components/FoodCardLeft";
 import FoodCardRight from "../components/FoodCardRight";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import exerciselogo from "../assets/images/exerciselogo.png"
 
 function MyPage() {
   const [loginshow, setLoginshow] = useState(false);
@@ -240,6 +241,26 @@ function MyPage() {
         excalShow={excalShow}
         excalClose={excalClose}
       />
+       <div className="onGoing">
+        {goals.map((goal) => (
+          <div className="ongoingGoal highlight">
+            <div className="ongoingGoaltitle">
+              <div className="heart-wrap">
+              <img src={heart} className="heart" alt="" />
+              </div>
+              <div className="actualtitle">현재 진행중인 목표: </div>
+            </div>
+            <div className="actualgoal">
+              <span className="onspan">{goal.monthunit}</span>개월 동안{" "}
+              <span className="onspan">{goal.goalkg}kg</span>감량
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="inputbuttonWrapper">
+              <div className="foodinput" onClick={foodcalShow}></div>
+              <div className="exerinput" onClick={excalShow}></div>
+            </div>
       <div className="calendarinputWrapper">
         <div className="left">
           <BigCalendar
@@ -251,12 +272,11 @@ function MyPage() {
             <div></div>
           ))}
         </div>
-        <div className="right">
+        
+      </div>
+      <div className="right">
           <div className="inputWrapper">
-            <div className="inputbuttonWrapper">
-              <div className="foodinput" onClick={foodcalShow}></div>
-              <div className="exerinput" onClick={excalShow}></div>
-            </div>
+            
             <div className="monthlyintake">
               <div className="mpcaltitle">5월 섭취 칼로리 총합</div>
               <div className="mpcalvalue">{insum}kcal</div>
@@ -267,31 +287,7 @@ function MyPage() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="onGoing">
-        {goals.map((goal) => (
-          <div className="ongoingGoal">
-            <div className="ongoingGoaltitle">
-              <img src={heart} className="heart" alt="" />
-              <div className="actualtitle">현재 진행중인 목표</div>
-            </div>
-            <div className="actualgoal">
-              <span className="onspan">{goal.monthunit}</span>개월 동안{" "}
-              <span className="onspan">{goal.goalkg}kg</span>감량
-            </div>
-          </div>
-        ))}
-        <div className="monthgoalWrapper">
-          <div className="monthgoalkcal">
-            이번 달에 <span className="monthspan">{monthGoal}kcal</span>를
-            소모해야 합니다.
-          </div>
-          <div className="monthdaykcal">
-            1일마다 <span className="monthspan">{workoutNeeded}kcal</span>를
-            소모해야 해요!
-          </div>
-        </div>
-      </div>
+     
       <div className="favfoodWrapper">
         <div className="favtitle">
           <img alt="" src={foodicon} className="mpicon" />

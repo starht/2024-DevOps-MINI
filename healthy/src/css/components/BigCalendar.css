@@ -12,7 +12,7 @@
 }
 
 .bigcalandar .react-calendar__navigation {
-  background:hsla(191, 70%, 40%, 0.29);
+  background:hsla(191, 70%, 40%, 0.19);
   border-bottom: 1px solid rgba(125, 125, 125, 0.325);
   height: 70px;
   border-radius: 20px 20px 0 0;
@@ -40,9 +40,8 @@ abbr{
 
 .bigcalandar .react-calendar__month-view {
   padding: 20px 32px;
-  width: 900px;
+  width: 1200px;
   abbr {
-    font-family: "Nanum Gothic", sans-serif;
     color: rgb(30, 30, 30);
     font-size: 20px;
     font-weight: 500;
@@ -54,6 +53,12 @@ abbr{
 }
 .bigcalandar .react-calendar__month-view__weekdays__weekday > abbr{
   text-decoration: none;
+}
+.react-calendar__month-view__days__day{
+  abbr{
+
+    margin-bottom: 10px;
+  }
 }
 
 .bigcalandar .react-calendar__month-view__weekdays {
@@ -72,17 +77,19 @@ abbr{
   justify-content: flex-start;
   align-items: left;
   padding: 13px 7px;
+  border: 1px solid rgba(182, 182, 182, 0.314);
+  border-radius: 20px;
 }
 
 .bigcalandar .react-calendar__tile--now {
-  background: #ffe87672;
+  background: #d1e5eeb1;
   border-radius: 20px;
 }
 
 .bigcalandar .react-calendar__tile:enabled:hover,
 .bigcalandar .react-calendar__tile:enabled:focus,
 .bigcalandar .react-calendar__tile--active {
-  background: rgba(41, 128, 67, 0.297);
+  background: #d1e5ee3f;
   border-radius: 20px;
 }
 
@@ -95,13 +102,15 @@ abbr{
 }
 
 .bigcalandar .inner {
-  background-color: rgba(255, 213, 248, 0.686);
+  color: rgb(222, 85, 85);
+  font-weight: 600;
   padding:0 8px;
   border-radius: 10px;
 }
 
 .bigcalandar .exinner {
-  background-color: rgba(190, 237, 255, 0.539);
+  color: #5777e1;
+  font-weight: 600;
   padding:0 8px;
   border-radius: 10px;
 }
