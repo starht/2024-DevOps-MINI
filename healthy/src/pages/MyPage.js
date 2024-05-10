@@ -276,7 +276,6 @@ function MyPage() {
       </div>
       <div className="right">
           <div className="inputWrapper">
-            
             <div className="monthlyintake">
               <div className="mpcaltitle">5월 섭취 칼로리 총합</div>
               <div className="mpcalvalue">{insum}kcal</div>

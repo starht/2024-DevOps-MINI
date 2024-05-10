@@ -227,6 +227,13 @@
       "foodname": "산채쌀파스타",
       "kcal": "176.7",
       "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00303_2.png"
+    },
+    {
+      "id": "cfce",
+      "userid": 1,
+      "foodname": "다이어트국수",
+      "kcal": "36.9",
+      "picture": "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00386_2.png"
     }
   ],
   "exercisefavorite": [
@@ -301,6 +308,14 @@
       "운동명": "계단오르기",
       "youtubeId": "27zSEATjckA",
       "picture": "https://img.youtube.com/vi/27zSEATjckA/maxresdefault.jpg"
+    },
+    {
+      "id": "8e03",
+      "userid": 1,
+      "단위체중당에너지소비량": "5.5",
+      "운동명": "사이드 런지",
+      "youtubeId": "bGbL8VYiQi8",
+      "picture": "https://img.youtube.com/vi/bGbL8VYiQi8/maxresdefault.jpg"
     }
   ],
   "exerciselist": [

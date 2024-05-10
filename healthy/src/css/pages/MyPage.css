@@ -235,3 +235,33 @@
   margin-top: 20px;
   margin-bottom: 100px;
 }
+
+@media (max-width: 860px) {
+  .mpcaltitle{
+    font-size: 1.1rem;
+  }
+  
+}
+
+@media (max-width: 1200px) {
+  .favfoodcardWrapper{
+    height: fit-content;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .midcardWrapper{
+    width: 100%;
+    margin: 0;
+  }
+  .favexcardWrapper{
+    height: fit-content;
+    margin-bottom: 20px;
+  }
+  .midexcardWrapper{
+    width: 600px;
+    flex-wrap: wrap;
+
+  }
+  
+}
