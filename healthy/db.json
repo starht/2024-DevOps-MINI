@@ -188,6 +188,15 @@
       "snack": 0
     },
     {
+      "id": "3fd7",
+      "userid": 2,
+      "date": "2024-05-11",
+      "breakfast": 0,
+      "lunch": "200",
+      "dinner": 0,
+      "snack": 0
+    },
+    {
       "id": "5e65",
       "userid": 1,
       "date": "2024-05-10",
