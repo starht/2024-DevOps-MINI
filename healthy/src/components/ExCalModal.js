@@ -57,6 +57,7 @@ function ExCalModal({ excalshow, excalShow, excalClose}) {
         })
           .then(response => {
             setIsSaved(true);
+            reload();
           })
           .catch(error => {
             console.error('Error updating exercise calories:', error);
@@ -69,6 +70,7 @@ function ExCalModal({ excalshow, excalShow, excalClose}) {
         })
           .then(response => {
             setIsSaved(true);
+            reload();
           })
           .catch(error => {
             console.error('Error saving exercise calories:', error);
@@ -107,6 +109,15 @@ function ExCalModal({ excalshow, excalShow, excalClose}) {
     }
   }, [isSaved]);
 
+  const reload = () => {
+    if (window.opener) {
+      window.opener.location.reload();
+      window.close();
+    } else {
+      window.location.reload();
+    }
+  };
+
     return (
       <div
         id={excalshow ? "excalbackgroundon" : "excalbackgroundoff"}
@@ -128,7 +139,7 @@ function ExCalModal({ excalshow, excalShow, excalClose}) {
           <div className="born-wrap">
             <div className="year-wrap">
               <div className="year-title">연도</div>
-              <input input="text" className="year-text" placeholder="2000" />
+              <input input="text" className="year-text" placeholder="2024" />
             </div>
             <div className="month-wrap">
               <div className="month-title">월</div>

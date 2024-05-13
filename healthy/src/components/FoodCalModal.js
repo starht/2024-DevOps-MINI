@@ -99,6 +99,7 @@ function FoodCalModal({ foodcalshow, foodcalShow, foodcalClose }) {
               `http://localhost:4000/intakecalorie/${existingFoodcal.id}`, data)
             .then((response) => {
               setIsSaved(true);
+              reload();
             })
             .catch((error) => {
               console.error("Error updating exercise food:", error);
@@ -147,6 +148,15 @@ function FoodCalModal({ foodcalshow, foodcalShow, foodcalClose }) {
     }
   }, [isSaved]);
 
+  const reload = () => {
+    if (window.opener) {
+      window.opener.location.reload();
+      window.close();
+    } else {
+      window.location.reload();
+    }
+  };
+
   return (
     <div
       id={foodcalshow ? "foodcalbackgroundon" : "foodcalbackgroundoff"}
@@ -174,7 +184,7 @@ function FoodCalModal({ foodcalshow, foodcalShow, foodcalClose }) {
           <div className="born-wrap">
             <div className="year-wrap">
               <div className="year-title">연도</div>
-              <input input="text" className="year-text" placeholder="2000" />
+              <input input="text" className="year-text" placeholder="2024" />
             </div>
             <div className="month-wrap">
               <div className="month-title">월</div>

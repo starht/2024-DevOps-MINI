@@ -73,6 +73,30 @@
       "userid": 2,
       "date": "2024-05-09",
       "calorie": "100"
+    },
+    {
+      "id": "e91f",
+      "userid": 1,
+      "date": "2024-05-09",
+      "calorie": "123"
+    },
+    {
+      "id": "f802",
+      "userid": 1,
+      "date": "2024-05-10",
+      "calorie": "240"
+    },
+    {
+      "id": "bd3e",
+      "userid": 1,
+      "date": "2024-05-08",
+      "calorie": "120"
+    },
+    {
+      "id": "f2a4",
+      "userid": 1,
+      "date": "2024-05-07",
+      "calorie": "300"
     }
   ],
   "intakecalorie": [
@@ -150,8 +174,8 @@
       "userid": 1,
       "date": "2024-05-09",
       "breakfast": 0,
-      "lunch": 0,
-      "dinner": "1000",
+      "lunch": "2000",
+      "dinner": "300",
       "snack": 0
     },
     {
@@ -159,9 +183,18 @@
       "userid": 1,
       "date": "2024-05-07",
       "breakfast": 0,
-      "lunch": 0,
+      "lunch": "700",
       "dinner": "150",
       "snack": 0
+    },
+    {
+      "id": "5e65",
+      "userid": 1,
+      "date": "2024-05-10",
+      "breakfast": 0,
+      "lunch": "600",
+      "dinner": 0,
+      "snack": "200"
     }
   ],
   "foodfavorite": [
