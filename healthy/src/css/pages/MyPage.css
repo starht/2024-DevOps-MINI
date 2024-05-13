@@ -211,7 +211,7 @@
 }
 
 .favfoodcardWrapper{
-  height: 410px;
+  width: 70%;
 }
 
 .favexcardWrapper{
@@ -226,16 +226,12 @@
 }
 
 .midcardWrapper {
-  width: 40%;
   display: flex;
   justify-content: center;
-  margin: 0 10px;
-
 }
 
 .innerfoodcard {
-  margin-right: 20px; /* 각 요소 사이의 간격을 조절 */
-  margin-bottom: 20px;
+  margin: 10px 20px;
 }
 
 .midexcardWrapper {

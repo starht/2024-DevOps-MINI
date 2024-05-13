@@ -303,9 +303,6 @@ function MyPage() {
               <div
                 className="midcardWrapper"
                 key={index}
-                style={{
-                  justifyContent: index % 2 === 0 ? "flex-end" : "flex-start",
-                }}
               >
                 <div className="innerfoodcard">
                   {index % 4 > 1 ? (
