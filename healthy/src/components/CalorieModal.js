@@ -192,7 +192,17 @@ function CalorieModal({
           <div className="born-wrap">
             <div className="year-wrap">
               <div className="year-title">연도</div>
-              <input input="text" className="year-text" placeholder="2000" />
+              <select
+                className="yeartext"
+                value={form.year}
+                onChange={(e) => setForm({ ...form, year: e.target.value })}
+              >
+                {years.map((year) => (
+                  <option value={year} key={year}>
+                    {year}
+                  </option>
+                ))}
+                </select>
             </div>
             <div className="month-wrap">
               <div className="month-title">월</div>
