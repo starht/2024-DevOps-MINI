@@ -1,3 +1,20 @@
+.headerWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.diagnosis {
+  padding: 10px 0;
+  color: gray;
+}
+
+.diagnosis >span {
+  color: black;
+  font-weight: bold;
+}
+
 /* 달력 */
 .calendarinputWrapper {
   display: flex;

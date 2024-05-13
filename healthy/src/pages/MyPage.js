@@ -243,6 +243,7 @@ function MyPage() {
       />
        <div className="onGoing">
         {goals.map((goal) => (
+          <div className="headerWrapper">
           <div className="ongoingGoal highlight">
             <div className="ongoingGoaltitle">
               <div className="heart-wrap">
@@ -253,6 +254,10 @@ function MyPage() {
             <div className="actualgoal">
               <span className="onspan">{goal.monthunit}</span>개월 동안{" "}
               <span className="onspan">{goal.goalkg}kg</span>감량
+            </div>
+          </div>
+            <div className="diagnosis">
+              하루 권장 섭취 칼로리는 <span>{goal.eatneeded} kcal</span> 입니다. 운동으로 <span>{goal.workoutneeded} Kcal</span>를 소모해보세요.
             </div>
           </div>
         ))}
@@ -272,7 +277,6 @@ function MyPage() {
             <div></div>
           ))}
         </div>
-        
       </div>
       <div className="right">
           <div className="inputWrapper">

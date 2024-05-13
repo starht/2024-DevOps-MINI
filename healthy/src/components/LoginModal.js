@@ -21,11 +21,19 @@ function LoginModal({ loginShow, loginClose, loginshow }) {
         userid: "test2",
         password: "test2"
       };
+      const testUser3 = {
+        id: 3,
+        userid: "test3",
+        password: "test3"
+      };
       if (userid === testUser1.userid  && password === testUser1.password) {
         login(1, userid, password); // id와 password를 전달하여 로그인
       }
       if(userid === testUser2.userid  && password === testUser2.password){
         login(2, userid, password); // id와 password를 전달하여 로그인
+      }
+      if(userid === testUser3.userid  && password === testUser3.password){
+        login(3, userid, password); // id와 password를 전달하여 로그인
       }
       loginClose();
       
