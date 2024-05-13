@@ -242,13 +242,17 @@ abbr{
   opacity: 0;
 }
 
+.bigcalandar .missionsuccess:hover .kcalbox {
+  opacity: 1;
+}
+
+.bigcalandar .missionfailed:hover .kcalbox {
+  opacity: 1;
+}
+
 .kcalbox {
   z-index: 100;
   opacity: 0;
   height: 100%;
   width: 100%;
-}
-
-.kcalbox:hover {
-  opacity: 1;
 }
