@@ -201,28 +201,6 @@ abbr{
   border-radius: 30px;
 } */
 
-.bigcalandar {
-  position: relative;
-}
-
-.bigcalandar .missionfailed {
-  z-index: 1;
-}
-.inner, .exinner {
-  z-index: 1;
-  opacity: 0;
-}
-
-.inner:hover {
-  opacity: 100;
-}
-.exinner:hover {
-  opacity: 100;
-}
-
-.bigcalandar .missionfailed:hover {
-
-}
 
 .bigcalandar .missionfailed {
   position: relative;
@@ -240,6 +218,9 @@ abbr{
   background-position: center;
   z-index: 5;
 }
+.bigcalandar .missionfailed:hover::after {
+  background-image: none;
+}
 
 .bigcalandar .missionsuccess {
   position: relative;
@@ -256,4 +237,16 @@ abbr{
   background-repeat: no-repeat;
   background-position: center;
   z-index: 5;
+}
+.bigcalandar .missionsuccess:hover::after {
+  opacity: 0;
+}
+
+.kcalbox {
+  z-index: 100;
+  opacity: 0;
+}
+
+.kcalbox:hover {
+  opacity: 1;
 }
